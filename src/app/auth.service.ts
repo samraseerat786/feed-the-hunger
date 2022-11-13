@@ -42,4 +42,9 @@ export class AuthService {
   isAdmin() {
     return this.currentUser.role === 0;
   }
+
+  getUser() {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    return this.currentUser;
+  }
 }

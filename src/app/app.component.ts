@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicModule} from '@ionic/angular';
+import {NavController, IonicModule} from '@ionic/angular';
 import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {Router} from '@angular/router';
 import {ListService} from './list.service';
+import {AuthService} from "./auth.service";
 
 @Component({
     selector: 'app-root',
@@ -56,7 +57,9 @@ export class AppComponent implements OnInit {
         private router: Router,
         private splashScreen: SplashScreen,
         private service: ListService,
-        private statusBar: StatusBar
+        private statusBar: StatusBar,
+        private authService: AuthService,
+        private navCtrl: NavController
     ) {
         this.initializeApp();
     }
@@ -67,7 +70,19 @@ export class AppComponent implements OnInit {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+            this.checkUser();
         });
+    }
+
+    checkUser() {
+        this.user = this.authService.getUser();
+
+        if (this.user) {
+            this.loadUserAndPages('');
+            this.navCtrl.navigateRoot(['/home']);
+        } else {
+            this.navCtrl.navigateRoot(['']);
+        }
     }
 
     ngOnInit() {
