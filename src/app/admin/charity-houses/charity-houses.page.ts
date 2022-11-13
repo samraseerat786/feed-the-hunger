@@ -84,7 +84,7 @@ export class CharityHousesPage implements OnInit {
     //       console.log('error', error);
     //     }
     // );
-    alert('can\'t deleted. Please! contact with supper admin using hmuzammal015@gmail.com');
+    alert('can\'t deleted. Please! contact with supper admin using samraseerat786@gmail.com');
     this.router.navigate(['tabs/charity-houses']);
   }
 }

@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "charity application",
+  "appId": "com.feed.hunger",
+  "appName": "Feed the hunger",
   "webDir": "www",
   "npmClient": "npm"
 }

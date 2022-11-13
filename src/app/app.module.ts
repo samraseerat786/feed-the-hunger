@@ -15,14 +15,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { FCM } from '@ionic-native/fcm/ngx';
 const firebaseConfig = {
-    apiKey: 'AIzaSyBmQgRPtxBmoCx7yspH4X877x2lFiBCOag',
-    authDomain: 'food-distribution-app-fb350.firebaseapp.com',
-    databaseURL: 'https://food-distribution-app-fb350.firebaseio.com',
-    projectId: 'food-distribution-app-fb350',
-    storageBucket: 'food-distribution-app-fb350.appspot.com',
-    messagingSenderId: '929354685211',
-    appId: '1:929354685211:web:3780621a28f01b84a1d1be',
-    measurementId: 'G-NKFBGSVN9C'
+    apiKey: 'AIzaSyCtHKb-EFeAK4vH317pp5zsYlZvc05rKIk',
+    authDomain: 'feed-the-hunger-4771e.firebaseapp.com',
+    databaseURL: 'https://feed-the-hunger-4771e-default-rtdb.asia-southeast1.firebasedatabase.app',
+    projectId: 'feed-the-hunger-4771e',
+    storageBucket: 'feed-the-hunger-4771e.appspot.com',
+    messagingSenderId: '45623475797',
+    appId: '1:45623475797:web:2aa4f517132890811d9edc',
+    measurementId: 'G-BVZYLNGE56'
 };
 @NgModule({
   declarations: [AppComponent],

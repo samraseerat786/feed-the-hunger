@@ -76,14 +76,14 @@ export class DonnersPage implements OnInit {
     //       console.log('error', error);
     //     }
     // );
-    // alert('can\'t deleted. Please! contact with supper admin using hmuzammal015@gmail.com');
+
     this.presentAlertConfirm();
     this.router.navigate(['tabs/donners']);
   }
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: 'Message <strong>can\'t deleted.Please! contact with supper admin using hmuzammal015@gmail.com</strong>!!!',
+      message: 'Message <strong>can\'t deleted.Please! contact with supper admin using samraseerat876@gmail.com</strong>!!!',
       buttons: [
         {
           text: 'Cancel',

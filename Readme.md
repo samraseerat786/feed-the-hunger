@@ -1,4 +1,4 @@
-# My Final year project is a Charity application with following.
+# My Final year project is a Feed the hunger application with following.
 <h3>Frontend Work</h3>
 Tools and technologies <br/>
 •	Hybrid Application, where Ionic framework and angular used for front-end.<br/>
@@ -45,9 +45,6 @@ Features in our Application.
 8. Application Programmable Interface.<br/>
 •	System have an API for developers to provide them data about the Food Companies, their reviews, location and their foods etc.<br/>
 •	Provide an API to provide data of charity houses, location, services and types of charity houses.<br/>
-
-
-<h3>For backend work please follow the link<br/> <a href = "https://github.com/MuzammalHussain6313/Food-Distribution-App">https://github.com/MuzammalHussain6313/Food-Distribution-App</a></h3>
 
 <h4>Have a look Some Screen shorts.</h4>
 

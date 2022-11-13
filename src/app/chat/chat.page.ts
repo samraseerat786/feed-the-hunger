@@ -11,23 +11,7 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
-messages = [
-        // {
-        //     user: 'umar',
-        //     createdAt: 1554090856000,
-        //     msg: 'Hi ! how are you !'
-        // },
-        // {
-        //     user: 'muzammal',
-        //     createdAt: 1554090756000,
-        //     msg: 'Hi ! i am fine!'
-        // },
-        // {
-        //     user: 'osama',
-        //     createdAt: 1554090656000,
-        //     msg: 'what about you guys !'
-        // }
-        ];
+messages = [];
 
     items: Observable<any[]>;
     currentUser = '';
