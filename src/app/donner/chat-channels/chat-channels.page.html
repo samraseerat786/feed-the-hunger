@@ -1,19 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Donner Conversation
-    </ion-title>
-  </ion-toolbar>
+<ion-header class="ion-text-center">
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Donner Conversation
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list class="welcome-card" *ngFor="let item of channels">
-    <ion-item (click)="openChat(item?.name)">
-      <ion-label>{{changeValue(item?.name)}}</ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+            <ion-list class="welcome-card" *ngFor="let item of channels">
+                <ion-item (click)="openChat(item?.name)">
+                    <ion-label>{{changeValue(item?.name)}}</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+    </ion-row>
 </ion-content>
 

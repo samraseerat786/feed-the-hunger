@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-text-center">
     <ion-toolbar color="secondary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
@@ -8,23 +8,30 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item (click)="openProfilePage()">
-          <ion-icon slot="start" size="large" name="person"></ion-icon>
-            <p><b>Profile</b></p>
-        </ion-item>
-      <ion-item (click)="changePassword()">
-        <ion-icon slot="start" size="large" name="person"></ion-icon>
-        <p><b>Change Password</b></p>
-      </ion-item>
-      <ion-item (click)="manageNotification()">
-        <ion-icon slot="start" size="large" name="alert"></ion-icon>
-        <ion-label><b>Notification</b></ion-label>
-        <ion-toggle></ion-toggle>
-      </ion-item>
-      <ion-item (click)="helpUser()">
-        <ion-icon slot="start" size="large" name="help-circle-outline"></ion-icon>
-        <p><b>Help</b></p>
-      </ion-item>
-    </ion-list>
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+            <ion-list>
+                <ion-item (click)="openProfilePage()">
+                    <ion-icon slot="start" name="person" color="secondary"></ion-icon>
+                    <p><b>Profile</b></p>
+                    <ion-icon name="ios-arrow-forward" slot="end" size="large" color="secondary"></ion-icon>
+                </ion-item>
+                <ion-item (click)="changePassword()">
+                    <ion-icon slot="start" size="large" name="person" color="secondary"></ion-icon>
+                    <p><b>Change Password</b></p>
+                    <ion-icon name="ios-arrow-forward" slot="end" size="large" color="secondary"></ion-icon>
+                </ion-item>
+                <ion-item (click)="manageNotification()">
+                    <ion-icon slot="start" size="large" name="alert" color="secondary"></ion-icon>
+                    <ion-label><b>Notification</b></ion-label>
+                    <ion-toggle></ion-toggle>
+                </ion-item>
+                <ion-item (click)="helpUser()">
+                    <ion-icon slot="start" size="large" name="help-circle-outline" color="secondary"></ion-icon>
+                    <p><b>Help</b></p>
+                    <ion-icon name="ios-arrow-forward" slot="end" size="large" color="secondary"></ion-icon>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+    </ion-row>
 </ion-content>

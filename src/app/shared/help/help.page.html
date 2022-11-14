@@ -1,31 +1,37 @@
-<ion-header>
-  <ion-toolbar color="secondary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Help</ion-title>
-  </ion-toolbar>
+<ion-header class="ion-text-center">
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Help</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card">
-    <img src="/assets/help.jpg" alt="" />
-    <ion-card-header>
-      <ion-card-subtitle>Help Desk</ion-card-subtitle>
-      <ion-card-title>Welcome to Help Desk of App</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>This platform is build to help the users where they get error in application and don't understand what should they do.
-        Send message us to on</p>
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+            <ion-card class="welcome-card">
+                <img src="/assets/help.jpg" alt=""/>
+                <ion-card-header>
+                    <ion-card-subtitle>Help Desk</ion-card-subtitle>
+                    <ion-card-title>Welcome to Help Desk of App</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>This platform is build to help the users where they get error in application and don't understand what
+                        should they do.
+                        Send message us to on</p>
 
-        <ion-row>
-            <ion-col size="10">
-                <ion-label style="color: #3880ff">feed.hunger786@gmail.com</ion-label>
-            </ion-col>
-            <ion-col align-items-start size="2">
-                <ion-img (click)="sendSmsToAdmin()" style="width: 40px; height: 40px;" src="/assets/download.png" alt="messages"></ion-img>
-            </ion-col>
-        </ion-row>
-    </ion-card-content>
-  </ion-card>
+                    <ion-row>
+                        <ion-col size="10">
+                            <ion-label style="color: #3880ff">feed.hunger786@gmail.com</ion-label>
+                        </ion-col>
+                        <ion-col align-items-start size="2">
+                            <ion-img (click)="sendSmsToAdmin()" style="width: 30px; height: 30px;" src="/assets/download.png"
+                                     alt="messages"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
 </ion-content>

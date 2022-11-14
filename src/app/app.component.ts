@@ -105,9 +105,7 @@ export class AppComponent implements OnInit {
 
     logOut() {
         alert('Are you sure to logout application.');
-        localStorage.removeItem('role');
-        localStorage.removeItem('appPages');
-        localStorage.removeItem('user');
+        localStorage.clear();
         this.router.navigate(['']);
     }
 

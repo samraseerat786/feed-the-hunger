@@ -1,5 +1,5 @@
-<ion-header>
-    <ion-toolbar>
+<ion-header class="ion-text-center">
+    <ion-toolbar color="secondary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -10,20 +10,24 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card" *ngFor="let item of result">
-        <ion-card-header>
-            <ion-card-title>{{item?.name}}</ion-card-title>
-            <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-            <p>{{item?.name}} is {{item?.type}} in {{item?.address.streetAddress}} {{item?.address.city}}.</p>
-            <p>{{item?.contact}} is Contact number and email is {{item?.email}}.</p>
-            <p>there are {{item?.no_of_members}} members in house.</p>
-            <p>{{item?.name}} have an account in {{item?.bank_name}} Bank where you can donate your funds
-                in {{item?.account_no}} account Number.</p>
-            <ion-button size="small" (click)="donateFood(item)" slot="start" color="success">Donate Food
-            </ion-button>
-            <ion-button size="small" (click)="donateFund(item)" slot="end" color="primary">Donate Money</ion-button>
-        </ion-card-content>
-    </ion-card>
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+            <ion-card class="welcome-card" *ngFor="let item of result">
+                <ion-card-header>
+                    <ion-card-title>{{item?.name}}</ion-card-title>
+                    <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>{{item?.name}} is {{item?.type}} in {{item?.address.streetAddress}} {{item?.address.city}}.</p>
+                    <p>{{item?.contact}} is Contact number and email is {{item?.email}}.</p>
+                    <p>there are {{item?.no_of_members}} members in house.</p>
+                    <p>{{item?.name}} have an account in {{item?.bank_name}} Bank where you can donate your funds
+                        in {{item?.account_no}} account Number.</p>
+                    <ion-button size="small" (click)="donateFood(item)" slot="start" color="success">Donate Food
+                    </ion-button>
+                    <ion-button size="small" (click)="donateFund(item)" slot="end" color="primary">Donate Money</ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
 </ion-content>
