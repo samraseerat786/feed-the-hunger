@@ -81,5 +81,16 @@ ion-card {
 }
 
 h4{
-  padding: 15px;
+  padding: 15px 0 15px 0;
+}
+
+.fullheight {
+  height: 100%;
+}
+
+.xc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
 }

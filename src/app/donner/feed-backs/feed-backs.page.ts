@@ -4,6 +4,7 @@ import {Storage} from '@ionic/storage';
 import {ListService} from '../../services/list.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: 'app-feed-backs',
@@ -12,7 +13,8 @@ import {Observable} from 'rxjs';
 })
 export class FeedBacksPage implements OnInit {
 
-    constructor(public router: Router,
+    constructor(private utils: UtilsService,
+                public router: Router,
                 private storage: Storage,
                 private service: ListService,
                 public http: HttpClient) {
@@ -22,28 +24,25 @@ export class FeedBacksPage implements OnInit {
     reviewsList: any = [];
     data: Observable<any>;
     user: any;
+
     ngOnInit() {
+
         this.user = JSON.parse(localStorage.getItem('user'));
         const id = this.user.id;
+
+        this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/feedbacks/findByDonner/${id}`,
             {observe: 'response'}).subscribe(response => {
+            this.utils.stopLoading();
             if (response.status === 200 || response.status === 201) {
                 this.reviewsList = response.body;
-                console.log('data loading from API');
                 this.result = this.reviewsList.content;
                 localStorage.removeItem('reviewsList');
                 localStorage.setItem('reviewsList', JSON.stringify(this.result));
-                console.log('reviewsList : ', this.reviewsList.content);
             }
-            // You can access status:
-            console.log('status code', response.status);
-            console.log('complete content', response.body);
-            // Or any other header:
-            console.log('X-Custom-Header', response.headers.get('X-Custom-Header'));
         }, (error) => {
-            console.log('data loading from loadData function.');
+            this.utils.stopLoading();
             console.log('error', error);
         });
-        console.log('result' + this.result);
     }
 }

@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {ListService} from '../../services/list.service';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: 'app-update',
@@ -14,7 +15,8 @@ export class UpdatePage implements OnInit {
 
     public signupForm;
 
-    constructor(private route: ActivatedRoute,
+    constructor(private utils: UtilsService,
+                private route: ActivatedRoute,
                 private http: HttpClient,
                 private router: Router,
                 private service: ListService,
@@ -29,22 +31,18 @@ export class UpdatePage implements OnInit {
     ngOnInit() {
         this.route.paramMap.subscribe(paramMap => {
             const val = paramMap.get('id');
-            console.log('id', val);
             const url = `${this.service.homeUrl}/donners/findById/${val}`;
-            console.log('url', url);
             this.data = this.http.get(url);
-            console.log('data', this.data);
+            this.utils.presentLoading("Please wait...");
             this.data.subscribe(data => {
+                this.utils.stopLoading();
                 this.user = data;
-                console.log('user', this.user);
             });
-            console.log(this.user);
         });
         this.formInitializer();
     }
 
     formInitializer() {
-        console.log('formInitializer', this.user);
         this.signupForm = this.formBuilder.group({
             id: [null, [Validators.required]],
             first_name: [null, [Validators.required]],
@@ -71,34 +69,28 @@ export class UpdatePage implements OnInit {
             '", \n"address" : "' + data.address +
             '", \n"contact" : "' + data.contact +
             '", \n' + this.childUser + ' }';
-        console.log('data before parsing', this.donner);
         const completeDonner = JSON.parse(this.donner);
-        console.log('complete Donner', completeDonner);
         return completeDonner;
     }
 
     updateData() {
         if (this.signupForm.valid) {
-            console.log('formData', this.signupForm.value);
-
             const formData = this.signupForm.value;
-            console.log('data', this.generateUser());
-            this.saveHttpReq(this.generateUser()).subscribe(
-                data => {
-                    console.log('I got this response -> ', data);
-                    this.router.navigate(['tabs/donners']);
+            this.utils.presentLoading("Please wait...");
+            this.saveHttpReq(this.generateUser()).subscribe(data => {
+                    this.utils.stopLoading();
                     alert('user updated successfully');
-                },
-                error => {
-                    console.log('error', error);
-                }
-            );
+                this.router.navigate(['tabs/donners']);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
         }
     }
 
     saveHttpReq(dataObj): Observable<any> {
         const url = `${this.service.homeUrl}/donners/updateDonner`;
-        console.log('link', url);
         return this.http.put(url, dataObj);
     }
 }

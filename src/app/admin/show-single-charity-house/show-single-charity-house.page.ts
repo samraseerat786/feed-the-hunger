@@ -1,42 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ListService} from '../../services/list.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
-  selector: 'app-show-single-charity-house',
-  templateUrl: './show-single-charity-house.page.html',
-  styleUrls: ['./show-single-charity-house.page.scss'],
+    selector: 'app-show-single-charity-house',
+    templateUrl: './show-single-charity-house.page.html',
+    styleUrls: ['./show-single-charity-house.page.scss'],
 })
 export class ShowSingleCharityHousePage implements OnInit {
-  constructor(private route: ActivatedRoute,
-              private service: ListService,
-              private http: HttpClient,
-              private router: Router
-  ) {
-  }
+    constructor(private utils: UtilsService,
+                private route: ActivatedRoute,
+                private service: ListService,
+                private http: HttpClient) {
+    }
 
-  result: any = [];
-  data: Observable<any>;
-  user;
+    result: any = [];
+    data: Observable<any>;
+    user;
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(paramMap => {
-      const val = paramMap.get('id');
-      const url  = `${this.service.homeUrl}/charityHouses/getCharityHouse/${val}`;
-      this.data =  this.http.get(url);
-      console.log(this.data);
-      this.data.subscribe(data => {
-        this.user = data;
-        // this.result = this.user.content;
-        console.log('user', this.user);
-      });
-      console.log(this.user);
-    });
-  }
+    ngOnInit() {
+        this.route.paramMap.subscribe(paramMap => {
+            const val = paramMap.get('id');
+            const url = `${this.service.homeUrl}/charityHouses/getCharityHouse/${val}`;
+            this.utils.presentLoading("Please wait...");
+            this.data = this.http.get(url);
+            this.data.subscribe(data => {
+                this.utils.stopLoading();
+                this.user = data;
+            });
+        });
+    }
 
-  contactDealer(contactNumber: any) {
-    alert('You can contactwith owner via ' + contactNumber + ' Number.');
-  }
+    contactDealer(contactNumber: any) {
+        alert('You can contact with owner via ' + contactNumber + '.');
+    }
 }

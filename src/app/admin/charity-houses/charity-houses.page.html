@@ -1,11 +1,11 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="result.length > 0">
     <ion-row class="ion-justify-content-center">
         <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
             <ion-list>
                 <ion-item *ngFor="let item of result">
                     <ion-icon slot="start" name="home" color="secondary"></ion-icon>
                     <p (click)="showSingleItem(item?.id)">{{item?.name}} {{item?.contact}}</p>
-                    <ion-img (click)="updateItem(item?.id)" style="width: 20px; height: 20px;"
+                    <ion-img (click)="updateItem(item?.id)" style="width: 30px; height: 30px;"
                              src="/assets/pencil-sharp.svg"
                              alt="update" slot="end"></ion-img>
                     <ion-icon (click)="deleteCharityHouse(item?.id)" size="default" name="trash" slot="end" color="secondary"></ion-icon>
@@ -13,4 +13,11 @@
             </ion-list>
         </ion-col>
     </ion-row>
+</ion-content>
+<ion-content *ngIf="result.length == 0">
+    <div class="fullheight xc">
+        <div>
+            <h3 class="item-color">No charity house</h3>
+        </div>
+    </div>
 </ion-content>

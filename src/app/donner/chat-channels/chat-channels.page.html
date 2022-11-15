@@ -9,7 +9,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="channels.length > 0">
     <ion-row class="ion-justify-content-center">
         <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
             <ion-list class="welcome-card" *ngFor="let item of channels">
@@ -22,4 +22,10 @@
         </ion-col>
     </ion-row>
 </ion-content>
-
+<ion-content *ngIf="channels.length == 0">
+    <div class="fullheight xc">
+        <div>
+            <h3 class="item-color">No chat</h3>
+        </div>
+    </div>
+</ion-content>

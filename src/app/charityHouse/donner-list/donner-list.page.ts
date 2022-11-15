@@ -6,6 +6,7 @@ import {PopoverController} from '@ionic/angular';
 import {ReviewComponent} from './review/review.component';
 import {Storage} from '@ionic/storage';
 import {ListService} from '../../services/list.service';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: 'app-donner-list',
@@ -15,7 +16,8 @@ import {ListService} from '../../services/list.service';
 export class DonnerListPage implements OnInit {
     donnerList;
 
-    constructor(public router: Router,
+    constructor(private utils: UtilsService,
+                public router: Router,
                 public popoverController: PopoverController,
                 private storage: Storage,
                 private service: ListService,
@@ -27,42 +29,25 @@ export class DonnerListPage implements OnInit {
     itration = [1, 2, 3, 4];
 
     ngOnInit() {
+        this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/donners/list`,
             {observe: 'response'}).subscribe(response => {
+            this.utils.stopLoading();
             if (response.status === 200 || response.status === 201) {
                 this.donnerList = response.body;
-                console.log('data loading from API');
                 this.result = this.donnerList.content;
                 localStorage.removeItem('donners');
                 localStorage.setItem('donners', JSON.stringify(this.result));
-                console.log('donnerList : ', this.donnerList.content);
             }
-            // You can access status:
-            console.log('status code', response.status);
-            console.log('complete content', response.body);
-            // Or any other header:
-            console.log('X-Custom-Header', response.headers.get('X-Custom-Header'));
         }, (error) => {
-            console.log('data loading from loadData function.');
+            this.utils.stopLoading();
             this.loadData();
             console.log('error', error);
         });
-        console.log('result' + this.result);
-        // this.data = this.http.get('http://localhost:8095/donners/list');
-        // // this.loading = false;
-        // console.log('data', this.data);
-        // this.data.subscribe(data => {
-        //   this.result = data.content;
-        // });
-        // console.log('result' + this.result);
     }
 
     loadData() {
         this.result = JSON.parse(localStorage.getItem('donners'));
-        // this.storage.get('donners').then((val) => {
-        //     this.result = val;
-        //     console.log('Your data is', val);
-        // });
     }
 
     async review(myEvent, item: any) {

@@ -4,6 +4,7 @@ import {AlertController} from '@ionic/angular';
 import {ListService} from '../../services/list.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: 'app-detail',
@@ -12,7 +13,8 @@ import {Observable} from 'rxjs';
 })
 export class DetailPage implements OnInit {
 
-    constructor(private route: ActivatedRoute,
+    constructor(private utils: UtilsService,
+                private route: ActivatedRoute,
                 private service: ListService,
                 private http: HttpClient,
                 private router: Router
@@ -27,14 +29,13 @@ export class DetailPage implements OnInit {
         this.route.paramMap.subscribe(paramMap => {
             const val = paramMap.get('id');
             const url  = `${this.service.homeUrl}/donners/findById/${val}`;
+            this.utils.presentLoading("Please wait...");
             this.data =  this.http.get(url);
-            console.log(this.data);
             this.data.subscribe(data => {
+                this.utils.stopLoading();
                 this.user = data;
-                console.log(this.user);
             });
-            console.log(this.user);
-            });
+        });
     }
 
     contactDonner(contactNumber: any) {

@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {IonContent} from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
 import {ListService} from '../../services/list.service';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: 'app-charity-house-chat',
@@ -19,27 +20,23 @@ export class CharityHouseChatPage implements OnInit {
     user;
     channel;
     newMsg: '';
-    objectOfChannel;
     channelName;
-    // donner;
-    // donnerName;
     // @ts-ignore
     @ViewChild(IonContent) content: IonContent;
 
-    constructor(public route: ActivatedRoute,
+    constructor(private utils: UtilsService,
+                public route: ActivatedRoute,
                 public http: HttpClient,
                 private service: ListService,
                 public db: AngularFireDatabase) {
         this.loadchannelName();
-        console.log('channel Name', this.channel);
+        this.utils.presentLoading("Please wait...");
         this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
-            console.log('data', data);
+            this.utils.stopLoading();
             this.recivedData = data;
             this.messages = data;
-            // this.messages;
-            // this.messages = this.recivedData.filter(x => x.channelName === this.channel);
-            console.log('messages after filter', this.messages);
         });
+        this.utils.stopLoading();
     }
 
     ngOnInit() {
@@ -78,8 +75,6 @@ export class CharityHouseChatPage implements OnInit {
         // this.currentUser = this.user.user.first_name.toLowerCase() + ' ' + this.user.user.last_name.toLowerCase();
         this.currentUser = this.user.user.user_name.toLowerCase(); // + ' ' + this.user.user.last_name.toLowerCase();
         this.channel = donner + '-' + this.user.user.first_name.toLowerCase() + '-' + this.user.user.last_name.toLowerCase();
-        console.log('current user', this.currentUser);
-        console.log('channel', this.channel);
     }
 
     sendMessage() {
