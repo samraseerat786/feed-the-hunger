@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {ListService} from '../../services/list.service';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: 'app-address',
@@ -16,7 +17,8 @@ export class AddressPage implements OnInit {
     charity;
     loading: boolean;
     submitted: any;
-    constructor(private route: ActivatedRoute,
+    constructor(private utils: UtilsService,
+                private route: ActivatedRoute,
                 private router: Router,
                 private http: HttpClient,
                 private service: ListService,
@@ -30,7 +32,6 @@ export class AddressPage implements OnInit {
     ngOnInit() {
         this.route.paramMap.subscribe(paramMap => {
             this.obj = paramMap.get('id');
-            console.log('reciving data', this.obj);
         });
         this.formInitializer();
     }
@@ -53,7 +54,6 @@ export class AddressPage implements OnInit {
         this.submitted = true;
         this.loading = true;
         if (this.addressForm.valid) {
-            console.log('formData', this.addressForm.value);
             const formData = this.addressForm.value;
             this.charity = '' + this.obj + '"address" : {"streetAddress" : "' + formData.streetAddress +
                 '" , "city" : "' + formData.city +
@@ -61,26 +61,23 @@ export class AddressPage implements OnInit {
                 '" , "state" : "' + formData.state +
                 '" , "country" : "' + formData.country +
                 '" } }';
-            console.log('data befor parsing', this.charity);
             const completeCharityHouse = JSON.parse(this.charity);
-            console.log('complete charity house', completeCharityHouse);
-            this.saveHttpReq(completeCharityHouse).subscribe(
-                data => {
-                    console.log('I got this response -> ', data);
-                    this.loading = false;
-                    alert('Please! check your email and verify your account.');
-                    this.router.navigate(['login']);
-                },
-                error => {
-                    console.log('error', error);
-                }
-            );
+            this.utils.presentLoading("Creating your account, please be patient...");
+            this.saveHttpReq(completeCharityHouse).subscribe(data => {
+                this.utils.stopLoading();
+                this.loading = false;
+                alert('Please! check your email and verify your account.');
+                this.router.navigate(['login']);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
         }
         this.loading = false;
     }
 
     saveHttpReq(dataObj): Observable<any> {
-        console.log('recieved data ', dataObj);
         const url = `${this.service.homeUrl}/charityHouses/newCharityHouse`;
         const test = this.http.post(url, dataObj);
         this.loading = false;

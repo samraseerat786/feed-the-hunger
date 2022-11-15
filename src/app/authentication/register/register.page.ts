@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subscription} from 'rxjs';
 import {ListService} from '../../services/list.service';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
     selector: 'app-register',
@@ -11,7 +12,7 @@ import {ListService} from '../../services/list.service';
     styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-    constructor(
+    constructor(private utils: UtilsService,
         private router: Router,
         private http: HttpClient,
         private service: ListService,
@@ -94,23 +95,15 @@ export class RegisterPage implements OnInit {
         } else {
             const data = this.registerForm.value;
             if (data.role === 'donner') {
-                console.log('formData', this.registerForm.value);
                 const userData = this.registerForm.value;
                 alert(userData.role);
                 this.loading = false;
                 this.router.navigate(['register-donner', userData]);
             }
             if (data.role === 'charity house') {
-                console.log('formData', this.registerForm.value);
                 const userData = this.registerForm.value;
                 this.loading = false;
                 this.router.navigate(['register-charity-house', userData]);
-                // alert(formData.role);
-                // this.obj1 = '1';
-                // this.obj2 = '2';
-                // const fullID = '{ "obj2" : "' + this.obj2 + '", "obj1" : "' + this.obj1 + '" } ';
-                // const t = JSON.parse(fullID);
-                // console.log('full Object', t);
             }
         }
     }
@@ -125,39 +118,33 @@ export class RegisterPage implements OnInit {
         this.mailloading = true;
         const test = this.registerForm.value;
         const item = test.email;
-        console.log('test', test);
-        console.log('email', item);
         if (item) {
+            this.utils.presentLoading("Please wait...");
             this.http.get(`${this.service.homeUrl}/users/email/${item}`,
                 {observe: 'response'}).subscribe(response => {
+                this.utils.stopLoading();
                 if (response.status === 200 || response.status === 201) {
-                    console.log('response', response);
                     const tester = response.body;
-                    console.log('tester', tester.toString());
                     if ( tester.toString() === 'false') {
                         this.emailVerification = true;
                         this.mailloading = false;
                     }
                     this.mailloading = false;
-                    // this.donnerList = response.body;
-                    // console.log('content', this.donnerList);
-                    // this.results = this.donnerList.content;
                 }
             }, (error) => {
+                this.utils.stopLoading();
                 console.log('error.', error);
             });
             this.mailloading = false;
         }
         this.mailloading = false;
     }
+
     onFoucusOut() {
         const test = this.registerForm.value;
         const item = test.email;
-        console.log('test', test);
-        console.log('email', item);
         const str = '    ';
         if (!str.replace(/\s/g, '').length) {
-            // alert('str contains spaces.');
         }
         if ( item === '' || item == null) {
             this.emailEmptyCheck = true;
@@ -171,25 +158,21 @@ export class RegisterPage implements OnInit {
     async checkUsername() {
         const test = this.registerForm.value;
         const item = test.user_name;
-        console.log('test', test);
-        console.log('username', item);
         if (item) {
+            this.utils.presentLoading("Please wait...");
             this.http.get(`${this.service.homeUrl}/users/username/${item}`,
                 {observe: 'response'}).subscribe(response => {
+                this.utils.stopLoading();
                 if (response.status === 200 || response.status === 201) {
-                    console.log('response', response);
                     const tester = response.body;
-                    console.log('tester', tester.toString());
                     if ( tester.toString() === 'false') {
                         this.usernameVerification = true;
                         this.loading = false;
                     }
                     this.loading = false;
-                    // this.donnerList = response.body;
-                    // console.log('content', this.donnerList);
-                    // this.results = this.donnerList.content;
                 }
             }, (error) => {
+                this.utils.stopLoading();
                 console.log('error.', error);
             });
             this.loading = false;
@@ -199,11 +182,8 @@ export class RegisterPage implements OnInit {
     onFoucusOutUsername() {
         const test = this.registerForm.value;
         const item = test.user_name;
-        console.log('test', test);
-        console.log('username', item);
         const str = '    ';
         if (!str.replace(/\s/g, '').length) {
-            // alert('str contains spaces.');
         }
         if ( item === '' || item == null) {
             this.usernameEmptyCheck = true;

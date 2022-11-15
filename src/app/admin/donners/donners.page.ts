@@ -63,31 +63,8 @@ export class DonnersPage implements OnInit {
     }
 
     deleteDonner(item: any) {
-        this.presentAlertConfirm();
+        this.utils.presentAlert("Can not delete user, please contect supper admin via a samraseerat786@gmail.com.");
         this.router.navigate(['tabs/donners']);
-    }
-
-    async presentAlertConfirm() {
-        const alert = await this.alertController.create({
-            header: 'Alert!',
-            message: 'Can\'t delete. Please! contact with supper admin using <strong> samraseerat876@gmail.com</strong>!!!',
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    cssClass: 'secondary',
-                    handler: (blah) => {
-                        console.log('Confirm Cancel: blah');
-                    }
-                }, {
-                    text: 'Okay',
-                    handler: () => {
-                        console.log('Confirm Okay');
-                    }
-                }
-            ]
-        });
-        await alert.present();
     }
 
     callAPI(studentId): Observable<any> {

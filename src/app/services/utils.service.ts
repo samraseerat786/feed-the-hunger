@@ -17,15 +17,21 @@ export class UtilsService {
 
     async presentAlert(messag) {
         this.alert = await this.alertCtrl.create({
-            header: 'Note Please !',
+            header: 'Alert !',
             message: messag,
-            buttons: [{
-                text: 'Okay',
-                cssClass: 'primary',
-                handler: () => {
-                    console.log('Confirm Okay');
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {
+                    }
+                }, {
+                    text: 'Okay',
+                    cssClass: 'primary',
+                    handler: () => {
+                    }
                 }
-            }
             ]
         });
         this.alert.present();

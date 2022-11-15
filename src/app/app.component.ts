@@ -6,6 +6,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {Router} from '@angular/router';
 import {ListService} from './services/list.service';
 import {AuthService} from "./services/auth.service";
+import {UtilsService} from "./services/utils.service";
 
 @Component({
     selector: 'app-root',
@@ -53,6 +54,7 @@ export class AppComponent implements OnInit {
     role: any;
     user: any;
     constructor(
+        private utils: UtilsService,
         private platform: Platform,
         private router: Router,
         private splashScreen: SplashScreen,
