@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {IonContent} from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 
 @Component({
   selector: 'app-donner-chat',

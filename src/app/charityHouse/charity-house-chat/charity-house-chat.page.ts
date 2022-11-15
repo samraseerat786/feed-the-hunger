@@ -5,7 +5,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {IonContent} from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 
 @Component({
     selector: 'app-charity-house-chat',

@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {LoadingController, ToastController} from '@ionic/angular';
 import {catchError, finalize} from 'rxjs/operators';
 import {throwError} from 'rxjs';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 
 @Component({
   selector: 'app-profile-picture',

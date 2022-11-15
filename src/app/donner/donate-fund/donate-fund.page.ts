@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 
 @Component({
   selector: 'app-donate-fund',

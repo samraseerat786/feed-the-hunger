@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 import {Router} from '@angular/router';
 import {NavController} from '@ionic/angular';
 import {HttpClient, HttpResponse, HttpErrorResponse} from '@angular/common/http';

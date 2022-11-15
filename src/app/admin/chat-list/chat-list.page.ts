@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 
 @Component({
   selector: 'app-chat-list',

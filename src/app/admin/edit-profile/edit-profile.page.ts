@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 

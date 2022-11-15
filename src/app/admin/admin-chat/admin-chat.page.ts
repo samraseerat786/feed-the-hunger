@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {IonContent} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({

@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {Storage} from '@ionic/storage';
 import {HttpClient} from '@angular/common/http';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 import {AlertController} from '@ionic/angular';
 
 @Component({

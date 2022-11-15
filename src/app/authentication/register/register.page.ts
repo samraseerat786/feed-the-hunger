@@ -3,7 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subscription} from 'rxjs';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 
 @Component({
     selector: 'app-register',

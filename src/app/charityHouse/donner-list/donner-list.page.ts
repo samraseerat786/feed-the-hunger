@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {PopoverController} from '@ionic/angular';
 import {ReviewComponent} from './review/review.component';
 import {Storage} from '@ionic/storage';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 
 @Component({
     selector: 'app-donner-list',

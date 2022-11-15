@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
-import {ListService} from '../../list.service';
+import {ListService} from '../../services/list.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
