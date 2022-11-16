@@ -96,7 +96,6 @@ export class RegisterPage implements OnInit {
             const data = this.registerForm.value;
             if (data.role === 'donner') {
                 const userData = this.registerForm.value;
-                alert(userData.role);
                 this.loading = false;
                 this.router.navigate(['register-donner', userData]);
             }

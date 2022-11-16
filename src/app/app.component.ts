@@ -14,43 +14,7 @@ import {UtilsService} from "./services/utils.service";
     styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-    // public appPages = [
-    //   {
-    //     title: 'Home',
-    //     url: '/home',
-    //     icon: 'home'
-    //   },
-    //   {
-    //     title: 'Users',
-    //     url: '/list',
-    //     icon: 'list'
-    //   },
-    //   {
-    //     title: 'Setting',
-    //     url: '/setting',
-    //     icon: 'settings'
-    //   },
-    //   {
-    //     title: 'Charity Houses',
-    //     url: '/charityList',
-    //     icon: 'home'
-    //   },
-    //   {
-    //     title: 'Donner List',
-    //     url: '/donner-list',
-    //     icon: 'list'
-    //   },
-    //   {
-    //     title: 'Login',
-    //     url: '/login',
-    //     icon: 'log-in'
-    //   },
-    //   {
-    //     title: 'Register',
-    //     url: '/register',
-    //     icon: 'person-add'
-    //   }
-    // ];
+
     role: any;
     user: any;
     constructor(
@@ -107,8 +71,8 @@ export class AppComponent implements OnInit {
 
     logOut() {
         alert('Are you sure to logout application.');
-        localStorage.clear();
-        this.router.navigate(['']);
+        // localStorage.clear();
+        // this.router.navigate(['']);
     }
 
     addProfilePicture() {

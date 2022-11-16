@@ -16,11 +16,9 @@
                             <h3 class="name">Your Name</h3>
                         </div>
                     </ion-header>
-                    <ion-item *ngFor="let p of appPages" class="test" [routerDirection]="'root'" [routerLink]="[p.url]">
+                    <ion-item *ngFor="let p of appPages" [routerDirection]="'root'" [routerLink]="[p.url]" mode="md">
                         <ion-icon slot="start" [name]="p.icon" color="secondary"></ion-icon>
-                        <ion-label>
-                            {{p.title}}
-                        </ion-label>
+                        <p><b>{{p.title}}</b></p>
                         <ion-icon name="ios-arrow-forward" slot="end" size="large" color="secondary"></ion-icon>
                     </ion-item>
                     <ion-item lines="none" class="logout">
@@ -30,9 +28,6 @@
                         </ion-button>
                     </ion-item>
                 </ion-menu-toggle>
-                <ion-list>
-
-                </ion-list>
             </ion-content>
         </ion-menu>
         <ion-router-outlet main></ion-router-outlet>
