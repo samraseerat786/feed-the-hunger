@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {ActivatedRoute} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {Observable} from 'rxjs';
 import {IonContent} from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
 import {ListService} from '../../services/list.service';
@@ -40,33 +38,6 @@ export class CharityHouseChatPage implements OnInit {
     }
 
     ngOnInit() {
-        // this.http.get(`${this.service.homeUrl}/channels/getByName/${this.channel}`,
-        //     {observe: 'response'}).subscribe(response => {
-        //   if (response.status === 200 || response.status === 201) {
-        //     this.objectOfChannel = response.body;
-        //   }
-        //   console.log('channelName', this.channelName);
-        //   console.log('status code', response.status);
-        //   console.log('complete content', this.objectOfChannel);
-        //   console.log('X-Custom-Header', response.headers.get('X-Custom-Header'));
-        // }, (error) => {
-        //   console.log('error', error);
-        // });
-        // if (this.objectOfChannel == null) {
-        //   const channelObject = '{"name": "' + this.channel + '" }';
-        //   const readyToSend = JSON.parse(channelObject);
-        //   console.log('channel to send', readyToSend);
-        //   const url = `${this.service.homeUrl}/channels/add`;
-        //   console.log('url', url);
-        //   this.http.post(url, readyToSend).subscribe(
-        //       data => {
-        //         console.log('I got this response -> ', data);
-        //       },
-        //       error => {
-        //         console.log('error', error);
-        //       }
-        //   );
-        // }
     }
 
     loadchannelName() {
@@ -79,13 +50,14 @@ export class CharityHouseChatPage implements OnInit {
 
     sendMessage() {
         const url = `${this.service.homeUrl}/channels/exist-or-not/${this.channel}`;
-        this.http.post(url, 1).subscribe(
-            data => {
-                console.log('I got this response -> ', data);
-            },
-            error => {
-                console.log('error', error);
-            });
+        this.utils.presentLoading("Please wait...");
+        this.http.post(url, 1).subscribe(data => {
+            this.utils.stopLoading();
+        },
+        error => {
+            this.utils.stopLoading();
+            console.log('error', error);
+        });
         this.db.list(`/channels/${this.channel}`).push({
             sender: this.currentUser,
             message: this.newMsg,
