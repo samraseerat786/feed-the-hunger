@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, IonicModule} from '@ionic/angular';
+import {NavController, IonicModule, AlertController} from '@ionic/angular';
 import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
 
     role: any;
     user: any;
-    constructor(
+
+    constructor(private alertCtrl: AlertController,
         private utils: UtilsService,
         private platform: Platform,
         private router: Router,
@@ -42,10 +43,9 @@ export class AppComponent implements OnInit {
 
     checkUser() {
         this.user = this.authService.getUser();
-
         if (this.user) {
             this.loadUserAndPages('');
-            this.navCtrl.navigateRoot(['/home']);
+            this.navCtrl.navigateRoot(['/home'], { replaceUrl: true });
         } else {
             this.navCtrl.navigateRoot(['']);
         }
@@ -53,11 +53,9 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.service.currentMessage.subscribe(data => {
-            console.log('role coming', data);
             if (data) {
                 this.role = data;
                 this.role = this.role.role;
-                console.log('test', this.role);
                 this.loadUserAndPages(this.role);
             }
         });
@@ -66,16 +64,38 @@ export class AppComponent implements OnInit {
     loadUserAndPages(role: any) {
         this.appPages = JSON.parse(localStorage.getItem('appPages'));
         this.user = JSON.parse(localStorage.getItem('user'));
-        console.log('user', this.user);
     }
 
     logOut() {
-        alert('Are you sure to logout application.');
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        this.presentAlert('Are you sure to logout application.');
     }
 
     addProfilePicture() {
         this.router.navigate(['profile-picture']);
+    }
+
+    async presentAlert(messag) {
+        const alert = await this.alertCtrl.create({
+            header: 'Alert !',
+            message: messag,
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {
+                    }
+                }, {
+                    text: 'Yes',
+                    cssClass: 'primary',
+                    handler: () => {
+                        localStorage.clear();
+                        this.user = null;
+                        this.router.navigate(['']);
+                    }
+                }
+            ]
+        });
+        alert.present();
     }
 }

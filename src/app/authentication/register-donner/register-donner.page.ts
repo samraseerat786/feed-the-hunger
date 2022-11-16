@@ -73,7 +73,7 @@ export class RegisterDonnerPage implements OnInit {
             this.utils.presentLoading("Please wait...");
             this.saveHttpReq(completeDonner).subscribe(data => {
                     this.utils.stopLoading();
-                    alert('Please! check your email and verify your account.');
+                    this.utils.presentAlert('Please! check your email and activate your account.');
                     this.router.navigate(['login']);
                 },
                 error => {

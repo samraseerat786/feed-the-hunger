@@ -39,7 +39,7 @@ export class DetailPage implements OnInit {
     }
 
     contactDonner(contactNumber: any) {
-        alert('You can contact with owner via ' + contactNumber + ' Number.');
+        this.utils.presentAlert('You can contact with owner via <b>' + contactNumber + ' </b>.');
     }
 
     loadReports(id: any) {

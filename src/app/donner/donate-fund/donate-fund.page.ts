@@ -34,18 +34,6 @@ export class DonateFundPage implements OnInit {
         this.route.paramMap.subscribe(paramMap => {
             this.charityHouse = paramMap.get('id');
         });
-        // this.route.paramMap.subscribe(paramMap => {
-        // const val = paramMap.get('id');
-        // console.log('id', val);
-        // const url  = `http://localhost:8095/charityHouses/getCharityHouse/${val}`;
-        // this.data =  this.http.get(url);
-        // console.log(this.data);
-        // this.data.subscribe(data => {
-        //   this.charityHouse = data;
-        //   console.log(this.charityHouse);
-        // });
-        // console.log(this.charityHouse);
-        // });
     }
 
     formInitializer() {
@@ -61,8 +49,6 @@ export class DonateFundPage implements OnInit {
     donateFund() {
         const test = this.donateForm.value;
         const dateFormat = test.card_expiry_date.split('T')[0];
-        // This id will comes from the service, because when user will login, his ID will save to service
-        // and retrieved at time of send data to server.
         const donner = JSON.parse(localStorage.getItem('user'));
         const donnerID = donner.id;
         this.finalFundObject = '{"amount": "' + test.amount + '",' +
@@ -74,17 +60,15 @@ export class DonateFundPage implements OnInit {
             '"charityHouse": { "id": ' + this.charityHouse + '}' + '}' + '}';
         const fundDonation = JSON.parse(this.finalFundObject);
         this.utils.presentLoading("Please wait...");
-        this.saveFoodDonation(fundDonation).subscribe(
-            data => {
-                this.utils.stopLoading();
-                alert('Your donation successfully sent to selected charity house. Thanks for donating fund.');
-                this.router.navigate(['charityList']);
-            },
-            error => {
-                this.utils.stopLoading();
-                console.log('error', error);
-            }
-        );
+        this.saveFoodDonation(fundDonation).subscribe(data => {
+            this.utils.stopLoading();
+            this.utils.presentAlert('Your donation successfully sent to selected charity house. Thanks for donating fund.');
+            this.router.navigate(['charityList']);
+        },
+        error => {
+            this.utils.stopLoading();
+            console.log('error', error);
+        });
     }
 
     saveFoodDonation(dataObj): Observable<any> {

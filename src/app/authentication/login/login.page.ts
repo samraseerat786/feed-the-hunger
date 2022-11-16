@@ -90,17 +90,17 @@ export class LoginPage implements OnInit {
                         this.router.navigate(['home']);
                     }
                 } else if (d.emailStatus && d.loginStatus && d.applicationStatus === null) {
-                    alert('Your email and password is correct but Application status is disapproved. ' +
-                        'Now you hve to check confirmation Email and approve your application status. Thank you!');
+                    this.utils.presentAlert('Application status is disapproved. ' +
+                        'Please check your email and click the activation link in email. Thank you!');
                 } else if (d.emailStatus || d.loginStatus) {
-                    alert('Invalid Email, password. Try again latter !');
+                    this.utils.presentAlert('Invalid Email, password. Try again latter !');
                 } else if (d.emailStatus === false) {
-                    alert('Sorry ! User with that email, password does not exist');
+                    this.utils.presentAlert('Sorry ! User with that email, password does not exist');
                 }
             },
             error => {
                 this.utils.stopLoading();
-                alert(':( OOPS ! Server Error. Confirm your internet connection.');
+                this.utils.presentAlert(':( OOPS ! Server Error. Confirm your internet connection.');
                 console.log('error', error);
             });
         } else {

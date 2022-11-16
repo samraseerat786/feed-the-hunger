@@ -63,7 +63,7 @@ export class DonnersPage implements OnInit {
     }
 
     deleteDonner(item: any) {
-        this.utils.presentAlert("Can not delete user, please contect supper admin via a samraseerat786@gmail.com.");
+        this.utils.presentAlert("Can not delete user, please contact supper admin via a <b>samraseerat786@gmail.com</b>.");
         this.router.navigate(['tabs/donners']);
     }
 

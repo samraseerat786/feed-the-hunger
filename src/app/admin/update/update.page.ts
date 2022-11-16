@@ -79,7 +79,7 @@ export class UpdatePage implements OnInit {
             this.utils.presentLoading("Please wait...");
             this.saveHttpReq(this.generateUser()).subscribe(data => {
                     this.utils.stopLoading();
-                    alert('user updated successfully');
+                    this.utils.presentToast('User updated successfully');
                 this.router.navigate(['tabs/donners']);
             },
             error => {

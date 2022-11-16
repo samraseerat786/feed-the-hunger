@@ -73,7 +73,7 @@ export class EditProfilePage implements OnInit {
             this.utils.presentLoading("Please wait...");
             this.saveHttpReq(this.generateUser()).subscribe(data => {
                 this.utils.stopLoading();
-                alert('user updated successfully');
+                this.utils.presentToast('User updated successfully');
                 const url = `/admin-profile/${this.user.id}`;
                 this.router.navigateByUrl(url);
             },

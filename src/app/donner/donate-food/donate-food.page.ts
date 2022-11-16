@@ -71,20 +71,12 @@ export class DonateFoodPage implements OnInit {
         this.utils.presentLoading("Please wait...");
         this.saveFoodDonation(foodDonation).subscribe(data => {
             this.utils.stopLoading();
-            alert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
+            this.utils.presentAlert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
             this.router.navigate(['charityList']);
         },
         error => {
             this.utils.stopLoading();
         });
-        // console.log('expiry date', test.expiry_date);
-        // if (test.expiry_date < this.date) {
-        //   alert('date is not valid');
-        // }
-        // if (test.expiry_date > this.date) {
-        //   alert('date is valid');
-        // }
-        // console.log(this.donateFoodForm.value);
     }
 
     saveFoodDonation(dataObj): Observable<any> {

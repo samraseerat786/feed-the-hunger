@@ -90,7 +90,7 @@ export class RegisterPage implements OnInit {
         this.submitted = true;
         this.loading = true;
         if (!this.registerForm.valid) {
-            alert('Please provide all the required valid values!');
+            this.utils.presentAlert('Please provide all the required a valid values!');
             return false;
         } else {
             const data = this.registerForm.value;
@@ -106,13 +106,15 @@ export class RegisterPage implements OnInit {
             }
         }
     }
+
     onSubmit() {
         this.submitted = true;
         if (this.registerForm.valid) {
-            alert('Form Submitted succesfully!!!\n Check the values in browser console.');
+            this.utils.presentAlert('Form Submitted succesfully!!!');
             console.table(this.registerForm.value);
         }
     }
+
     async checkEmail() {
         this.mailloading = true;
         const test = this.registerForm.value;

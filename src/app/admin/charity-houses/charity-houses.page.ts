@@ -56,16 +56,7 @@ export class CharityHousesPage implements OnInit {
     }
 
     deleteCharityHouse(item: any) {
-        // this.callAPI(item).subscribe(
-        //     data => {
-        //       console.log('I got this response -> ', data);
-        //       // this.router.navigate(['donners']);
-        //     },
-        //     error => {
-        //       console.log('error', error);
-        //     }
-        // );
-        this.utils.presentAlert('Can\'t delete. Please! contact with supper admin using samraseerat786@gmail.com');
+        this.utils.presentAlert('Can\'t delete. Please! contact with supper admin using <b>samraseerat786@gmail.com</b>');
         this.router.navigate(['tabs/charity-houses']);
     }
 }

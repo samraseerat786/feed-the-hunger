@@ -53,7 +53,7 @@ export class SendReportPage implements OnInit {
         this.utils.presentLoading("Please wait...");
         this.saveFeedback(feedback).subscribe(data => {
             this.utils.stopLoading();
-            alert('Thanks for reporting a donner. Admin will send you an email in short.');
+                this.utils.presentAlert('Donner reported successfully.');
             this.router.navigate(['donner-list']);
         },
         error => {

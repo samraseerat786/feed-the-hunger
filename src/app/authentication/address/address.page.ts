@@ -66,7 +66,7 @@ export class AddressPage implements OnInit {
             this.saveHttpReq(completeCharityHouse).subscribe(data => {
                 this.utils.stopLoading();
                 this.loading = false;
-                alert('Please! check your email and verify your account.');
+                this.utils.presentAlert('Please! check your email and verify your account.');
                 this.router.navigate(['login']);
             },
             error => {

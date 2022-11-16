@@ -48,12 +48,12 @@ export class ForgotPasswordPage implements OnInit {
             this.utils.presentLoading("Please wait...");
             this.sendRequest(passwordData).subscribe(d => {
                     this.utils.stopLoading();
-                    alert('password is successfully updated.');
+                    this.utils.presentToast('Password is successfully updated.');
                     this.router.navigate(['']);
                 },
                 error => {
                     this.utils.stopLoading();
-                    alert(':( OOPS ! Server Error.');
+                    this.utils.presentAlert(':( OOPS ! Server Error.');
                     console.log('error', error);
                 });
         } else {
@@ -79,7 +79,7 @@ export class ForgotPasswordPage implements OnInit {
                 if (response.status === 200 || response.status === 201) {
                     const tester = response.body;
                     if (tester.toString() === 'true') {
-                        alert('Email does not exist. Try with another email!');
+                        this.utils.presentAlert('Email does not exist. Try with another email!');
                     }
                     this.mailloading = false;
                 }

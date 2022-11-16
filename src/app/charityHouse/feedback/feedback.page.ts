@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {ListService} from '../../services/list.service';
 import {Observable} from 'rxjs';
-import {AlertController} from '@ionic/angular';
 import {UtilsService} from "../../services/utils.service";
 
 @Component({
@@ -20,7 +19,6 @@ export class FeedbackPage implements OnInit {
                 private http: HttpClient,
                 private router: Router,
                 private service: ListService,
-                private alertController: AlertController,
                 private formBuilder: FormBuilder) {
     }
 
@@ -55,7 +53,7 @@ export class FeedbackPage implements OnInit {
         this.utils.presentLoading("Please wait...");
         this.saveFeedback(feedback).subscribe(data => {
             this.utils.stopLoading();
-            alert('Feedback is recorded. Thanks you for sending feedback.');
+            this.utils.presentAlert('Feedback is saved. Thanks for your feedback.');
             this.router.navigate(['donner-list']);
         },
         error => {
