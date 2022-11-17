@@ -29,13 +29,7 @@ export class DonnerChatPage implements OnInit {
                 private service: ListService,
                 public db: AngularFireDatabase) {
         this.loadchannelName();
-        this.utils.presentLoading("Please wait...");
-        this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
-            this.utils.stopLoading();
-            this.recivedData = data;
-            this.messages = data;
-        });
-        this.utils.stopLoading();
+        this.loadData();
     }
 
     ngOnInit() {
@@ -46,6 +40,16 @@ export class DonnerChatPage implements OnInit {
         this.user = JSON.parse(localStorage.getItem('user'));
         this.currentUser = this.user.user.user_name.toLowerCase(); // + ' ' + this.user.user.last_name.toLowerCase();
         console.log('current user', this.currentUser);
+    }
+
+    async loadData(){
+        await this.utils.presentLoading("Please wait...");
+        this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
+            this.utils.stopLoading();
+            this.recivedData = data;
+            this.messages = data;
+        });
+        this.utils.stopLoading();
     }
 
     sendMessage() {

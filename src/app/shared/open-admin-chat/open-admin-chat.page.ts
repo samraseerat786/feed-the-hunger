@@ -31,12 +31,7 @@ export class OpenAdminChatPage implements OnInit {
                 private service: ListService,
                 public db: AngularFireDatabase) {
         this.loadUserName();
-        this.utils.presentLoading("Please wait...");
-        this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
-            this.utils.stopLoading();
-            this.recivedData = data;
-            this.messages = data;
-        });
+        this.loadData();
     }
 
     ngOnInit() {
@@ -46,6 +41,15 @@ export class OpenAdminChatPage implements OnInit {
         this.user = JSON.parse(localStorage.getItem('user'));
         this.currentUser = this.user.user.first_name.toLowerCase() + ' ' + this.user.user.last_name.toLowerCase();
         this.channel = this.user.user.user_name + '-admin';
+    }
+
+    async loadData(){
+        await this.utils.presentLoading("Please wait...");
+        this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
+            this.utils.stopLoading();
+            this.recivedData = data;
+            this.messages = data;
+        });
     }
 
     sendMessage() {

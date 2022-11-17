@@ -49,7 +49,7 @@ export class DonateFoodPage implements OnInit {
         });
     }
 
-    donateFood() {
+    async donateFood() {
         this.date = this.today.getFullYear() + '-' + (this.today.getMonth() + 1) + '-' + this.today.getDate();
         const test = this.donateFoodForm.value;
         // const dateFromForm = test.expiry_date.getFullYear() + '-' + (test.expiry_date.getMonth() + 1 ) + '-' + test.expiry_date.getDate();
@@ -68,7 +68,7 @@ export class DonateFoodPage implements OnInit {
             '"donner": {' + '"id": ' + donnerID + ' },' +
             '"charityHouse": {' + '"id": ' + this.charityID + ' }}}';
         const foodDonation = JSON.parse(this.finalDonationObject);
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.saveFoodDonation(foodDonation).subscribe(data => {
             this.utils.stopLoading();
             this.utils.presentAlert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');

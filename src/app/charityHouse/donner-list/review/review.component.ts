@@ -167,7 +167,7 @@ export class ReviewComponent implements OnInit {
             '"donner": { "id": ' + this.donnerID + '},' +
             '"charityHouse": { "id": ' + charityID + '}' + '}';
         const review = JSON.parse(this.finalReviewObject);
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         await this.popoverController.dismiss();
         this.saveReview(review).subscribe(data => {
             this.utils.stopLoading();

@@ -42,10 +42,10 @@ export class ForgotPasswordPage implements OnInit {
         this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
     }
 
-    resetPassword() {
+    async resetPassword() {
         if (this.forgotPasswordForm.valid) {
             const passwordData = this.forgotPasswordForm.value;
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.sendRequest(passwordData).subscribe(d => {
                     this.utils.stopLoading();
                     this.utils.presentToast('Password is successfully updated.');
@@ -72,7 +72,7 @@ export class ForgotPasswordPage implements OnInit {
         const test = this.forgotPasswordForm.value;
         const item = test.email;
         if (item) {
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.http.get(`${this.service.homeUrl}/users/email/${item}`,
                 {observe: 'response'}).subscribe(response => {
                 this.utils.stopLoading();

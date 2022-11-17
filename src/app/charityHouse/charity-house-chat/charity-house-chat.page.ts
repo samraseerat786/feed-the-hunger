@@ -28,16 +28,20 @@ export class CharityHouseChatPage implements OnInit {
                 private service: ListService,
                 public db: AngularFireDatabase) {
         this.loadchannelName();
-        this.utils.presentLoading("Please wait...");
+        this.loadData();
+    }
+
+    ngOnInit() {
+    }
+
+    async loadData(){
+        await this.utils.presentLoading("Please wait...");
         this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
             this.utils.stopLoading();
             this.recivedData = data;
             this.messages = data;
         });
         this.utils.stopLoading();
-    }
-
-    ngOnInit() {
     }
 
     loadchannelName() {
@@ -48,9 +52,9 @@ export class CharityHouseChatPage implements OnInit {
         this.channel = donner + '-' + this.user.user.first_name.toLowerCase() + '-' + this.user.user.last_name.toLowerCase();
     }
 
-    sendMessage() {
+    async sendMessage() {
         const url = `${this.service.homeUrl}/channels/exist-or-not/${this.channel}`;
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.http.post(url, 1).subscribe(data => {
             this.utils.stopLoading();
         },

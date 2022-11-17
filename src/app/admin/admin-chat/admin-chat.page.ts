@@ -28,12 +28,7 @@ export class AdminChatPage implements OnInit {
                 private service: ListService,
                 public db: AngularFireDatabase) {
         this.loadchannelName();
-        this.utils.presentLoading("Please wait...");
-        this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
-            this.utils.stopLoading();
-            this.recivedData = data;
-            this.messages = data;
-        });
+        this.loadData();
     }
 
     ngOnInit() {
@@ -44,6 +39,15 @@ export class AdminChatPage implements OnInit {
         this.channel = this.username + '-admin';
         this.user = JSON.parse(localStorage.getItem('user'));
         this.currentUser = this.user.user_name.toLowerCase();
+    }
+
+    async loadData(){
+        await this.utils.presentLoading("Please wait...");
+        this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
+            this.utils.stopLoading();
+            this.recivedData = data;
+            this.messages = data;
+        });
     }
 
     sendMessage() {

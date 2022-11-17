@@ -120,7 +120,7 @@ export class RegisterPage implements OnInit {
         const test = this.registerForm.value;
         const item = test.email;
         if (item) {
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.http.get(`${this.service.homeUrl}/users/email/${item}`,
                 {observe: 'response'}).subscribe(response => {
                 this.utils.stopLoading();
@@ -160,7 +160,7 @@ export class RegisterPage implements OnInit {
         const test = this.registerForm.value;
         const item = test.user_name;
         if (item) {
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.http.get(`${this.service.homeUrl}/users/username/${item}`,
                 {observe: 'response'}).subscribe(response => {
                 this.utils.stopLoading();

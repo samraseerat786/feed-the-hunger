@@ -21,10 +21,10 @@ export class AdminProfilePage implements OnInit {
     user;
     data;
     ngOnInit() {
-        this.route.paramMap.subscribe(paramMap => {
+        this.route.paramMap.subscribe(async paramMap => {
             const val = paramMap.get('id');
             const url = `${this.service.homeUrl}/users/getUser/${val}`;
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.data = this.http.get(url);
             this.data.subscribe(data => {
                 this.utils.stopLoading();

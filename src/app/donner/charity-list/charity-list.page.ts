@@ -24,8 +24,8 @@ export class CharityListPage implements OnInit {
     result: any = [];
     data: Observable<any>;
 
-    ngOnInit() {
-        this.utils.presentLoading("Please wait...");
+    async ngOnInit() {
+        await await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/charityHouses/list`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();

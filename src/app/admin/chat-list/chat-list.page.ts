@@ -21,7 +21,14 @@ export class ChatListPage implements OnInit {
                 public router: Router,
                 public http: HttpClient,
                 private service: ListService) {
-        this.utils.presentLoading("Please wait...");
+        this.loadData();
+    }
+
+    ngOnInit() {
+    }
+
+    async loadData(){
+        await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/channels/conversation-user-list`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();
@@ -33,9 +40,6 @@ export class ChatListPage implements OnInit {
             this.utils.stopLoading();
             console.log('error', error);
         });
-    }
-
-    ngOnInit() {
     }
 
     openChat(item: any) {

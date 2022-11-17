@@ -37,7 +37,7 @@ export class DonateFundPage implements OnInit {
     }
 
     formInitializer() {
-        this.date = this.today.getFullYear() + '-' + (this.today.getMonth() + 1) + '-' + this.today.getDate();
+        this.date = `${this.today.getFullYear()} - ${this.today.getMonth() + 1} - ${this.today.getDate()} ${this.today.getHours()} : ${this.today.getMinutes()}`;
         this.donateForm = this.formBuilder.group({
             amount: [null, [Validators.required]],
             currency: [null, [Validators.required]],
@@ -46,7 +46,7 @@ export class DonateFundPage implements OnInit {
         });
     }
 
-    donateFund() {
+    async donateFund() {
         const test = this.donateForm.value;
         const dateFormat = test.card_expiry_date.split('T')[0];
         const donner = JSON.parse(localStorage.getItem('user'));
@@ -59,7 +59,7 @@ export class DonateFundPage implements OnInit {
             '"donner": { "id": ' + donnerID + '},' +
             '"charityHouse": { "id": ' + this.charityHouse + '}' + '}' + '}';
         const fundDonation = JSON.parse(this.finalFundObject);
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.saveFoodDonation(fundDonation).subscribe(data => {
             this.utils.stopLoading();
             this.utils.presentAlert('Your donation successfully sent to selected charity house. Thanks for donating fund.');

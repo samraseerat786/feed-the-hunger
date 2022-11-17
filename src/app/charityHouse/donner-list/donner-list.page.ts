@@ -28,8 +28,8 @@ export class DonnerListPage implements OnInit {
     data: Observable<any>;
     itration = [1, 2, 3, 4];
 
-    ngOnInit() {
-        this.utils.presentLoading("Please wait...");
+    async ngOnInit() {
+        await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/donners/list`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();

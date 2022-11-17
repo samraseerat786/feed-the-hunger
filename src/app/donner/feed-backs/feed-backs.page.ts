@@ -25,12 +25,12 @@ export class FeedBacksPage implements OnInit {
     data: Observable<any>;
     user: any;
 
-    ngOnInit() {
+    async ngOnInit() {
 
         this.user = JSON.parse(localStorage.getItem('user'));
         const id = this.user.id;
 
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/feedbacks/findByDonner/${id}`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();

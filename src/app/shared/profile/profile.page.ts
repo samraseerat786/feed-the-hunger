@@ -30,11 +30,11 @@ export class ProfilePage implements OnInit {
     donner: boolean;
     isEmpty = false;
 
-    ngOnInit() {
+    async ngOnInit() {
         this.user = JSON.parse(localStorage.getItem('user'));
         const id = this.user.id;
 
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/reviews/findByDonner/${id}`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();

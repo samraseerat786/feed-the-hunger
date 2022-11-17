@@ -40,7 +40,7 @@ export class SendReportPage implements OnInit {
         });
     }
 
-    sendReport() {
+    async sendReport() {
         const test = this.reportForm.value;
         const charityHouse = JSON.parse(localStorage.getItem('user'));
         const charityID = charityHouse.id;
@@ -50,7 +50,7 @@ export class SendReportPage implements OnInit {
             ' "donner": { "id": ' + this.reportID + '},' +
             ' "charityHouse": { "id": ' + charityID + '}' + '}';
         const feedback = JSON.parse(this.finalReportObject);
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.saveFeedback(feedback).subscribe(data => {
             this.utils.stopLoading();
                 this.utils.presentAlert('Donner reported successfully.');

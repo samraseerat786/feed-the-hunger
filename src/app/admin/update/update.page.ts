@@ -29,11 +29,11 @@ export class UpdatePage implements OnInit {
     data: Observable<any>;
 
     ngOnInit() {
-        this.route.paramMap.subscribe(paramMap => {
+        this.route.paramMap.subscribe(async paramMap => {
             const val = paramMap.get('id');
             const url = `${this.service.homeUrl}/donners/findById/${val}`;
             this.data = this.http.get(url);
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.data.subscribe(data => {
                 this.utils.stopLoading();
                 this.user = data;
@@ -73,10 +73,10 @@ export class UpdatePage implements OnInit {
         return completeDonner;
     }
 
-    updateData() {
+    async updateData() {
         if (this.signupForm.valid) {
             const formData = this.signupForm.value;
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.saveHttpReq(this.generateUser()).subscribe(data => {
                     this.utils.stopLoading();
                     this.utils.presentToast('User updated successfully');

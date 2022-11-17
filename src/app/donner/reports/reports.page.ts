@@ -31,13 +31,13 @@ export class ReportsPage implements OnInit {
     donnerID;
     isEmpty = false;
 
-    ngOnInit() {
+    async ngOnInit() {
 
         this.route.paramMap.subscribe(paramMap => {
             this.donnerID = paramMap.get('id');
         });
 
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/reports/findByDonner/${this.donnerID}`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();

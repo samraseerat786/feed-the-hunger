@@ -22,7 +22,20 @@ export class ChatChannelsPage implements OnInit {
                 public http: HttpClient,
                 private service: ListService) {
         this.loadUser();
-        this.utils.presentLoading("Please wait...");
+        this.loadData();
+    }
+
+    ngOnInit() {
+        this.loadUser();
+    }
+
+    loadUser() {
+        this.currentUser = JSON.parse(localStorage.getItem('user'));
+        this.compareUser = this.currentUser.user.first_name.toLowerCase() + '-' + this.currentUser.user.last_name.toLowerCase();
+    }
+
+    async loadData(){
+        await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/channels/list/${this.compareUser}`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();
@@ -33,15 +46,6 @@ export class ChatChannelsPage implements OnInit {
         }, (error) => {
             this.utils.stopLoading();
         });
-    }
-
-    ngOnInit() {
-        this.loadUser();
-    }
-
-    loadUser() {
-        this.currentUser = JSON.parse(localStorage.getItem('user'));
-        this.compareUser = this.currentUser.user.first_name.toLowerCase() + '-' + this.currentUser.user.last_name.toLowerCase();
     }
 
     openChat(item: any) {

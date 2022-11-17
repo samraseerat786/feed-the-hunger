@@ -61,7 +61,7 @@ export class RegisterDonnerPage implements OnInit {
         return this.registerDonnerForm.controls;
     }
 
-    registerDonner() {
+    async registerDonner() {
         this.submitted = true;
         if (this.registerDonnerForm.valid) {
             this.loading = true;
@@ -70,7 +70,7 @@ export class RegisterDonnerPage implements OnInit {
                 '", \n"contact" : "' + formData.contact +
                 '", \n' + this.user + ' }';
             const completeDonner = JSON.parse(this.donner);
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.saveHttpReq(completeDonner).subscribe(data => {
                     this.utils.stopLoading();
                     this.utils.presentAlert('Please! check your email and activate your account.');

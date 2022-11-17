@@ -33,9 +33,9 @@ export class ListPage implements OnInit {
         this.result = JSON.parse(localStorage.getItem('users'));
     }
 
-    ngOnInit(): void {
+    async ngOnInit() {
         const url = this.service.homeUrl + '/users/list';
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.http.get(url, {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();
             if (response.status === 200 || response.status === 201) {

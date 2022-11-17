@@ -40,7 +40,7 @@ export class FeedbackPage implements OnInit {
         });
     }
 
-    sendFeedback() {
+    async sendFeedback() {
         const test = this.feedbackForm.value;
         const charityHouse = JSON.parse(localStorage.getItem('user'));
         const charityID = charityHouse.id;
@@ -50,7 +50,7 @@ export class FeedbackPage implements OnInit {
             ' "donner": { "id": ' + this.donnerID + '},' +
             ' "charityHouse": { "id": ' + charityID + '}' + '}';
         const feedback = JSON.parse(this.finalFeedbackObject);
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.saveFeedback(feedback).subscribe(data => {
             this.utils.stopLoading();
             this.utils.presentAlert('Feedback is saved. Thanks for your feedback.');

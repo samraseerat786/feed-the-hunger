@@ -61,7 +61,7 @@ export class ChangePasswordPage implements OnInit {
         }
     }
 
-    changePassword() {
+    async changePassword() {
         this.user = JSON.parse(localStorage.getItem('user'));
         this.formData = this.changePasswordForm.value;
         this.user.user.password = this.formData.newPassword;
@@ -75,7 +75,7 @@ export class ChangePasswordPage implements OnInit {
             '" , "role"  : "' + this.user.user.role + '"}';
         const finalObject = JSON.parse(this.object);
 
-        this.utils.presentLoading("Please wait...");
+        await this.utils.presentLoading("Please wait...");
         this.saveHttpReq(finalObject).subscribe(data => {
             this.utils.stopLoading();
             this.router.navigate(['/setting']);

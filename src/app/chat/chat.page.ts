@@ -27,17 +27,22 @@ messages = [];
                 public db: AngularFireDatabase,
                 private route: ActivatedRoute,
                 private firestore: AngularFirestore) {
-        this.utils.presentLoading("Please wait...");
-        this.s = this.db.list('/messages').valueChanges().subscribe( data => {
-            this.utils.stopLoading();
-            this.recivedData = data;
-            this.messages = this.recivedData.filter(x => x.user === this.donnerName || x.user === this.currentUser);
-        });
+        this.loadData();
     }
+
     ngOnInit() {
         this.route.paramMap.subscribe(paramMap => {
             this.donnerName = paramMap.get('donnerName');
             this.loadUser();
+        });
+    }
+
+    async loadData(){
+        await this.utils.presentLoading("Please wait...");
+        this.s = this.db.list('/messages').valueChanges().subscribe( data => {
+            this.utils.stopLoading();
+            this.recivedData = data;
+            this.messages = this.recivedData.filter(x => x.user === this.donnerName || x.user === this.currentUser);
         });
     }
 

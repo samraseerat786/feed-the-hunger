@@ -22,10 +22,10 @@ export class ShowSingleCharityHousePage implements OnInit {
     user;
 
     ngOnInit() {
-        this.route.paramMap.subscribe(paramMap => {
+        this.route.paramMap.subscribe(async paramMap => {
             const val = paramMap.get('id');
             const url = `${this.service.homeUrl}/charityHouses/getCharityHouse/${val}`;
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.data = this.http.get(url);
             this.data.subscribe(data => {
                 this.utils.stopLoading();

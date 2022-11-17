@@ -43,11 +43,11 @@ export class LoginPage implements OnInit {
         });
     }
 
-    login() {
+    async login() {
         this.isSubmitted = true;
         if (this.loginForm.valid) {
             const loginData = this.loginForm.value;
-            this.utils.presentLoading("Please wait...");
+            await this.utils.presentLoading("Please wait...");
             this.saveHttpReq(loginData).subscribe(d => {
                 this.utils.stopLoading();
                 if (d.emailStatus && d.loginStatus && d.applicationStatus === 'approved' && d.role != null) {
