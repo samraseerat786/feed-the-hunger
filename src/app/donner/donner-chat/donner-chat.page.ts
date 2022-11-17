@@ -34,7 +34,6 @@ export class DonnerChatPage implements OnInit {
             this.utils.stopLoading();
             this.recivedData = data;
             this.messages = data;
-            // this.messages = this.recivedData.filter(x => x.channelName === this.channel);
         });
         this.utils.stopLoading();
     }

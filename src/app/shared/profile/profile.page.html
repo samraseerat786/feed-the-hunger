@@ -35,8 +35,8 @@
                         <ion-card class="border ion-no-padding">
                             <ion-card-header class="ion-no-padding">
                                 <ion-card-subtitle>Name</ion-card-subtitle>
-                                <ion-card-title>{{user?.user?.first_name}} {{user?.user?.last_name}}</ion-card-title>
-                                <ion-card-title>{{user?.first_name}} {{user?.last_name}}</ion-card-title>
+                                <ion-card-title class="title">{{user?.user?.first_name}} {{user?.user?.last_name}}</ion-card-title>
+                                <ion-card-title class="title">{{user?.first_name}} {{user?.last_name}}</ion-card-title>
                             </ion-card-header>
                         </ion-card>
                     </ion-item>
@@ -56,9 +56,9 @@
                         <ion-card class="border ion-no-padding">
                             <ion-card-header class="ion-no-padding">
                                 <ion-card-subtitle *ngIf="admin">Email</ion-card-subtitle>
-                                <ion-card-title *ngIf="admin">{{user?.user_name}}</ion-card-title>
+                                <ion-card-title class="title" *ngIf="admin">{{user?.user_name}}</ion-card-title>
                                 <ion-card-subtitle *ngIf="!admin">Phone</ion-card-subtitle>
-                                <ion-card-title>{{user?.contact}}</ion-card-title>
+                                <ion-card-title class="title">{{user?.contact}}</ion-card-title>
                             </ion-card-header>
                         </ion-card>
                     </ion-item>
@@ -77,12 +77,12 @@
                 </ion-item>
                 <ion-card-content class="ion-no-padding" *ngIf="open">
                     <ion-card no-border *ngFor="let review of result">
-                        <ion-card-header>
+                        <ion-card-header style="padding-bottom: 0;">
                             <ion-icon slot="start" name="person" color="secondary"></ion-icon>
-                            <ion-card-title>{{review?.charityHouse?.user?.first_name}}</ion-card-title>
+                            <ion-card-title class="title">{{review?.charityHouse?.user?.first_name}}</ion-card-title>
                             <ion-card-subtitle>{{review?.charityHouse?.contact}}</ion-card-subtitle>
                         </ion-card-header>
-                        <ion-card-content>
+                        <ion-card-content style="padding-top: 0;">
                             <ion-text color="primary">
                                 <h4>{{review?.title}}.</h4>
                             </ion-text>

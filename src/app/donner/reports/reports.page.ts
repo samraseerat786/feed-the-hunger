@@ -68,10 +68,6 @@ export class ReportsPage implements OnInit {
         }
     }
 
-    expandCLick(item) {
-        item.show = !item.show;
-    }
-
     loadDonnerList() {
         if (this.admin) {
             this.router.navigate(['/tabs']);
