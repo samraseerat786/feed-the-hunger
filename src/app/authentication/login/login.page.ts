@@ -54,6 +54,7 @@ export class LoginPage implements OnInit {
                     if (d.role === 'donner') {
                         this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
                             { title: 'charity Houses', url: '/charityList', icon: 'list' },
+                            { title: 'My Donations', url: '/donor-donations', icon: 'md-briefcase' },
                             { title: 'Open Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
                             { title: 'Reports', url: `/reports/${d.donner.id}`, icon: 'list' },
                             { title: 'Settings', url: '/setting', icon: 'settings'},

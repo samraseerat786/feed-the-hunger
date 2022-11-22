@@ -58,12 +58,14 @@ export class DonateFoodPage implements OnInit {
         // and retrieved at time of send data to server.
         const donner = JSON.parse(localStorage.getItem('user'));
         const donnerID = donner.id;
+        let imageUrl = "";
         this.finalDonationObject = '{"quantityValue" : "' + test.quantity + '",' +
             '"quantityUnit" : "' + test.unit + '",' +
             '"foodItem": {' +
             '"name": "' + test.name + '",' +
             '"expiry_date": "' + dateFormat + '",' +
             '"type": "' + test.type + '" },' +
+            '"image": "' + imageUrl + '" },' +
             '"donation": {' + '"date": "' + this.date + '",' +
             '"donner": {' + '"id": ' + donnerID + ' },' +
             '"charityHouse": {' + '"id": ' + this.charityID + ' }}}';

@@ -241,7 +241,8 @@ const routes: Routes = [
       ]
   },
   { path: 'chat-channels', loadChildren: './donner/chat-channels/chat-channels.module#ChatChannelsPageModule' },  { path: 'chat-list', loadChildren: './admin/chat-list/chat-list.module#ChatListPageModule' },
-  { path: 'open-admin-chat', loadChildren: './shared/open-admin-chat/open-admin-chat.module#OpenAdminChatPageModule' }
+  { path: 'open-admin-chat', loadChildren: './shared/open-admin-chat/open-admin-chat.module#OpenAdminChatPageModule' },
+  { path: 'donor-donations', loadChildren: './donner/donor-donations/donor-donations.module#DonorDonationsPageModule' }
 
 
 
