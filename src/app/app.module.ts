@@ -14,6 +14,7 @@ import {AutosizeModule} from 'ngx-autosize';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { FCM } from '@ionic-native/fcm/ngx';
+import {AngularFireStorageModule} from "@angular/fire/storage";
 const firebaseConfig = {
     apiKey: 'AIzaSyCtHKb-EFeAK4vH317pp5zsYlZvc05rKIk',
     authDomain: 'feed-the-hunger-4771e.firebaseapp.com',
@@ -35,7 +36,8 @@ const firebaseConfig = {
         AppRoutingModule,
         AutosizeModule,
         AngularFireModule.initializeApp(firebaseConfig),
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        AngularFireStorageModule
     ],
   providers: [
     StatusBar, FCM,

@@ -43,9 +43,13 @@
                                                    value="{{item}}">{{item}}</ion-select-option>
                             </ion-select>
                         </ion-item>
+                        <ion-item>
+                            <ion-label id="food_image" color="primary" stacked>Food Image</ion-label>
+                            <ion-input type="file" accept="image/*" id="upload" (change)="imageFileChanged($event)"></ion-input>
+                        </ion-item>
                     </div>
                     <div class="ion-padding">
-                        <ion-button size="default" [disabled]="donateFoodForm.invalid" (click)="donateFood()"
+                        <ion-button size="default" [disabled]="donateFoodForm.invalid" (click)="uploadImageAndFoodDonation()"
                                     color="primary" type="submit" expand="block">Donate Food
                         </ion-button>
                     </div>

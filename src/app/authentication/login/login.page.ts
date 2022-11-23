@@ -69,6 +69,7 @@ export class LoginPage implements OnInit {
                     if (d.role === 'charity house') {
                         this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
                             { title: 'Donner List', url: '/donner-list', icon: 'list', },
+                            { title: 'New Donations', url: '/new-donations', icon: 'md-briefcase' },
                             { title: 'Setting', url: '/setting', icon: 'settings'},
                             ];
                         this.service.setRole(d.role);

@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {ListService} from '../../services/list.service';
 import {UtilsService} from "../../services/utils.service";
+import * as firebase from 'firebase';
+import {AngularFireStorage} from "@angular/fire/storage";
 
 @Component({
     selector: 'app-donate-food',
@@ -21,13 +23,14 @@ export class DonateFoodPage implements OnInit {
     date;
     finalDonationObject;
     dateTill;
+    foodImage;
 
     constructor(private utils: UtilsService,
                 private route: ActivatedRoute,
                 private http: HttpClient,
                 private formBuilder: FormBuilder,
                 private service: ListService,
-                private router: Router) {
+                private router: Router, public db: AngularFireStorage) {
     }
 
     ngOnInit() {
@@ -49,7 +52,27 @@ export class DonateFoodPage implements OnInit {
         });
     }
 
-    async donateFood() {
+    async imageFileChanged(e) {
+        this.foodImage = e.target.files[0];
+    }
+
+    async uploadImageAndFoodDonation(){
+        if(!this.foodImage){
+            alert("Please select a food image..."); return;
+        }
+        const donner = JSON.parse(localStorage.getItem('user'));
+        let fileName = `${Date.now()}.png`;
+        const filePath = `food-images/${donner.id}/${fileName}`;
+        const storageRef = this.db.ref(filePath);
+        await this.utils.presentLoading("Please wait...");
+        await this.db.upload(filePath, this.foodImage).then(async (snapshot) => {
+            await storageRef.getDownloadURL().subscribe(downloadURL => {
+                this.donateFood(downloadURL);
+            });
+        });
+    }
+
+    async donateFood(imageUrl) {
         this.date = this.today.getFullYear() + '-' + (this.today.getMonth() + 1) + '-' + this.today.getDate();
         const test = this.donateFoodForm.value;
         // const dateFromForm = test.expiry_date.getFullYear() + '-' + (test.expiry_date.getMonth() + 1 ) + '-' + test.expiry_date.getDate();
@@ -58,19 +81,19 @@ export class DonateFoodPage implements OnInit {
         // and retrieved at time of send data to server.
         const donner = JSON.parse(localStorage.getItem('user'));
         const donnerID = donner.id;
-        let imageUrl = "";
         this.finalDonationObject = '{"quantityValue" : "' + test.quantity + '",' +
             '"quantityUnit" : "' + test.unit + '",' +
             '"foodItem": {' +
             '"name": "' + test.name + '",' +
             '"expiry_date": "' + dateFormat + '",' +
             '"type": "' + test.type + '" },' +
-            '"image": "' + imageUrl + '" },' +
             '"donation": {' + '"date": "' + this.date + '",' +
             '"donner": {' + '"id": ' + donnerID + ' },' +
             '"charityHouse": {' + '"id": ' + this.charityID + ' }}}';
         const foodDonation = JSON.parse(this.finalDonationObject);
-        await this.utils.presentLoading("Please wait...");
+        foodDonation.foodItem.image = imageUrl;
+        foodDonation.donation.acceptanceTime = "not added yet";
+        foodDonation.donation.status = "new";
         this.saveFoodDonation(foodDonation).subscribe(data => {
             this.utils.stopLoading();
             this.utils.presentAlert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');

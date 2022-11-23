@@ -40,7 +40,7 @@ export class DonorDonationsPage implements OnInit {
       }
     }, (error) => {
       this.utils.stopLoading();
-      // this.loadData();
+      this.loadData();
     });
   }
 
