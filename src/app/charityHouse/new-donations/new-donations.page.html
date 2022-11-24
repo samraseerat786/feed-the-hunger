@@ -45,7 +45,7 @@
                           color="danger" expand="block">Reject</ion-button>
             </ion-col>
             <ion-col size-md="4">
-              <ion-button size="default" (click)="openChat()"
+              <ion-button size="default" (click)="openChat(item.fromFirstName, item.fromLastName)"
                           color="primary" expand="block">Message</ion-button>
             </ion-col>
           </ion-row>
@@ -69,7 +69,7 @@
                           color="success" expand="block">Acknowledge</ion-button>
             </ion-col>
             <ion-col size-md="6">
-              <ion-button size="default" (click)="openChat()"
+              <ion-button size="default" (click)="openChat(item.fromFirstName, item.fromLastName)"
                           color="primary" expand="block">Message</ion-button>
             </ion-col>
           </ion-row>

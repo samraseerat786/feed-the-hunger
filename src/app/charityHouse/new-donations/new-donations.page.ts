@@ -51,6 +51,11 @@ export class NewDonationsPage implements OnInit {
     this.result = JSON.parse(localStorage.getItem('newDonation'));
   }
 
+  openChat(first: string, last: string) {
+    localStorage.setItem('donnerName', JSON.stringify(first.toLowerCase() + '-' + last.toLowerCase()));
+    this.router.navigate(['charity-house-chat']);
+  }
+
   async acceptFood(id) {
 
     let date  = new Date();
@@ -113,10 +118,6 @@ export class NewDonationsPage implements OnInit {
       ]
     });
     await alert.present();
-  }
-
-  openChat() {
-
   }
 
   async acceptOrRejectDonation(id, status, time) {

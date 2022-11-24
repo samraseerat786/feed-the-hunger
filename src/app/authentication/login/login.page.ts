@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
                         this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
                             { title: 'charity Houses', url: '/charityList', icon: 'list' },
                             { title: 'My Donations', url: '/donor-donations', icon: 'md-briefcase' },
-                            { title: 'Open Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
+                            { title: 'Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
                             { title: 'Reports', url: `/reports/${d.donner.id}`, icon: 'list' },
                             { title: 'Settings', url: '/setting', icon: 'settings'},
                             { title: 'Feedbacks', url: '/feed-backs', icon: 'list' }];
@@ -70,6 +70,7 @@ export class LoginPage implements OnInit {
                         this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
                             { title: 'Donner List', url: '/donner-list', icon: 'list', },
                             { title: 'New Donations', url: '/new-donations', icon: 'md-briefcase' },
+                            { title: 'Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
                             { title: 'Setting', url: '/setting', icon: 'settings'},
                             ];
                         this.service.setRole(d.role);

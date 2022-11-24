@@ -48,4 +48,11 @@ export class DonorDonationsPage implements OnInit {
     this.result = JSON.parse(localStorage.getItem('donorDonation'));
   }
 
+  openChat(donorFirst: string, donorLast: string, ngoFirstname: string, ngoLastname: string) {
+    let donor  = `${donorFirst.toLowerCase()}-${donorLast.toLowerCase()}`;
+    let ngo = `${ngoFirstname.toLowerCase()}-${ngoLastname.toLowerCase()}`;
+    localStorage.setItem('channelName', JSON.stringify(`${donor}-${ngo}`));
+    this.router.navigate(['donner-chat']);
+  }
+
 }
