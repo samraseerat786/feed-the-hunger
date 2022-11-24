@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
     role: any;
     user: any;
+    defaultImage = 'assets/20181028_231840.png';
 
     constructor(private alertCtrl: AlertController,
         private utils: UtilsService,

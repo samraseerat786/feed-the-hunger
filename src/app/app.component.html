@@ -7,7 +7,7 @@
                     <ion-header class="bar-profile">
                         <div *ngIf="user" class="profile">
                             <img [routerLink]="['profile-picture']" class="profile-picture"
-                                 src="assets/20181028_231840.png"/>
+                                 src="{{user.image || user.user.image || defaultImage}}"/>
                             <h3 class="name">{{user?.user?.first_name}} {{user?.user?.last_name}}</h3>
                             <h3 class="name">{{user?.first_name}} {{user?.last_name}}</h3>
                         </div>

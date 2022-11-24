@@ -1,6 +1,9 @@
 
 .profile-picture {
   border-radius: 50%;
+  width: 145px;
+  height: 145px;
+  object-fit: cover
 }
 .border{
   box-shadow: none !important;
@@ -26,4 +29,11 @@
 }
 .item-color{
   color: #bababa;
+}
+
+.cameraIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 9px 0 0 10px;
 }
