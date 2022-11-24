@@ -26,7 +26,10 @@ export class DonnerListPage implements OnInit {
 
     result: any = [];
     data: Observable<any>;
-    itration = [1, 2, 3, 4];
+    // activeStars = [1, 2, 3, 4];
+    // inActiveStars = [1, 2, 3, 4, 5];
+    allInActiveStars = [1, 2, 3, 4, 5];
+
 
     async ngOnInit() {
         await this.utils.presentLoading("Please wait...");
@@ -35,7 +38,20 @@ export class DonnerListPage implements OnInit {
             this.utils.stopLoading();
             if (response.status === 200 || response.status === 201) {
                 this.donnerList = response.body;
-                this.result = this.donnerList.content;
+                for (let i = 0; i < this.donnerList.length; i++) {
+                    let donor = this.donnerList[i].donor;
+                    donor['rating'] = this.donnerList[i].rating.toFixed(1);
+                    donor['inActiveStars'] =  this.createArrayByNumber(5 - parseInt(donor.rating));
+                    donor['activeStars'] = this.createArrayByNumber(parseInt(donor.rating));
+                    if(donor.rating % 1 == 0) {
+                        donor['isHelfStar'] = false;
+                    } else {
+                        donor['isHelfStar'] = true;
+                        donor.inActiveStars.splice(-1);
+                    }
+                    console.log(donor);
+                    this.result.push(donor);
+                }
                 localStorage.removeItem('donners');
                 localStorage.setItem('donners', JSON.stringify(this.result));
             }
@@ -44,6 +60,14 @@ export class DonnerListPage implements OnInit {
             this.loadData();
             console.log('error', error);
         });
+    }
+
+    createArrayByNumber(num){
+        let arr = [];
+        for (let i = 1; i <= num; i++) {
+            arr.push(i);
+        }
+        return arr;
     }
 
     loadData() {
