@@ -87,7 +87,7 @@ export class ProfilePage implements OnInit {
             await storageRef.getDownloadURL().subscribe(downloadURL => {
                 console.log(downloadURL);
                 let userObject = {};
-                if(this.user.user) {
+                if (this.user.user) {
                     userObject = this.user.user;
                     this.user.user.image = downloadURL;
                 } else {
@@ -103,12 +103,12 @@ export class ProfilePage implements OnInit {
     saveHttpReq(dataObj) {
         const url = `${this.service.homeUrl}/users/updateUser`;
         this.http.put(url, dataObj).subscribe(data => {
-            this.utils.stopLoading();
-        },
-        error => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
+                this.utils.stopLoading();
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
     }
 
 }

@@ -17,6 +17,7 @@ export class AddressPage implements OnInit {
     charity;
     loading: boolean;
     submitted: any;
+
     constructor(private utils: UtilsService,
                 private route: ActivatedRoute,
                 private router: Router,
@@ -64,15 +65,15 @@ export class AddressPage implements OnInit {
             const completeCharityHouse = JSON.parse(this.charity);
             this.utils.presentLoading("Creating your account, please be patient...");
             this.saveHttpReq(completeCharityHouse).subscribe(data => {
-                this.utils.stopLoading();
-                this.loading = false;
-                this.utils.presentAlert('Please! check your email and verify your account.');
-                this.router.navigate(['login']);
-            },
-            error => {
-                this.utils.stopLoading();
-                console.log('error', error);
-            });
+                    this.utils.stopLoading();
+                    this.loading = false;
+                    this.utils.presentAlert('Please! check your email and verify your account.');
+                    this.router.navigate(['login']);
+                },
+                error => {
+                    this.utils.stopLoading();
+                    console.log('error', error);
+                });
         }
         this.loading = false;
     }

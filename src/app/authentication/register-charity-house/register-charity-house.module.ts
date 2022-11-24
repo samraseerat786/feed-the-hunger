@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { RegisterCharityHousePage } from './register-charity-house.page';
+import {RegisterCharityHousePage} from './register-charity-house.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: RegisterCharityHousePage
-  }
+    {
+        path: '',
+        component: RegisterCharityHousePage
+    }
 ];
 
 @NgModule({
@@ -22,6 +22,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule
     ],
-  declarations: [RegisterCharityHousePage]
+    declarations: [RegisterCharityHousePage]
 })
-export class RegisterCharityHousePageModule {}
+export class RegisterCharityHousePageModule {
+}

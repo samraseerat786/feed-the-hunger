@@ -170,13 +170,13 @@ export class ReviewComponent implements OnInit {
         await this.utils.presentLoading("Please wait...");
         await this.popoverController.dismiss();
         this.saveReview(review).subscribe(data => {
-            this.utils.stopLoading();
-            this.router.navigate(['donner-list']);
-        },
-        error => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
+                this.utils.stopLoading();
+                this.router.navigate(['donner-list']);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
     }
 
     saveReview(dataObj): Observable<any> {

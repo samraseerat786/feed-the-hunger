@@ -43,7 +43,7 @@ export class OpenAdminChatPage implements OnInit {
         this.channel = this.user.user.user_name + '-admin';
     }
 
-    async loadData(){
+    async loadData() {
         await this.utils.presentLoading("Please wait...");
         this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
             this.utils.stopLoading();

@@ -1,24 +1,27 @@
 
-.message{
+.message {
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 5px;
   white-space: pre-wrap;
 }
-.other-message{
+
+.other-message {
   background: var(--ion-color-primary);
   color: ghostwhite;
 }
-.my-message{
+
+.my-message {
   background: var(--ion-color-secondary);
   color: white;
 }
 
-.time{
+.time {
   color: white;
   float: right;
 }
-.message-input{
+
+.message-input {
 
   width: 100%;
   resize: none;
@@ -35,7 +38,8 @@
   padding-top: 10px;
   text-align: center;
 }
-.msg-btn{
+
+.msg-btn {
   --padding-start: 0.5em;
   --padding-end: 0.5em;
 }

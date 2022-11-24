@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { UpdatePage } from './update.page';
+import {UpdatePage} from './update.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UpdatePage
-  }
+    {
+        path: '',
+        component: UpdatePage
+    }
 ];
 
 @NgModule({
@@ -27,4 +27,5 @@ const routes: Routes = [
     ],
     declarations: [UpdatePage]
 })
-export class UpdatePageModule {}
+export class UpdatePageModule {
+}

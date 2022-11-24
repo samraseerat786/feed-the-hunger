@@ -27,7 +27,7 @@ export class ChatListPage implements OnInit {
     ngOnInit() {
     }
 
-    async loadData(){
+    async loadData() {
         await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/channels/conversation-user-list`,
             {observe: 'response'}).subscribe(response => {

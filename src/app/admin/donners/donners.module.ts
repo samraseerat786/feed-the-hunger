@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { DonnersPage } from './donners.page';
+import {DonnersPage} from './donners.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: DonnersPage
-  }
+    {
+        path: '',
+        component: DonnersPage
+    }
 ];
 
 @NgModule({
@@ -24,4 +24,5 @@ const routes: Routes = [
     ],
     declarations: [DonnersPage]
 })
-export class DonnersPageModule {}
+export class DonnersPageModule {
+}

@@ -177,75 +177,74 @@ const routes: Routes = [
             }
         ]
     },
-  { path: 'send-report', loadChildren: './charityHouse/send-report/send-report.module#SendReportPageModule' },
-  {
-      path: 'reports',
-      children: [
-          {
-              path: '',
-              loadChildren: () => import('./donner/reports/reports.module').then(m => m.ReportsPageModule)
-          },
-          {
-              path: ':id',
-              loadChildren: () => import('./donner/reports/reports.module').then(m => m.ReportsPageModule)
-          }
-      ]
-  },
-  // { path: 'reviews', loadChildren: './donner/reviews/reviews.module#ReviewsPageModule' },
-  { path: 'feed-backs', loadChildren: './donner/feed-backs/feed-backs.module#FeedBacksPageModule' },
-  {
-      path: 'profile',
-      children: [
-          {
-              path: '',
-              loadChildren: () => import('./shared/profile/profile.module').then(m => m.ProfilePageModule)
-          },
-          {
-              path: ':id',
-              loadChildren: () => import('./shared/profile/profile.module').then(m => m.ProfilePageModule)
-          }
-      ]
-  },
-  { path: 'help', loadChildren: './shared/help/help.module#HelpPageModule' },
-  { path: 'change-password', loadChildren: './shared/change-password/change-password.module#ChangePasswordPageModule' },
-  {
-      path: 'admin-profile',
-      children: [
-          {
-              path: '',
-              loadChildren: () => import('./admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
-          },
-          {
-              path: ':id',
-              loadChildren: () => import('./admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
-          }
-      ]
-  },
-  { path: 'edit-profile', loadChildren: './admin/edit-profile/edit-profile.module#EditProfilePageModule' },
-  { path: 'upload-image', loadChildren: './upload-image/upload-image.module#UploadImagePageModule' },
-  { path: 'donner-chat', loadChildren: './donner/donner-chat/donner-chat.module#DonnerChatPageModule' },
-  { path: 'admin-chat', loadChildren: './admin/admin-chat/admin-chat.module#AdminChatPageModule' },
-  {
-      path: 'charity-house-chat',
-      children: [
-          {
-              path: '',
-              loadChildren: () => import('./charityHouse/charity-house-chat/charity-house-chat.module')
-                  .then(m => m.CharityHouseChatPageModule)
-          },
-          {
-              path: ':donnerName',
-              loadChildren: () => import('./charityHouse/charity-house-chat/charity-house-chat.module')
-                  .then(m => m.CharityHouseChatPageModule)
-          }
-      ]
-  },
-  { path: 'chat-channels', loadChildren: './donner/chat-channels/chat-channels.module#ChatChannelsPageModule' },  { path: 'chat-list', loadChildren: './admin/chat-list/chat-list.module#ChatListPageModule' },
-  { path: 'open-admin-chat', loadChildren: './shared/open-admin-chat/open-admin-chat.module#OpenAdminChatPageModule' },
-  { path: 'donor-donations', loadChildren: './donner/donor-donations/donor-donations.module#DonorDonationsPageModule' },
-  { path: 'new-donations', loadChildren: './charityHouse/new-donations/new-donations.module#NewDonationsPageModule' }
-
-
+    {path: 'send-report', loadChildren: './charityHouse/send-report/send-report.module#SendReportPageModule'},
+    {
+        path: 'reports',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./donner/reports/reports.module').then(m => m.ReportsPageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => import('./donner/reports/reports.module').then(m => m.ReportsPageModule)
+            }
+        ]
+    },
+    // { path: 'reviews', loadChildren: './donner/reviews/reviews.module#ReviewsPageModule' },
+    {path: 'feed-backs', loadChildren: './donner/feed-backs/feed-backs.module#FeedBacksPageModule'},
+    {
+        path: 'profile',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./shared/profile/profile.module').then(m => m.ProfilePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => import('./shared/profile/profile.module').then(m => m.ProfilePageModule)
+            }
+        ]
+    },
+    {path: 'help', loadChildren: './shared/help/help.module#HelpPageModule'},
+    {path: 'change-password', loadChildren: './shared/change-password/change-password.module#ChangePasswordPageModule'},
+    {
+        path: 'admin-profile',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => import('./admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
+            }
+        ]
+    },
+    {path: 'edit-profile', loadChildren: './admin/edit-profile/edit-profile.module#EditProfilePageModule'},
+    {path: 'upload-image', loadChildren: './upload-image/upload-image.module#UploadImagePageModule'},
+    {path: 'donner-chat', loadChildren: './donner/donner-chat/donner-chat.module#DonnerChatPageModule'},
+    {path: 'admin-chat', loadChildren: './admin/admin-chat/admin-chat.module#AdminChatPageModule'},
+    {
+        path: 'charity-house-chat',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./charityHouse/charity-house-chat/charity-house-chat.module')
+                    .then(m => m.CharityHouseChatPageModule)
+            },
+            {
+                path: ':donnerName',
+                loadChildren: () => import('./charityHouse/charity-house-chat/charity-house-chat.module')
+                    .then(m => m.CharityHouseChatPageModule)
+            }
+        ]
+    },
+    {path: 'chat-channels', loadChildren: './donner/chat-channels/chat-channels.module#ChatChannelsPageModule'},
+    {path: 'chat-list', loadChildren: './admin/chat-list/chat-list.module#ChatListPageModule'},
+    {path: 'open-admin-chat', loadChildren: './shared/open-admin-chat/open-admin-chat.module#OpenAdminChatPageModule'},
+    {path: 'donor-donations', loadChildren: './donner/donor-donations/donor-donations.module#DonorDonationsPageModule'},
+    {path: 'new-donations', loadChildren: './charityHouse/new-donations/new-donations.module#NewDonationsPageModule'}
 
 
 ];

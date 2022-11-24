@@ -16,11 +16,13 @@
                         <ion-input [hidden]="true" value="{{user?.id}}" formControlName="id"></ion-input>
                         <ion-item>
                             <ion-label position="floating">First Name</ion-label>
-                            <ion-input placeholder="First Name" value="{{user?.first_name}}" formControlName="first_name"></ion-input>
+                            <ion-input placeholder="First Name" value="{{user?.first_name}}"
+                                       formControlName="first_name"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Last Name</ion-label>
-                            <ion-input placeholder="Last Name" value="{{user?.last_name}}" formControlName="last_name"></ion-input>
+                            <ion-input placeholder="Last Name" value="{{user?.last_name}}"
+                                       formControlName="last_name"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Email</ion-label>
@@ -28,16 +30,19 @@
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">User name</ion-label>
-                            <ion-input placeholder="User Name" value="{{user?.user_name}}" formControlName="user_name"></ion-input>
+                            <ion-input placeholder="User Name" value="{{user?.user_name}}"
+                                       formControlName="user_name"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Password</ion-label>
-                            <ion-input placeholder="Password" value="{{user?.password}}" formControlName="password"></ion-input>
+                            <ion-input placeholder="Password" value="{{user?.password}}"
+                                       formControlName="password"></ion-input>
                         </ion-item>
 
                         <ion-grid style="padding-top: 50px" class="ion-padding-top">
                             <ion-row class="ion-justify-content-center">
-                                <ion-button (click)="updateData()" shape="square" [disabled]="!updateForm.valid" >Save</ion-button>
+                                <ion-button (click)="updateData()" shape="square" [disabled]="!updateForm.valid">Save
+                                </ion-button>
                             </ion-row>
                         </ion-grid>
                     </div>

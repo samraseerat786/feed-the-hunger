@@ -17,6 +17,7 @@ import {utils} from "protractor";
 })
 export class ListPage implements OnInit {
     t;
+
     constructor(private utils: UtilsService,
                 public router: Router,
                 private storage: Storage,
@@ -24,6 +25,7 @@ export class ListPage implements OnInit {
                 private service: ListService,
                 public popoverController: PopoverController) {
     }
+
     result: any = [];
     data: Observable<any>;
     donnerActive: any;

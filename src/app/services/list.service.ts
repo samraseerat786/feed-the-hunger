@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -9,10 +10,13 @@ export class ListService {
     user: number;
     private messageSource = new BehaviorSubject(false);
     currentMessage = this.messageSource.asObservable();
+
     constructor() {
     }
+
     role: any;
     homeUrl = 'http://localhost:8095';
+
     // homeUrl = 'https://feed-the-hunger-backend.herokuapp.com/';
     addUser(item: number) {
         this.user = item;
@@ -21,6 +25,7 @@ export class ListService {
     changeMessage(message) {
         this.messageSource.next(message);
     }
+
     setRole(item: string) {
         this.role = item;
     }
@@ -28,6 +33,7 @@ export class ListService {
     getRole() {
         return this.role;
     }
+
     getUser() {
         return this.user;
     }

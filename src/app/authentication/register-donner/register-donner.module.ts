@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { RegisterDonnerPage } from './register-donner.page';
+import {RegisterDonnerPage} from './register-donner.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: RegisterDonnerPage
-  }
+    {
+        path: '',
+        component: RegisterDonnerPage
+    }
 ];
 
 @NgModule({
@@ -22,6 +22,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule
     ],
-  declarations: [RegisterDonnerPage]
+    declarations: [RegisterDonnerPage]
 })
-export class RegisterDonnerPageModule {}
+export class RegisterDonnerPageModule {
+}

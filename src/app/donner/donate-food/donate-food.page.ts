@@ -56,9 +56,10 @@ export class DonateFoodPage implements OnInit {
         this.foodImage = e.target.files[0];
     }
 
-    async uploadImageAndFoodDonation(){
-        if(!this.foodImage){
-            alert("Please select a food image..."); return;
+    async uploadImageAndFoodDonation() {
+        if (!this.foodImage) {
+            alert("Please select a food image...");
+            return;
         }
         const donner = JSON.parse(localStorage.getItem('user'));
         let fileName = `${Date.now()}.png`;
@@ -95,13 +96,13 @@ export class DonateFoodPage implements OnInit {
         foodDonation.donation.acceptanceTime = "not added yet";
         foodDonation.donation.status = "new";
         this.saveFoodDonation(foodDonation).subscribe(data => {
-            this.utils.stopLoading();
-            this.utils.presentAlert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
-            this.router.navigate(['charityList']);
-        },
-        error => {
-            this.utils.stopLoading();
-        });
+                this.utils.stopLoading();
+                this.utils.presentAlert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
+                this.router.navigate(['charityList']);
+            },
+            error => {
+                this.utils.stopLoading();
+            });
     }
 
     saveFoodDonation(dataObj): Observable<any> {

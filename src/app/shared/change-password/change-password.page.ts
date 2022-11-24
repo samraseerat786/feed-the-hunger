@@ -77,13 +77,13 @@ export class ChangePasswordPage implements OnInit {
 
         await this.utils.presentLoading("Please wait...");
         this.saveHttpReq(finalObject).subscribe(data => {
-            this.utils.stopLoading();
-            this.router.navigate(['/setting']);
-        },
-        error => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
+                this.utils.stopLoading();
+                this.router.navigate(['/setting']);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
     }
 
     saveHttpReq(dataObj): Observable<any> {

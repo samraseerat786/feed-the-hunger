@@ -20,6 +20,7 @@ export class AdminProfilePage implements OnInit {
 
     user;
     data;
+
     ngOnInit() {
         this.route.paramMap.subscribe(async paramMap => {
             const val = paramMap.get('id');

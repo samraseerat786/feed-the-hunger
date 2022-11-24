@@ -53,7 +53,7 @@ export class UtilsService {
     }
 
     stopLoading() {
-        if(this.loading)
-        this.loading.dismiss();
+        if (this.loading)
+            this.loading.dismiss();
     }
 }

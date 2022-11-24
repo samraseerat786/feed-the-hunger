@@ -5,13 +5,14 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {IonContent} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router';
 import {UtilsService} from "../services/utils.service";
+
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.page.html',
     styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
-messages = [];
+    messages = [];
 
     items: Observable<any[]>;
     currentUser = '';
@@ -23,6 +24,7 @@ messages = [];
     recivedData = [];
     // @ts-ignore
     @ViewChild(IonContent) content: IonContent;
+
     constructor(private utils: UtilsService,
                 public db: AngularFireDatabase,
                 private route: ActivatedRoute,
@@ -37,9 +39,9 @@ messages = [];
         });
     }
 
-    async loadData(){
+    async loadData() {
         await this.utils.presentLoading("Please wait...");
-        this.s = this.db.list('/messages').valueChanges().subscribe( data => {
+        this.s = this.db.list('/messages').valueChanges().subscribe(data => {
             this.utils.stopLoading();
             this.recivedData = data;
             this.messages = this.recivedData.filter(x => x.user === this.donnerName || x.user === this.currentUser);

@@ -41,7 +41,7 @@ export class AdminChatPage implements OnInit {
         this.currentUser = this.user.user_name.toLowerCase();
     }
 
-    async loadData(){
+    async loadData() {
         await this.utils.presentLoading("Please wait...");
         this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
             this.utils.stopLoading();

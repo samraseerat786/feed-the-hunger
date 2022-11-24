@@ -72,15 +72,15 @@ export class EditProfilePage implements OnInit {
             const formData = this.updateForm.value;
             await this.utils.presentLoading("Please wait...");
             this.saveHttpReq(this.generateUser()).subscribe(data => {
-                this.utils.stopLoading();
-                this.utils.presentToast('User updated successfully');
-                const url = `/admin-profile/${this.user.id}`;
-                this.router.navigateByUrl(url);
-            },
-            error => {
-                this.utils.stopLoading();
-                console.log('error', error);
-            });
+                    this.utils.stopLoading();
+                    this.utils.presentToast('User updated successfully');
+                    const url = `/admin-profile/${this.user.id}`;
+                    this.router.navigateByUrl(url);
+                },
+                error => {
+                    this.utils.stopLoading();
+                    console.log('error', error);
+                });
         }
     }
 

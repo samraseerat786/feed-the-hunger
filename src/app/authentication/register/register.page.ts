@@ -13,10 +13,10 @@ import {UtilsService} from "../../services/utils.service";
 })
 export class RegisterPage implements OnInit {
     constructor(private utils: UtilsService,
-        private router: Router,
-        private http: HttpClient,
-        private service: ListService,
-        private formBuilder: FormBuilder
+                private router: Router,
+                private http: HttpClient,
+                private service: ListService,
+                private formBuilder: FormBuilder
     ) {
     }
 
@@ -39,6 +39,7 @@ export class RegisterPage implements OnInit {
     emailVerification = false;
     emailEmptyCheck = false;
     passwordMatch = false;
+
     ngOnInit() {
         this.formInitializer();
         // this.loading = true;
@@ -126,7 +127,7 @@ export class RegisterPage implements OnInit {
                 this.utils.stopLoading();
                 if (response.status === 200 || response.status === 201) {
                     const tester = response.body;
-                    if ( tester.toString() === 'false') {
+                    if (tester.toString() === 'false') {
                         this.emailVerification = true;
                         this.mailloading = false;
                     }
@@ -147,10 +148,11 @@ export class RegisterPage implements OnInit {
         const str = '    ';
         if (!str.replace(/\s/g, '').length) {
         }
-        if ( item === '' || item == null) {
+        if (item === '' || item == null) {
             this.emailEmptyCheck = true;
         }
     }
+
     removeError() {
         this.emailVerification = false;
         this.emailEmptyCheck = false;
@@ -166,7 +168,7 @@ export class RegisterPage implements OnInit {
                 this.utils.stopLoading();
                 if (response.status === 200 || response.status === 201) {
                     const tester = response.body;
-                    if ( tester.toString() === 'false') {
+                    if (tester.toString() === 'false') {
                         this.usernameVerification = true;
                         this.loading = false;
                     }
@@ -186,22 +188,25 @@ export class RegisterPage implements OnInit {
         const str = '    ';
         if (!str.replace(/\s/g, '').length) {
         }
-        if ( item === '' || item == null) {
+        if (item === '' || item == null) {
             this.usernameEmptyCheck = true;
         }
     }
+
     removeErrorUsername() {
         this.usernameVerification = false;
         this.usernameEmptyCheck = false;
     }
+
     matchPasswords() {
         const data = this.registerForm.value;
         if (data.password === data.confirm_password) {
-            this.passwordMatch =  false;
+            this.passwordMatch = false;
         } else {
             this.passwordMatch = true;
         }
     }
+
     removePasswordMatchError() {
         this.passwordMatch = false;
     }

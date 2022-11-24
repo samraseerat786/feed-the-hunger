@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { FeedbackPage } from './feedback.page';
+import {FeedbackPage} from './feedback.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: FeedbackPage
-  }
+    {
+        path: '',
+        component: FeedbackPage
+    }
 ];
 
 @NgModule({
@@ -22,6 +22,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule
     ],
-  declarations: [FeedbackPage]
+    declarations: [FeedbackPage]
 })
-export class FeedbackPageModule {}
+export class FeedbackPageModule {
+}

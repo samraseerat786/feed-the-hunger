@@ -34,7 +34,7 @@ export class CharityHouseChatPage implements OnInit {
     ngOnInit() {
     }
 
-    async loadData(){
+    async loadData() {
         await this.utils.presentLoading("Please wait...");
         this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
             this.utils.stopLoading();
@@ -56,12 +56,12 @@ export class CharityHouseChatPage implements OnInit {
         const url = `${this.service.homeUrl}/channels/exist-or-not/${this.channel}`;
         await this.utils.presentLoading("Please wait...");
         this.http.post(url, 1).subscribe(data => {
-            this.utils.stopLoading();
-        },
-        error => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
+                this.utils.stopLoading();
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
         this.db.list(`/channels/${this.channel}`).push({
             sender: this.currentUser,
             message: this.newMsg,

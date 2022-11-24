@@ -1,26 +1,27 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { UpdateCharityHousePage } from './update-charity-house.page';
+import {UpdateCharityHousePage} from './update-charity-house.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UpdateCharityHousePage
-  }
+    {
+        path: '',
+        component: UpdateCharityHousePage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [UpdateCharityHousePage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [UpdateCharityHousePage]
 })
-export class UpdateCharityHousePageModule {}
+export class UpdateCharityHousePageModule {
+}

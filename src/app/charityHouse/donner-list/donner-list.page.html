@@ -21,21 +21,25 @@
                     <ion-row>
                         <ion-col size="10">
                             <div *ngIf="item.rating == 0">
-                                <ion-icon *ngFor="let i of allInActiveStars" name="star" size="large" style="color: lightgray"></ion-icon>
+                                <ion-icon *ngFor="let i of allInActiveStars" name="star" size="large"
+                                          style="color: lightgray"></ion-icon>
                                 <ion-label>no rating</ion-label>
                             </div>
                             <div *ngIf="item.rating > 0">
-                                <ion-icon *ngFor="let i of item.activeStars" name="star" size="large" color="secondary"></ion-icon>
-                                <ion-icon *ngIf="item.isHelfStar" name="star-half" size="large" color="secondary"></ion-icon>
-                                <ion-icon *ngFor="let i of item.inActiveStars" name="star-outline" size="large" color="secondary"></ion-icon>
+                                <ion-icon *ngFor="let i of item.activeStars" name="star" size="large"
+                                          color="secondary"></ion-icon>
+                                <ion-icon *ngIf="item.isHelfStar" name="star-half" size="large"
+                                          color="secondary"></ion-icon>
+                                <ion-icon *ngFor="let i of item.inActiveStars" name="star-outline" size="large"
+                                          color="secondary"></ion-icon>
                                 <ion-label>{{item.rating}}</ion-label>
                             </div>
                             <br>
                         </ion-col>
                         <ion-col align-items-start size="2">
                             <ion-icon size="large" class="msg-btn" style="cursor: pointer"
-                                 (click)="openChat(item?.user.first_name, item?.user.last_name)"
-                                 ios="ios-chatboxes" md="md-chatboxes" color="secondary"></ion-icon>
+                                      (click)="openChat(item?.user.first_name, item?.user.last_name)"
+                                      ios="ios-chatboxes" md="md-chatboxes" color="secondary"></ion-icon>
                         </ion-col>
                     </ion-row>
 
@@ -47,11 +51,13 @@
 
                     <ion-row>
                         <ion-col size="4">
-                            <ion-button mode="ios" (click)="feedBack(item)" color="secondary" expand="block">Send Feedback
+                            <ion-button mode="ios" (click)="feedBack(item)" color="secondary" expand="block">Send
+                                Feedback
                             </ion-button>
                         </ion-col>
                         <ion-col size="4">
-                            <ion-button mode="ios" (click)="review($event, item)" color="secondary" expand="block">Add Review
+                            <ion-button mode="ios" (click)="review($event, item)" color="secondary" expand="block">Add
+                                Review
                             </ion-button>
                         </ion-col>
                         <ion-col size="4">

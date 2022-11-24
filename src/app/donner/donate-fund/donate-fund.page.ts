@@ -59,20 +59,20 @@ export class DonateFundPage implements OnInit {
             '"donner": { "id": ' + donnerID + '},' +
             '"charityHouse": { "id": ' + this.charityHouse + '}' + '}' + '}';
         const fundDonation = JSON.parse(this.finalFundObject);
-        let date  = new Date();
-        let acceptanceDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+        let date = new Date();
+        let acceptanceDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
         fundDonation.donation.acceptanceTime = acceptanceDate;
         fundDonation.donation.status = "new";
         await this.utils.presentLoading("Please wait...");
         this.saveFoodDonation(fundDonation).subscribe(data => {
-            this.utils.stopLoading();
-            this.utils.presentAlert('Your donation successfully sent to selected charity house. Thanks for donating fund.');
-            this.router.navigate(['charityList']);
-        },
-        error => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
+                this.utils.stopLoading();
+                this.utils.presentAlert('Your donation successfully sent to selected charity house. Thanks for donating fund.');
+                this.router.navigate(['charityList']);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
     }
 
     saveFoodDonation(dataObj): Observable<any> {

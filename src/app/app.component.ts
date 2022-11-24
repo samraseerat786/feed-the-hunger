@@ -20,14 +20,14 @@ export class AppComponent implements OnInit {
     defaultImage = 'assets/20181028_231840.png';
 
     constructor(private alertCtrl: AlertController,
-        private utils: UtilsService,
-        private platform: Platform,
-        private router: Router,
-        private splashScreen: SplashScreen,
-        private service: ListService,
-        private statusBar: StatusBar,
-        private authService: AuthService,
-        private navCtrl: NavController
+                private utils: UtilsService,
+                private platform: Platform,
+                private router: Router,
+                private splashScreen: SplashScreen,
+                private service: ListService,
+                private statusBar: StatusBar,
+                private authService: AuthService,
+                private navCtrl: NavController
     ) {
         this.initializeApp();
     }
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         this.user = this.authService.getUser();
         if (this.user) {
             this.loadUserAndPages('');
-            this.navCtrl.navigateRoot(['/home'], { replaceUrl: true });
+            this.navCtrl.navigateRoot(['/home'], {replaceUrl: true});
         } else {
             this.navCtrl.navigateRoot(['']);
         }

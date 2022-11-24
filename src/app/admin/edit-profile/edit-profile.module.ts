@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { EditProfilePage } from './edit-profile.page';
+import {EditProfilePage} from './edit-profile.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: EditProfilePage
-  }
+    {
+        path: '',
+        component: EditProfilePage
+    }
 ];
 
 @NgModule({
@@ -22,6 +22,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule
     ],
-  declarations: [EditProfilePage]
+    declarations: [EditProfilePage]
 })
-export class EditProfilePageModule {}
+export class EditProfilePageModule {
+}

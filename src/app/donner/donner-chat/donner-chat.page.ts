@@ -42,7 +42,7 @@ export class DonnerChatPage implements OnInit {
         console.log('current user', this.currentUser);
     }
 
-    async loadData(){
+    async loadData() {
         await this.utils.presentLoading("Please wait...");
         this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
             this.utils.stopLoading();

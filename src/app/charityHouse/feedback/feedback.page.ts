@@ -52,14 +52,14 @@ export class FeedbackPage implements OnInit {
         const feedback = JSON.parse(this.finalFeedbackObject);
         await this.utils.presentLoading("Please wait...");
         this.saveFeedback(feedback).subscribe(data => {
-            this.utils.stopLoading();
-            this.utils.presentAlert('Feedback is saved. Thanks for your feedback.');
-            this.router.navigate(['donner-list']);
-        },
-        error => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
+                this.utils.stopLoading();
+                this.utils.presentAlert('Feedback is saved. Thanks for your feedback.');
+                this.router.navigate(['donner-list']);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
     }
 
     saveFeedback(dataObj): Observable<any> {

@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { AddressPage } from './address.page';
+import {AddressPage} from './address.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AddressPage
-  }
+    {
+        path: '',
+        component: AddressPage
+    }
 ];
 
 @NgModule({
@@ -22,6 +22,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule
     ],
-  declarations: [AddressPage]
+    declarations: [AddressPage]
 })
-export class AddressPageModule {}
+export class AddressPageModule {
+}

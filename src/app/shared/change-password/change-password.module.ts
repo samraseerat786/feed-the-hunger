@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { ChangePasswordPage } from './change-password.page';
+import {ChangePasswordPage} from './change-password.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ChangePasswordPage
-  }
+    {
+        path: '',
+        component: ChangePasswordPage
+    }
 ];
 
 @NgModule({
@@ -22,6 +22,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule
     ],
-  declarations: [ChangePasswordPage]
+    declarations: [ChangePasswordPage]
 })
-export class ChangePasswordPageModule {}
+export class ChangePasswordPageModule {
+}

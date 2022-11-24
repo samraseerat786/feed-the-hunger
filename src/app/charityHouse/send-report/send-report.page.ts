@@ -52,14 +52,14 @@ export class SendReportPage implements OnInit {
         const feedback = JSON.parse(this.finalReportObject);
         await this.utils.presentLoading("Please wait...");
         this.saveFeedback(feedback).subscribe(data => {
-            this.utils.stopLoading();
+                this.utils.stopLoading();
                 this.utils.presentAlert('Donner reported successfully.');
-            this.router.navigate(['donner-list']);
-        },
-        error => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
+                this.router.navigate(['donner-list']);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
     }
 
     saveFeedback(dataObj): Observable<any> {

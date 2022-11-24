@@ -1,50 +1,54 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 export interface User {
-  name: string;
-  role: number;
+    name: string;
+    role: number;
 }
+
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthService {
 
-  currentUser: User;
-  constructor() { }
+    currentUser: User;
 
-  login(name: string, pw: string): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      if (name === 'admin' && pw === 'admin') {
-        this.currentUser = {
-          name,
-          role: 0
-        };
-        resolve(true);
-      } else if (name === 'user' && pw === 'admin') {
-        this.currentUser = {
-          name,
-          role: 0
-        };
-        resolve(true);
-      } else {
-        reject(false);
-      }
-    });
-  }
+    constructor() {
+    }
 
-  isLoggedIn() {
-    return this.currentUser !== null;
-  }
+    login(name: string, pw: string): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            if (name === 'admin' && pw === 'admin') {
+                this.currentUser = {
+                    name,
+                    role: 0
+                };
+                resolve(true);
+            } else if (name === 'user' && pw === 'admin') {
+                this.currentUser = {
+                    name,
+                    role: 0
+                };
+                resolve(true);
+            } else {
+                reject(false);
+            }
+        });
+    }
 
-  logout() {
-    this.currentUser = null;
-  }
-  isAdmin() {
-    return this.currentUser.role === 0;
-  }
+    isLoggedIn() {
+        return this.currentUser !== null;
+    }
 
-  getUser() {
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
-    return this.currentUser;
-  }
+    logout() {
+        this.currentUser = null;
+    }
+
+    isAdmin() {
+        return this.currentUser.role === 0;
+    }
+
+    getUser() {
+        this.currentUser = JSON.parse(localStorage.getItem('user'));
+        return this.currentUser;
+    }
 }

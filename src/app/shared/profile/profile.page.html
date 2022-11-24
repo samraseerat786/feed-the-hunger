@@ -42,7 +42,8 @@
                         <ion-card class="border ion-no-padding">
                             <ion-card-header class="ion-no-padding">
                                 <ion-card-subtitle>Name</ion-card-subtitle>
-                                <ion-card-title class="title">{{user?.user?.first_name}} {{user?.user?.last_name}}</ion-card-title>
+                                <ion-card-title
+                                        class="title">{{user?.user?.first_name}} {{user?.user?.last_name}}</ion-card-title>
                                 <ion-card-title class="title">{{user?.first_name}} {{user?.last_name}}</ion-card-title>
                             </ion-card-header>
                         </ion-card>
@@ -79,7 +80,8 @@
                     <ion-img *ngIf="close" (click)="expandCLick()" style="width: 20px; height: 20px;"
                              src="/assets/down-arrow.svg"
                              alt="down" slot="end"></ion-img>
-                    <ion-img *ngIf="open" (click)="expandCLick()" style="width: 20px; height: 20px;" src="/assets/up-arrow.svg"
+                    <ion-img *ngIf="open" (click)="expandCLick()" style="width: 20px; height: 20px;"
+                             src="/assets/up-arrow.svg"
                              alt="up" slot="end"></ion-img>
                 </ion-item>
                 <ion-card-content class="ion-no-padding" *ngIf="open">

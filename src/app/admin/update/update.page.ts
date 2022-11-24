@@ -80,12 +80,12 @@ export class UpdatePage implements OnInit {
             this.saveHttpReq(this.generateUser()).subscribe(data => {
                     this.utils.stopLoading();
                     this.utils.presentToast('User updated successfully');
-                this.router.navigate(['tabs/donners']);
-            },
-            error => {
-                this.utils.stopLoading();
-                console.log('error', error);
-            });
+                    this.router.navigate(['tabs/donners']);
+                },
+                error => {
+                    this.utils.stopLoading();
+                    console.log('error', error);
+                });
         }
     }
 

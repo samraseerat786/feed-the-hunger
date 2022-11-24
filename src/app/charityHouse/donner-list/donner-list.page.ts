@@ -41,9 +41,9 @@ export class DonnerListPage implements OnInit {
                 for (let i = 0; i < this.donnerList.length; i++) {
                     let donor = this.donnerList[i].donor;
                     donor['rating'] = this.donnerList[i].rating.toFixed(1);
-                    donor['inActiveStars'] =  this.createArrayByNumber(5 - parseInt(donor.rating));
+                    donor['inActiveStars'] = this.createArrayByNumber(5 - parseInt(donor.rating));
                     donor['activeStars'] = this.createArrayByNumber(parseInt(donor.rating));
-                    if(donor.rating % 1 == 0) {
+                    if (donor.rating % 1 == 0) {
                         donor['isHelfStar'] = false;
                     } else {
                         donor['isHelfStar'] = true;
@@ -62,7 +62,7 @@ export class DonnerListPage implements OnInit {
         });
     }
 
-    createArrayByNumber(num){
+    createArrayByNumber(num) {
         let arr = [];
         for (let i = 1; i <= num; i++) {
             arr.push(i);

@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { CharityHouseChatPage } from './charity-house-chat.page';
+import {CharityHouseChatPage} from './charity-house-chat.page';
 import {AutosizeModule} from 'ngx-autosize';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: CharityHouseChatPage
-  }
+    {
+        path: '',
+        component: CharityHouseChatPage
+    }
 ];
 
 @NgModule({
@@ -23,6 +23,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         AutosizeModule
     ],
-  declarations: [CharityHouseChatPage]
+    declarations: [CharityHouseChatPage]
 })
-export class CharityHouseChatPageModule {}
+export class CharityHouseChatPageModule {
+}

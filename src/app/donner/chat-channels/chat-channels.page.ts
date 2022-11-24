@@ -34,7 +34,7 @@ export class ChatChannelsPage implements OnInit {
         this.compareUser = this.currentUser.user.first_name.toLowerCase() + '-' + this.currentUser.user.last_name.toLowerCase();
     }
 
-    async loadData(){
+    async loadData() {
         await this.utils.presentLoading("Please wait...");
         this.http.get(`${this.service.homeUrl}/channels/list/${this.compareUser}`,
             {observe: 'response'}).subscribe(response => {
