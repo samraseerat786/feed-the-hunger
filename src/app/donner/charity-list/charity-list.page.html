@@ -15,17 +15,42 @@
             <ion-card class="welcome-card" *ngFor="let item of result">
                 <ion-card-header>
                     <ion-card-title>{{item?.name}}</ion-card-title>
-                    <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{item?.email}}</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
-                    <p>{{item?.name}} is {{item?.type}} in {{item?.address.streetAddress}} {{item?.address.city}}.</p>
-                    <p>{{item?.contact}} is Contact number and email is {{item?.email}}.</p>
-                    <p>there are {{item?.no_of_members}} members in house.</p>
-                    <p>{{item?.name}} have an account in {{item?.bank_name}} Bank where you can donate your funds
-                        in {{item?.account_no}} account Number.</p>
-                    <ion-button size="small" (click)="donateFood(item)" slot="start" color="success">Donate Food
-                    </ion-button>
-                    <ion-button size="small" (click)="donateFund(item)" slot="end" color="primary">Donate Money</ion-button>
+
+                    <div style="display: flex">
+                        <p class="detail-p">Dependants: </p>
+                        <p class="value-p">{{item.no_of_dependents}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Type: </p>
+                        <p class="value-p">{{item.type}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Address: </p>
+                        <p class="value-p">{{item?.address.streetAddress}} {{item?.address.city}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Contact Number: </p>
+                        <p class="value-p">{{item.contact}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Bank detail: </p>
+                        <p class="value-p">{{item.bank_name}} | {{item?.account_no}} </p>
+                    </div>
+                    <div class="line"></div>
+
+                    <ion-row>
+                        <ion-col size="6">
+                            <ion-button mode="ios" (click)="donateFood(item)" color="secondary" expand="block">Donate Food
+                            </ion-button>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-button mode="ios" (click)="donateFund(item)" color="secondary" expand="block">Donate Fund
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
                 </ion-card-content>
             </ion-card>
         </ion-col>
