@@ -59,8 +59,8 @@ export class LoginPage implements OnInit {
                                 {title: 'My Donations', url: '/donor-donations', icon: 'md-briefcase'},
                                 {title: 'Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
                                 {title: 'Reports', url: `/reports/${d.donner.id}`, icon: 'list'},
-                                {title: 'Settings', url: '/setting', icon: 'settings'},
-                                {title: 'Feedbacks', url: '/feed-backs', icon: 'list'}];
+                                {title: 'Feedbacks', url: '/feed-backs', icon: 'list'},
+                                {title: 'Settings', url: '/setting', icon: 'settings'}];
                             this.service.setRole(d.role);
                             localStorage.setItem('user', JSON.stringify(d.donner));
                             localStorage.setItem('appPages', JSON.stringify(this.appPages));

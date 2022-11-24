@@ -79,8 +79,9 @@ export class ProfilePage implements OnInit {
 
         this.profileImage = e.target.files[0];
 
-        const filePath = `profile-images/${this.user.username}.png`;
+        const filePath = `profile-images/${this.user.user.user_name}.png`;
         const storageRef = this.db.ref(filePath);
+        debugger
 
         await this.utils.presentLoading("Please wait...");
         await this.db.upload(filePath, this.profileImage).then(async (snapshot) => {
