@@ -905,6 +905,7 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
+            _this.statusBar.backgroundColorByHexString('#0cd1e8');
             _this.splashScreen.hide();
             _this.checkUser();
         });
