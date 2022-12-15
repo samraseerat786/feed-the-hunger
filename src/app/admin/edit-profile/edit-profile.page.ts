@@ -36,20 +36,20 @@ export class EditProfilePage implements OnInit {
             this.data.subscribe(data => {
                 this.utils.stopLoading();
                 this.user = data;
+                this.formInitializer();
             });
         });
-        this.formInitializer();
     }
 
     formInitializer() {
         console.log('formInitializer', this.user);
         this.updateForm = this.formBuilder.group({
-            id: [null, [Validators.required]],
-            first_name: [null, [Validators.required]],
-            last_name: [null, [Validators.required]],
-            email: [null, [Validators.required]],
-            user_name: [null, [Validators.required]],
-            password: [null, [Validators.required]]
+            id: [this.user.id, [Validators.required]],
+            first_name: [this.user.first_name, [Validators.required]],
+            last_name: [this.user.last_name, [Validators.required]],
+            email: [this.user.email, [Validators.required]],
+            user_name: [this.user.user_name, [Validators.required]],
+            password: [this.user.password, [Validators.required]]
         });
     }
 
