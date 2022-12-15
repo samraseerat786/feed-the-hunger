@@ -48,7 +48,6 @@ export class AdminProfilePage implements OnInit {
 
         const filePath = `profile-images/${this.user.user_name}.png`;
         const storageRef = this.db.ref(filePath);
-        debugger
 
         let fileName = `Date.now().png`;
         await this.utils.presentLoading("Please wait...");

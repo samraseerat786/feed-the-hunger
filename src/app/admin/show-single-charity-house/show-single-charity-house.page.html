@@ -16,13 +16,26 @@
                     <ion-card-subtitle>{{user?.email}}</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
-                    <p> {{user?.name}} is {{user?.type}} in {{user?.address.streetAddress}} {{user?.address.city}}.</p>
-                    <p>{{user?.contact}} is Contact number and email is {{user?.email}}.</p>
-                    <p>there are {{user?.no_of_members}} members in house.</p>
-                    <p>{{user?.name}} have an account in {{user?.bank_name}} Bank where you can donate your funds
-                        in {{user?.account_no}} account Number.</p>
-                    <ion-icon size="large" slot="end" name="ios-call" (click)="contactDealer(user?.email)"
-                              color="secondary"></ion-icon>
+                    <div style="display: flex">
+                        <p class="detail-p">Dependants: </p>
+                        <p class="value-p">{{user?.no_of_dependents}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Type: </p>
+                        <p class="value-p">{{user?.type}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Address: </p>
+                        <p class="value-p">{{user?.address.streetAddress}} {{user?.address.city}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Contact Number: </p>
+                        <p class="value-p">{{user?.contact}}</p>
+                    </div>
+                    <div style="display: flex">
+                        <p class="detail-p">Bank detail: </p>
+                        <p class="value-p">{{user?.bank_name}} | {{user?.account_no}} </p>
+                    </div>
                 </ion-card-content>
             </ion-card>
         </ion-col>

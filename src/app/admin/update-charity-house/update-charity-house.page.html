@@ -1,9 +1,117 @@
 <ion-header class="ion-text-center">
     <ion-toolbar color="secondary">
-        <ion-title>updateCharityHouse</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Update Charity House</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+            <ion-grid class="ion-padding-top">
+                <form [formGroup]="userForm" *ngIf="userForm">
+                    <h3 class="heading">User Information</h3>
+                    <ion-input [hidden]="true" value="{{user?.id}}" formControlName="id"></ion-input>
+                    <ion-item>
+                        <ion-label position="floating">First Name</ion-label>
+                        <ion-input placeholder="First Name" formControlName="first_name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Last Name</ion-label>
+                        <ion-input placeholder="Last Name" formControlName="last_name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input placeholder="Email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">User Name</ion-label>
+                        <ion-input placeholder="User Name" formControlName="user_name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input placeholder="Password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Role</ion-label>
+                        <ion-input placeholder="Role" formControlName="role"></ion-input>
+                    </ion-item>
 
+                    <h3 class="heading">NGO Information</h3>
+                    <ion-item>
+                        <ion-label position="floating">Name</ion-label>
+                        <ion-input placeholder="Contact" formControlName="name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">NGO Email</ion-label>
+                        <ion-input placeholder="Contact" formControlName="NGOEmail"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">No of Dependents</ion-label>
+                        <ion-input placeholder="Contact" formControlName="no_of_dependents"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Contact</ion-label>
+                        <ion-input placeholder="Contact" formControlName="contact"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Type</ion-label>
+                        <ion-select formControlName="type" placeholder="--Select--" okText="Okay"
+                                    cancelText="Dismiss">
+                            <ion-select-option value="Old House">Old House</ion-select-option>
+                            <ion-select-option value="Orphan House">Orphan House</ion-select-option>
+                            <ion-select-option value="Food Supplier">Food Supplier</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Bank Name</ion-label>
+                        <ion-input placeholder="Contact" formControlName="bank_name"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Account No</ion-label>
+                        <ion-input placeholder="Contact" formControlName="account_no"></ion-input>
+                    </ion-item>
+
+                    <h3 class="heading">Address Information</h3>
+                    <ion-item>
+                        <ion-label position="floating">Address</ion-label>
+                        <ion-input placeholder="Address" formControlName="address"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">City</ion-label>
+                        <ion-input placeholder="Address" formControlName="city"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Zip code</ion-label>
+                        <ion-input placeholder="Address" formControlName="zipCode"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">State</ion-label>
+                        <ion-input placeholder="Address" formControlName="state"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Country</ion-label>
+                        <ion-input placeholder="Address" formControlName="country"></ion-input>
+                    </ion-item>
+
+                    <ion-grid class="ion-padding-top">
+                        <ion-row class="ion-justify-content-center">
+                            <ion-button (click)="updateData()" shape="square">Save
+                            </ion-button>
+                        </ion-row>
+                    </ion-grid>
+                </form>
+            </ion-grid>
+        </ion-col>
+    </ion-row>
 </ion-content>

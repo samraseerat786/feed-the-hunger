@@ -15,6 +15,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {FCM} from '@ionic-native/fcm/ngx';
 import {AngularFireStorageModule} from "@angular/fire/storage";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCtHKb-EFeAK4vH317pp5zsYlZvc05rKIk',
@@ -39,7 +40,8 @@ const firebaseConfig = {
         AutosizeModule,
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule,
-        AngularFireStorageModule
+        AngularFireStorageModule,
+        ReactiveFormsModule
     ],
     providers: [
         StatusBar, FCM,

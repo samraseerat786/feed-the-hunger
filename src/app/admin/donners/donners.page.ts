@@ -34,10 +34,9 @@ export class DonnersPage implements OnInit {
         this.http.get(url, {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();
             if (response.status === 200 || response.status === 201) {
-                this.t = response.body;
-                this.result = this.t.content;
+                this.result = response.body;
                 localStorage.removeItem('donners');
-                localStorage.setItem('donners', JSON.stringify(this.t.content));
+                localStorage.setItem('donners', JSON.stringify(this.result));
             }
         }, (error) => {
             this.utils.stopLoading();
