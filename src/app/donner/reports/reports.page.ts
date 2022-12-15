@@ -38,7 +38,8 @@ export class ReportsPage implements OnInit {
         });
 
         await this.utils.presentLoading("Please wait...");
-        this.http.get(`${this.service.homeUrl}/reports/findByDonner/${this.donnerID}`,
+        // reports/findByDonner/${this.donnerID}
+        this.http.get(`${this.service.homeUrl}/reports/list`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();
             if (response.status === 200 || response.status === 201) {

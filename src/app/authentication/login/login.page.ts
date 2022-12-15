@@ -58,7 +58,6 @@ export class LoginPage implements OnInit {
                                 {title: 'charity Houses', url: '/charityList', icon: 'list'},
                                 {title: 'My Donations', url: '/donor-donations', icon: 'md-briefcase'},
                                 {title: 'Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
-                                {title: 'Reports', url: `/reports/${d.donner.id}`, icon: 'list'},
                                 {title: 'Feedbacks', url: '/feed-backs', icon: 'list'},
                                 {title: 'Settings', url: '/setting', icon: 'settings'}];
                             this.service.setRole(d.role);
@@ -85,7 +84,8 @@ export class LoginPage implements OnInit {
                         if (d.role === 'admin') {
                             this.appPages = [{title: 'Home', url: '/home', icon: 'home'},
                                 {title: 'Manage Users', url: '/tabs', icon: 'list',},
-                                {title: 'Message', url: '/chat-list', icon: 'ios-chatboxes'},
+                                {title: 'Messages', url: '/chat-list', icon: 'ios-chatboxes'},
+                                {title: 'Reports', url: `/reports`, icon: 'list'},
                                 {title: 'Profile', url: `/admin-profile/${d.user.id}`, icon: 'person'}];
                             this.service.setRole(d.role);
                             localStorage.setItem('user', JSON.stringify(d.user));
@@ -94,10 +94,12 @@ export class LoginPage implements OnInit {
                             this.service.changeMessage({role: d.role});
                             this.router.navigate(['home']);
                         }
+                    }else if (d.emailStatus && d.loginStatus && d.applicationStatus === "blocked") {
+                        this.utils.presentAlert("OOPS! Your account is blocked. Please contact feed.hunger786@gmail.com to unblock your account.");
                     } else if (d.emailStatus && d.loginStatus && d.applicationStatus === null) {
                         this.utils.presentAlert('Application status is disapproved. ' +
                             'Please check your email and click the activation link in email. Thank you!');
-                    } else if (d.emailStatus || d.loginStatus) {
+                    } else if (!d.emailStatus || !d.loginStatus) {
                         this.utils.presentAlert('Invalid Email, password. Try again latter !');
                     } else if (d.emailStatus === false) {
                         this.utils.presentAlert('Sorry ! User with that email, password does not exist');

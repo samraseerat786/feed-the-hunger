@@ -1,8 +1,7 @@
 <ion-header class="ion-text-center">
     <ion-toolbar color="secondary">
         <ion-buttons slot="start">
-            <ion-back-button (click)="loadDonnerList()" *ngIf="admin"></ion-back-button>
-            <ion-menu-button *ngIf="!admin"></ion-menu-button>
+            <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Reports</ion-title>
     </ion-toolbar>
@@ -15,13 +14,20 @@
                 <ion-card class="ion-no-padding">
                     <ion-card-header>
                         <ion-card-title>{{item?.type}}</ion-card-title>
-                        <ion-card-subtitle>{{item?.message}}</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <ion-card-content class="ion-no-padding">
-                            <h5>From: {{ item?.charityHouse?.email }}</h5>
-                            <p>{{ item?.charityHouse?.name }}</p>
-                        </ion-card-content>
+                        <div style="display: flex">
+                            <p class="detail-p">Report to: </p>
+                            <p class="value-p">{{item?.charityHouse?.email}}</p>
+                        </div>
+                        <div style="display: flex">
+                            <p class="detail-p">NGO Name: </p>
+                            <p class="value-p">{{item?.charityHouse?.name}}</p>
+                        </div>
+                        <div style="display: flex">
+                            <p class="detail-p">Message: </p>
+                            <p class="value-p">{{item?.messag}}</p>
+                        </div>
                     </ion-card-content>
                 </ion-card>
             </ion-list>

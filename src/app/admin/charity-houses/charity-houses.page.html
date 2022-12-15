@@ -8,7 +8,7 @@
                     <ion-img (click)="updateItem(item?.id)" style="width: 30px; height: 30px; cursor: pointer"
                              src="/assets/pencil-sharp.svg"
                              alt="update" slot="end"></ion-img>
-                    <ion-toggle checked="false" slot="end"></ion-toggle>
+                    <ion-toggle checked="{{item?.blocked}}" slot="end" (ionChange)="blockUser($event, item?.id)"></ion-toggle>
                 </ion-item>
             </ion-list>
         </ion-col>
