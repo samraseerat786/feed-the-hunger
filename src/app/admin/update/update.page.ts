@@ -37,22 +37,23 @@ export class UpdatePage implements OnInit {
             this.data.subscribe(data => {
                 this.utils.stopLoading();
                 this.user = data;
+                console.log(data)
+                this.formInitializer();
             });
         });
-        this.formInitializer();
     }
 
     formInitializer() {
         this.signupForm = this.formBuilder.group({
-            id: [null, [Validators.required]],
-            first_name: [null, [Validators.required]],
-            last_name: [null, [Validators.required]],
-            email: [null, [Validators.required]],
-            user_name: [null, [Validators.required]],
-            password: [null, [Validators.required]],
-            role: [null, [Validators.required]],
-            address: [null, [Validators.required]],
-            contact: [null, [Validators.required]]
+            id: [this.user.id, [Validators.required]],
+            first_name: [this.user.user.first_name, [Validators.required]],
+            last_name: [this.user.user.last_name, [Validators.required]],
+            email: [this.user.user.email, [Validators.required]],
+            user_name: [this.user.user.user_name, [Validators.required]],
+            password: [this.user.user.password, [Validators.required]],
+            role: [this.user.user.role, [Validators.required]],
+            address: [this.user.address, [Validators.required]],
+            contact: [this.user.contact, [Validators.required]]
         });
     }
 
