@@ -52,4 +52,8 @@ export class CharityListPage implements OnInit {
     donateFood(item) {
         this.router.navigate(['donate-food', item]);
     }
+
+    reportNGO(item: any) {
+        this.router.navigate(['send-report', item]);
+    }
 }

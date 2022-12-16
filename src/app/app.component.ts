@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
     checkUser() {
         this.user = this.authService.getUser();
         if (this.user) {
-            this.loadUser(this.user.user.id);
+            if(this.user.role != "admin") this.loadUser(this.user.user.id);
             this.loadUserAndPages('');
             this.navCtrl.navigateRoot(['/home'], {replaceUrl: true});
         } else {

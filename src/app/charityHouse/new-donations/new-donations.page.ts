@@ -135,7 +135,7 @@ export class NewDonationsPage implements OnInit {
                 console.log(response.body);
                 if (response.body) {
                     this.utils.presentAlert("Donation acknowledged. Thanks for your acknowledgement.");
-                    this.deleteById(id);
+                    // this.deleteById(id);
                 } else {
                     this.utils.presentAlert("Oops ! Something went wrong while acknowledging the fund.");
                 }

@@ -29,6 +29,7 @@ export class SendReportPage implements OnInit {
         this.route.paramMap.subscribe(paramMap => {
             this.reportID = paramMap.get('id');
         });
+        console.log("this.reportID: ", this.reportID);
         this.formInitializer();
     }
 
@@ -47,14 +48,14 @@ export class SendReportPage implements OnInit {
         this.finalReportObject = '{"email": "' + test.email + '",' +
             ' "type": "' + test.type + '",' +
             ' "message": "' + test.reportMessage + '",' +
-            ' "donner": { "id": ' + this.reportID + '},' +
-            ' "charityHouse": { "id": ' + charityID + '}' + '}';
+            ' "donner": { "id": ' + charityID + '},' +
+            ' "charityHouse": { "id": ' + this.reportID + '}' + '}';
         const feedback = JSON.parse(this.finalReportObject);
         await this.utils.presentLoading("Please wait...");
         this.saveFeedback(feedback).subscribe(data => {
                 this.utils.stopLoading();
                 this.utils.presentAlert('Donner reported successfully.');
-                this.router.navigate(['donner-list']);
+                this.router.navigate(['charityList']);
             },
             error => {
                 this.utils.stopLoading();

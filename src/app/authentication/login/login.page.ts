@@ -57,6 +57,7 @@ export class LoginPage implements OnInit {
                             this.appPages = [{title: 'Home', url: '/home', icon: 'home'},
                                 {title: 'charity Houses', url: '/charityList', icon: 'list'},
                                 {title: 'My Donations', url: '/donor-donations', icon: 'md-briefcase'},
+                                {title: 'Donate Food', url: '/donate-food', icon: 'md-pizza'},
                                 {title: 'Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
                                 {title: 'Feedbacks', url: '/feed-backs', icon: 'list'},
                                 {title: 'Settings', url: '/setting', icon: 'settings'}];

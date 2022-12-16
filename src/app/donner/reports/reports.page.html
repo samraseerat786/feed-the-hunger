@@ -10,8 +10,7 @@
 <ion-content *ngIf="!isEmpty">
     <ion-row class="ion-justify-content-center">
         <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-list class="ion-no-padding" no-lines *ngFor="let item of result">
-                <ion-card class="ion-no-padding">
+            <ion-card class="ion-no-padding" *ngFor="let item of result">
                     <ion-card-header>
                         <ion-card-title>{{item?.type}}</ion-card-title>
                     </ion-card-header>
@@ -26,11 +25,10 @@
                         </div>
                         <div style="display: flex">
                             <p class="detail-p">Message: </p>
-                            <p class="value-p">{{item?.messag}}</p>
+                            <p class="value-p">{{item?.message}}</p>
                         </div>
                     </ion-card-content>
                 </ion-card>
-            </ion-list>
         </ion-col>
     </ion-row>
 </ion-content>

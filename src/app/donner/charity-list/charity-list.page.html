@@ -11,8 +11,9 @@
 
 <ion-content *ngIf="result.length > 0">
     <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-card class="welcome-card" *ngFor="let item of result">
+        <ion-col class="ion-align-self-center" *ngFor="let item of result"
+                 size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+            <ion-card class="welcome-card" *ngIf="item.id != 1">
                 <ion-card-header>
                     <ion-card-title>{{item?.name}}</ion-card-title>
                     <ion-card-subtitle>{{item?.email}}</ion-card-subtitle>
@@ -43,15 +44,20 @@
 
                     <ion-row>
                         <ion-col size="6">
-                            <ion-button mode="ios" (click)="donateFood(item)" color="secondary" expand="block">Donate
-                                Food
+                            <ion-button mode="ios" (click)="reportNGO(item)" color="secondary" expand="block">
+                                Report NGO
                             </ion-button>
                         </ion-col>
-                        <ion-col size="6">
-                            <ion-button mode="ios" (click)="donateFund(item)" color="secondary" expand="block">Donate
-                                Fund
-                            </ion-button>
-                        </ion-col>
+<!--                        <ion-col size="6">-->
+<!--                            <ion-button mode="ios" (click)="donateFood(item)" color="secondary" expand="block">Donate-->
+<!--                                Food-->
+<!--                            </ion-button>-->
+<!--                        </ion-col>-->
+<!--                        <ion-col size="6">-->
+<!--                            <ion-button mode="ios" (click)="donateFund(item)" color="secondary" expand="block">Donate-->
+<!--                                Fund-->
+<!--                            </ion-button>-->
+<!--                        </ion-col>-->
                     </ion-row>
                 </ion-card-content>
             </ion-card>

@@ -90,7 +90,7 @@ export class DonateFoodPage implements OnInit {
             '"type": "' + test.type + '" },' +
             '"donation": {' + '"date": "' + this.date + '",' +
             '"donner": {' + '"id": ' + donnerID + ' },' +
-            '"charityHouse": {' + '"id": ' + this.charityID + ' }}}';
+            '"charityHouse": {' + '"id": ' + 1 + ' }}}';
         const foodDonation = JSON.parse(this.finalDonationObject);
         foodDonation.foodItem.image = imageUrl;
         foodDonation.donation.acceptanceTime = "not added yet";
@@ -98,7 +98,7 @@ export class DonateFoodPage implements OnInit {
         this.saveFoodDonation(foodDonation).subscribe(data => {
                 this.utils.stopLoading();
                 this.utils.presentAlert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
-                this.router.navigate(['charityList']);
+                // this.router.navigate(['charityList']);
             },
             error => {
                 this.utils.stopLoading();
