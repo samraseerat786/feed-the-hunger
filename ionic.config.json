@@ -1,5 +1,48 @@
 {
-  "name": "New Ionic App",
-  "integrations": {},
-  "type": "angular"
+  "name": "Feed the hunger",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {
+      "enabled": false
+    }
+  },
+  "type": "angular",
+  "project_info": {
+    "project_number": "45623475797",
+    "firebase_url": "https://feed-the-hunger-4771e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "feed-the-hunger-4771e",
+    "storage_bucket": "feed-the-hunger-4771e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45623475797:android:df7ff6ad995196891d9edc",
+        "android_client_info": {
+          "package_name": "com.feed.hunger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45623475797-ds83musbu44lqqhe7cfqiuc7d8fsgloi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDpO5sUEsFMZc8_Sf0Q1YD9ihU7yjxjUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45623475797-ds83musbu44lqqhe7cfqiuc7d8fsgloi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }

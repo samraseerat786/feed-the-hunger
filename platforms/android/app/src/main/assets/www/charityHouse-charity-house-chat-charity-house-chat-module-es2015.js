@@ -1,0 +1,185 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["charityHouse-charity-house-chat-charity-house-chat-module"],{
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/charityHouse/charity-house-chat/charity-house-chat.page.html":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/charityHouse/charity-house-chat/charity-house-chat.page.html ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header class=\"ion-text-center\">\r\n    <ion-toolbar color=\"secondary\">\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button></ion-back-button>\r\n        </ion-buttons>\r\n        <ion-title>Message</ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <ion-row class=\"ion-justify-content-center\">\r\n        <ion-col class=\"ion-align-self-center\" size-md=\"9\" size-lg=\"8\" size-xl=\"6\" size-xs=\"12\" size-sm=\"10\">\r\n            <ion-grid>\r\n                <ion-row *ngFor=\"let message of messages\">\r\n                    <ion-col size=\"9\" *ngIf=\"currentUser !== message?.sender\" class=\"message other-message\">\r\n                        <b>{{message?.sender}}</b><br>\r\n                        <span>{{message?.message}}</span>\r\n                        <div class=\"time\" text-right><br>\r\n                            {{message.createdAt | date:'short'}}</div>\r\n                    </ion-col>\r\n\r\n                    <ion-col offset=\"3\" size=\"9\" *ngIf=\"currentUser === message.sender\" class=\"message my-message\">\r\n                        <b>{{message?.sender}}</b><br>\r\n                        <span>{{message?.message}}</span>\r\n                        <div class=\"time\" text-right><br>\r\n                            {{message.createdAt | date:'short'}}</div>\r\n                    </ion-col>\r\n                </ion-row>\r\n            </ion-grid>\r\n        </ion-col>\r\n    </ion-row>\r\n</ion-content>\r\n<ion-footer>\r\n    <ion-toolbar color=\"light\">\r\n        <ion-row class=\"ion-justify-content-center\">\r\n            <ion-col class=\"ion-align-self-center\" size-md=\"9\" size-lg=\"8\" size-xl=\"6\" size-xs=\"12\" size-sm=\"10\">\r\n                <ion-item color=\"light\">\r\n                    <textarea placeholder=\"Enter your message\" autosize [maxRows]=\"3\" [(ngModel)]=\"newMsg\"\r\n                              class=\"message-input\"></textarea>\r\n                    <ion-icon (click)=\"sendMessage()\" name=\"send\" size=\"large\"\r\n                              slot=\"end\" color=\"success\" mode=\"md\" class=\"sendIcon\"></ion-icon>\r\n                </ion-item>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-toolbar>\r\n</ion-footer>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/charityHouse/charity-house-chat/charity-house-chat.module.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/charityHouse/charity-house-chat/charity-house-chat.module.ts ***!
+  \******************************************************************************/
+/*! exports provided: CharityHouseChatPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CharityHouseChatPageModule", function() { return CharityHouseChatPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _charity_house_chat_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./charity-house-chat.page */ "./src/app/charityHouse/charity-house-chat/charity-house-chat.page.ts");
+/* harmony import */ var ngx_autosize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-autosize */ "./node_modules/ngx-autosize/fesm2015/ngx-autosize.js");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _charity_house_chat_page__WEBPACK_IMPORTED_MODULE_6__["CharityHouseChatPage"]
+    }
+];
+let CharityHouseChatPageModule = class CharityHouseChatPageModule {
+};
+CharityHouseChatPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            ngx_autosize__WEBPACK_IMPORTED_MODULE_7__["AutosizeModule"]
+        ],
+        declarations: [_charity_house_chat_page__WEBPACK_IMPORTED_MODULE_6__["CharityHouseChatPage"]]
+    })
+], CharityHouseChatPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/charityHouse/charity-house-chat/charity-house-chat.page.scss":
+/*!******************************************************************************!*\
+  !*** ./src/app/charityHouse/charity-house-chat/charity-house-chat.page.scss ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".message {\n  padding: 10px;\n  border-radius: 10px;\n  margin-bottom: 5px;\n  white-space: pre-wrap;\n}\n\n.other-message {\n  background: var(--ion-color-primary);\n  color: ghostwhite;\n}\n\n.my-message {\n  background: var(--ion-color-secondary);\n  color: white;\n}\n\n.time {\n  color: white;\n  float: right;\n}\n\n.message-input {\n  width: 100%;\n  resize: none;\n  padding-left: 10px;\n  padding-right: 10px;\n  border: 4px solid var(--ion-color-medium);\n  outline: none;\n  border-radius: 15px;\n}\n\n::-webkit-input-placeholder {\n  padding-top: 10px;\n  text-align: center;\n}\n\n.msg-btn {\n  --padding-start: 0.5em;\n  --padding-end: 0.5em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2hhcml0eUhvdXNlL2NoYXJpdHktaG91c2UtY2hhdC9EOlxcRllQXFxmZWVkLXRoZS1odW5kZXIvc3JjXFxhcHBcXGNoYXJpdHlIb3VzZVxcY2hhcml0eS1ob3VzZS1jaGF0XFxjaGFyaXR5LWhvdXNlLWNoYXQucGFnZS5zY3NzIiwic3JjL2FwcC9jaGFyaXR5SG91c2UvY2hhcml0eS1ob3VzZS1jaGF0L2NoYXJpdHktaG91c2UtY2hhdC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLHFCQUFBO0FDQUY7O0FER0E7RUFDRSxvQ0FBQTtFQUNBLGlCQUFBO0FDQUY7O0FER0E7RUFDRSxzQ0FBQTtFQUNBLFlBQUE7QUNBRjs7QURHQTtFQUNFLFlBQUE7RUFDQSxZQUFBO0FDQUY7O0FER0E7RUFFRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSx5Q0FBQTtFQUdBLGFBQUE7RUFDQSxtQkFBQTtBQ0hGOztBRE1BO0VBQ0UsaUJBQUE7RUFDQSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0JBQUE7RUFDQSxvQkFBQTtBQ0hGIiwiZmlsZSI6InNyYy9hcHAvY2hhcml0eUhvdXNlL2NoYXJpdHktaG91c2UtY2hhdC9jaGFyaXR5LWhvdXNlLWNoYXQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5tZXNzYWdlIHtcclxuICBwYWRkaW5nOiAxMHB4O1xyXG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgbWFyZ2luLWJvdHRvbTogNXB4O1xyXG4gIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDtcclxufVxyXG5cclxuLm90aGVyLW1lc3NhZ2Uge1xyXG4gIGJhY2tncm91bmQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcclxuICBjb2xvcjogZ2hvc3R3aGl0ZTtcclxufVxyXG5cclxuLm15LW1lc3NhZ2Uge1xyXG4gIGJhY2tncm91bmQ6IHZhcigtLWlvbi1jb2xvci1zZWNvbmRhcnkpO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuLnRpbWUge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBmbG9hdDogcmlnaHQ7XHJcbn1cclxuXHJcbi5tZXNzYWdlLWlucHV0IHtcclxuXHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgcmVzaXplOiBub25lO1xyXG4gIHBhZGRpbmctbGVmdDogMTBweDtcclxuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gIGJvcmRlcjogNHB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1tZWRpdW0pO1xyXG4gIC8vLXdlYmtpdC1ib3JkZXItcmFkaXVzOiAxNXB4O1xyXG4gIC8vLW1vei1ib3JkZXItcmFkaXVzOiAxNXB4O1xyXG4gIG91dGxpbmU6IG5vbmU7XHJcbiAgYm9yZGVyLXJhZGl1czogMTVweDtcclxufVxyXG5cclxuOjotd2Via2l0LWlucHV0LXBsYWNlaG9sZGVyIHtcclxuICBwYWRkaW5nLXRvcDogMTBweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5tc2ctYnRuIHtcclxuICAtLXBhZGRpbmctc3RhcnQ6IDAuNWVtO1xyXG4gIC0tcGFkZGluZy1lbmQ6IDAuNWVtO1xyXG59XHJcbiIsIi5tZXNzYWdlIHtcbiAgcGFkZGluZzogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogNXB4O1xuICB3aGl0ZS1zcGFjZTogcHJlLXdyYXA7XG59XG5cbi5vdGhlci1tZXNzYWdlIHtcbiAgYmFja2dyb3VuZDogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xuICBjb2xvcjogZ2hvc3R3aGl0ZTtcbn1cblxuLm15LW1lc3NhZ2Uge1xuICBiYWNrZ3JvdW5kOiB2YXIoLS1pb24tY29sb3Itc2Vjb25kYXJ5KTtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4udGltZSB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZmxvYXQ6IHJpZ2h0O1xufVxuXG4ubWVzc2FnZS1pbnB1dCB7XG4gIHdpZHRoOiAxMDAlO1xuICByZXNpemU6IG5vbmU7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbiAgYm9yZGVyOiA0cHggc29saWQgdmFyKC0taW9uLWNvbG9yLW1lZGl1bSk7XG4gIG91dGxpbmU6IG5vbmU7XG4gIGJvcmRlci1yYWRpdXM6IDE1cHg7XG59XG5cbjo6LXdlYmtpdC1pbnB1dC1wbGFjZWhvbGRlciB7XG4gIHBhZGRpbmctdG9wOiAxMHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5tc2ctYnRuIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAwLjVlbTtcbiAgLS1wYWRkaW5nLWVuZDogMC41ZW07XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/charityHouse/charity-house-chat/charity-house-chat.page.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/charityHouse/charity-house-chat/charity-house-chat.page.ts ***!
+  \****************************************************************************/
+/*! exports provided: CharityHouseChatPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CharityHouseChatPage", function() { return CharityHouseChatPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/es2015/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _services_list_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/list.service */ "./src/app/services/list.service.ts");
+/* harmony import */ var _services_utils_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/utils.service */ "./src/app/services/utils.service.ts");
+
+
+
+
+
+
+
+
+let CharityHouseChatPage = class CharityHouseChatPage {
+    constructor(utils, route, http, service, db) {
+        this.utils = utils;
+        this.route = route;
+        this.http = http;
+        this.service = service;
+        this.db = db;
+        this.messages = [];
+        this.recivedData = [];
+        this.loadchannelName();
+        this.loadData();
+    }
+    ngOnInit() {
+    }
+    loadData() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            yield this.utils.presentLoading("Please wait...");
+            this.db.list(`/channels/${this.channel}`).valueChanges().subscribe(data => {
+                this.utils.stopLoading();
+                this.recivedData = data;
+                this.messages = data;
+            });
+            this.utils.stopLoading();
+        });
+    }
+    loadchannelName() {
+        const donner = JSON.parse(localStorage.getItem('donnerName'));
+        this.user = JSON.parse(localStorage.getItem('user'));
+        // this.currentUser = this.user.user.first_name.toLowerCase() + ' ' + this.user.user.last_name.toLowerCase();
+        this.currentUser = this.user.user.user_name.toLowerCase(); // + ' ' + this.user.user.last_name.toLowerCase();
+        this.channel = donner + '-' + this.user.user.first_name.toLowerCase() + '-' + this.user.user.last_name.toLowerCase();
+    }
+    sendMessage() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const url = `${this.service.homeUrl}/channels/exist-or-not/${this.channel}`;
+            yield this.utils.presentLoading("Please wait...");
+            this.http.post(url, 1).subscribe(data => {
+                this.utils.stopLoading();
+            }, error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
+            this.db.list(`/channels/${this.channel}`).push({
+                sender: this.currentUser,
+                message: this.newMsg,
+                createdAt: new Date().getTime()
+            });
+            this.newMsg = '';
+            setTimeout(() => {
+                this.content.scrollToBottom(10);
+            });
+        });
+    }
+};
+CharityHouseChatPage.ctorParameters = () => [
+    { type: _services_utils_service__WEBPACK_IMPORTED_MODULE_7__["UtilsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] },
+    { type: _services_list_service__WEBPACK_IMPORTED_MODULE_6__["ListService"] },
+    { type: _angular_fire_database__WEBPACK_IMPORTED_MODULE_2__["AngularFireDatabase"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"]),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"])
+], CharityHouseChatPage.prototype, "content", void 0);
+CharityHouseChatPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-charity-house-chat',
+        template: __webpack_require__(/*! raw-loader!./charity-house-chat.page.html */ "./node_modules/raw-loader/index.js!./src/app/charityHouse/charity-house-chat/charity-house-chat.page.html"),
+        styles: [__webpack_require__(/*! ./charity-house-chat.page.scss */ "./src/app/charityHouse/charity-house-chat/charity-house-chat.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_utils_service__WEBPACK_IMPORTED_MODULE_7__["UtilsService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"],
+        _services_list_service__WEBPACK_IMPORTED_MODULE_6__["ListService"],
+        _angular_fire_database__WEBPACK_IMPORTED_MODULE_2__["AngularFireDatabase"]])
+], CharityHouseChatPage);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=charityHouse-charity-house-chat-charity-house-chat-module-es2015.js.map
