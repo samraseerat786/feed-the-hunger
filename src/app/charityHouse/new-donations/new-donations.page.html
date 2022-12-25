@@ -38,7 +38,7 @@
                     <ion-row>
                         <ion-col size-md="4">
                             <ion-button size="default" (click)="acceptFood(item.id)"
-                                        color="success" expand="block">Accept
+                                        color="success" expand="block" *ngIf="item.status != 'accepted'">Accept
                             </ion-button>
                         </ion-col>
                         <ion-col size-md="4">

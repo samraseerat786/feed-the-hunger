@@ -37,6 +37,8 @@ export class AppComponent implements OnInit {
 
     appPages = [];
 
+    roleName: any;
+
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
@@ -49,7 +51,16 @@ export class AppComponent implements OnInit {
     checkUser() {
         this.user = this.authService.getUser();
         if (this.user) {
-            if(this.user.role != "admin") this.loadUser(this.user.user.id);
+            if(this.user.role != "admin") {
+                this.loadUser(this.user.user.id);
+                if(this.user.user.role == 'charity house')
+                this.roleName = "NGO";
+                else if(this.user.user.role == 'donner'){
+                    this.roleName = "Donor";
+                }
+            } else {
+                this.roleName = "Admin";
+            }
             this.loadUserAndPages('');
             this.navCtrl.navigateRoot(['/home'], {replaceUrl: true});
         } else {
@@ -63,6 +74,13 @@ export class AppComponent implements OnInit {
                 this.role = data;
                 this.role = this.role.role;
                 this.loadUserAndPages(this.role);
+                if(this.role == 'charity house') {
+                    this.roleName = "NGO";
+                } else if(this.role == 'donner') {
+                    this.roleName = "Donor";
+                } else if (this.role == 'admin'){
+                    this.roleName = "Admin";
+                }
             }
         });
     }

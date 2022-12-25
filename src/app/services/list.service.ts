@@ -15,9 +15,9 @@ export class ListService {
     }
 
     role: any;
-    // homeUrl = 'http://localhost:8095';
+    homeUrl = 'http://localhost:8095';
 
-    homeUrl = 'https://feed-the-hunger-backend.herokuapp.com/';
+    // homeUrl = 'https://feed-the-hunger-backend.herokuapp.com/';
     addUser(item: number) {
         this.user = item;
     }

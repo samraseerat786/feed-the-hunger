@@ -9,11 +9,11 @@
                             <img [routerLink]="['profile-picture']" class="profile-picture"
                                  src="{{user?.image || user?.user?.image || defaultImage}}"/>
                             <h3 class="name">{{user?.user?.first_name}} {{user?.user?.last_name}}</h3>
-                            <h3 class="name">{{user?.first_name}} {{user?.last_name}}</h3>
+                            <h3 class="name">{{user?.first_name}} {{user?.last_name}} ({{roleName}})</h3>
                         </div>
                         <div *ngIf="!user" class="profile">
                             <img class="profile-picture" src="assets/person-circle-outline.png"/>
-                            <h3 class="name">Your Name</h3>
+                            <h3 class="name">Your Name ({{roleName}})</h3>
                         </div>
                     </ion-header>
                     <ion-item *ngFor="let p of appPages" [routerDirection]="'root'" [routerLink]="[p.url]" mode="md">
