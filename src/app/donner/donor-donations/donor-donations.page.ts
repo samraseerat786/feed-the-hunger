@@ -36,6 +36,9 @@ export class DonorDonationsPage implements OnInit {
             if (response.status === 200 || response.status === 201) {
                 console.log(response.body);
                 this.result = response.body;
+                let newDonations = this.result.filter(d => d.status == 'new');
+                let otherDonations = this.result.filter(d => d.status != 'new');
+                this.result = [...newDonations, ...otherDonations];
                 localStorage.removeItem('donorDonation');
                 localStorage.setItem('donorDonation', JSON.stringify(this.result));
             }

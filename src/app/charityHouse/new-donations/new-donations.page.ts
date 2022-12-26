@@ -38,7 +38,14 @@ export class NewDonationsPage implements OnInit {
             if (response.status === 200 || response.status === 201) {
                 console.log(response.body);
                 this.result = response.body;
-                this.result = this.result.filter(d => d.status == 'new');
+                let newDonations = this.result.filter(d => d.status != 'accepted');
+                let otherDonations = this.result.filter(d => d.status == 'accepted');
+                this.result = [...newDonations, ...otherDonations];
+                this.result = this.result.filter(d =>
+                    !(d.charityHouseId == this.user.id && d.status == 'rejected') &&
+                    !(d.charityHouseId != this.user.id && d.status == 'accepted')
+                );
+                console.log("this.result: ", this.result);
                 localStorage.removeItem('newDonation');
                 localStorage.setItem('newDonation', JSON.stringify(this.result));
             }
@@ -128,14 +135,15 @@ export class NewDonationsPage implements OnInit {
         if (time != '') {
             acceptanceDate = time;
         }
-        this.http.get(`${this.service.homeUrl}/donations/update-donation-by-id?id=${id}&status=${status}&time=${acceptanceDate}`,
+        this.http.get(`${this.service.homeUrl}/donations/update-donation-by-id?ngoId=${this.user.id}&id=${id}&status=${status}&time=${acceptanceDate}`,
             {observe: 'response'}).subscribe(response => {
             this.utils.stopLoading();
             if (response.status === 200 || response.status === 201) {
                 console.log(response.body);
                 if (response.body) {
                     this.utils.presentAlert("Donation acknowledged. Thanks for your acknowledgement.");
-                    // this.deleteById(id);
+                    if(status == 'rejected') this.deleteById(id);
+                    if(status == 'accepted') this.updateStatus(id);
                 } else {
                     this.utils.presentAlert("Oops ! Something went wrong while acknowledging the fund.");
                 }
@@ -152,4 +160,9 @@ export class NewDonationsPage implements OnInit {
         }), 1);
     }
 
+    updateStatus(id) {
+        this.result.forEach(d => {
+            if(d.id == id) d.status = "accepted";
+        });
+    }
 }
