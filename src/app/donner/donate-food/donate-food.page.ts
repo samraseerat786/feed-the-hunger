@@ -5,7 +5,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {ListService} from '../../services/list.service';
 import {UtilsService} from "../../services/utils.service";
-import * as firebase from 'firebase';
 import {AngularFireStorage} from "@angular/fire/storage";
 
 @Component({
@@ -24,13 +23,16 @@ export class DonateFoodPage implements OnInit {
     finalDonationObject;
     dateTill;
     foodImage;
+    labels = [];
+    isLabeling = false;
 
     constructor(private utils: UtilsService,
                 private route: ActivatedRoute,
                 private http: HttpClient,
                 private formBuilder: FormBuilder,
                 private service: ListService,
-                private router: Router, public db: AngularFireStorage) {
+                private router: Router,
+                public db: AngularFireStorage) {
     }
 
     ngOnInit() {
@@ -54,6 +56,26 @@ export class DonateFoodPage implements OnInit {
 
     async imageFileChanged(e) {
         this.foodImage = e.target.files[0];
+        await this.utils.presentLoading("Please wait...");
+        await this.getFoodLabels(this.foodImage).subscribe(data => {
+            this.utils.stopLoading();
+            console.log(data);
+            if (data.length > 0) {
+                const foodLabels = data.filter(d => d.label == 'food' || d.label == 'meal');
+                if (foodLabels.length > 0) {
+                    this.labels = data;
+                    this.isLabeling = true;
+                    setTimeout(() => {
+                        document.getElementById("food-label").click();
+                    }, 500);
+                } else {
+                    this.utils.presentAlert("Please select a food image.");
+                }
+            }
+        },
+        error => {
+            this.utils.stopLoading();
+        });
     }
 
     async uploadImageAndFoodDonation() {
@@ -108,5 +130,12 @@ export class DonateFoodPage implements OnInit {
     saveFoodDonation(dataObj): Observable<any> {
         const url = `${this.service.homeUrl}/foodDonationDetails/newFoodDonationDetails`;
         return this.http.post(url, dataObj);
+    }
+
+    getFoodLabels(file): Observable<any> {
+        let formData = new FormData();
+        formData.append("file", file);
+        const url = `${this.service.homeUrl}/upload`;
+        return this.http.post(url, formData);
     }
 }

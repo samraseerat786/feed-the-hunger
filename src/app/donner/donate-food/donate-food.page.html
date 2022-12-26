@@ -30,6 +30,8 @@
                                 <ion-select-option value="fast Food">Fast Food</ion-select-option>
                                 <ion-select-option value="rise">Rise</ion-select-option>
                                 <ion-select-option value="simple food">Simple Food</ion-select-option>
+                                <ion-select-option value="simple food">Fruit</ion-select-option>
+                                <ion-select-option value="simple food">Dry Fruits</ion-select-option>
                             </ion-select>
                         </ion-item>
                         <ion-item>
@@ -47,6 +49,13 @@
                             <ion-label id="food_image" color="primary" stacked>Food Image</ion-label>
                             <ion-input type="file" accept="image/*" id="upload"
                                        (change)="imageFileChanged($event)"></ion-input>
+                        </ion-item>
+                        <ion-item *ngIf="isLabeling">
+                            <ion-label position="floating">Food Label</ion-label>
+                            <ion-select formControlName="type" placeholder="--Select--" okText="Okay"
+                                        cancelText="Dismiss" id="food-label">
+                                <ion-select-option *ngFor="let label of labels" value="{{label.label}}">{{label.label}}</ion-select-option>
+                            </ion-select>
                         </ion-item>
                     </div>
                     <div class="ion-padding">
