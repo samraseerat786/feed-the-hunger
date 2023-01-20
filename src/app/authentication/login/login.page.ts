@@ -60,6 +60,7 @@ export class LoginPage implements OnInit {
                                 {title: 'Donate Food', url: '/donate-food', icon: 'md-pizza'},
                                 {title: 'Chat', url: '/chat-channels', icon: 'ios-chatboxes'},
                                 {title: 'Feedbacks', url: '/feed-backs', icon: 'list'},
+                                {title: 'Reviews', url: '/reviews', icon: 'list'},
                                 {title: 'Settings', url: '/setting', icon: 'settings'}];
                             this.service.setRole(d.role);
                             localStorage.setItem('user', JSON.stringify(d.donner));

@@ -55,8 +55,8 @@ export class RegisterCharityHousePage implements OnInit {
             no_of_dependents: [null, [Validators.required, Validators.pattern('[0-9]*')]],
             contact: [null, [Validators.required, Validators.pattern('[0-9]*')]],
             type: [null, [Validators.required]],
-            bank_name: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-            account_no: [null, [Validators.required, Validators.pattern('[0-9]*')]]
+            // bank_name: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+            // account_no: [null, [Validators.required, Validators.pattern('[0-9]*')]]
         });
     }
 
@@ -69,8 +69,8 @@ export class RegisterCharityHousePage implements OnInit {
                 '" , "no_of_dependents" : "' + formData.no_of_dependents +
                 '" , "contact" : "' + formData.contact +
                 '" , "type" : "' + formData.type +
-                '" , "bank_name" : "' + formData.bank_name +
-                '" , "account_no" : "' + formData.account_no +
+                '" , "bank_name" : "' + "" +
+                '" , "account_no" : "' + "" +
                 '" ,' + this.user +
                 ',';
             const url = `register-charity-house/${this.charityHouse}`

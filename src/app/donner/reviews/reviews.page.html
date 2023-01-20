@@ -1,0 +1,73 @@
+<ion-header xmlns="http://www.w3.org/1999/html">
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Reviews</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center">
+    <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+      <ion-card no-border *ngFor="let review of result">
+        <ion-card-header style="padding-bottom: 0;">
+            <ion-icon slot="start" name="person" color="secondary"></ion-icon>
+            <ion-card-title class="title">{{review?.charityHouse?.user?.first_name}}</ion-card-title>
+            <ion-card-subtitle>{{review?.charityHouse?.contact}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="padding-top: 0;">
+            <ion-text color="primary">
+                <h4>{{review?.title}}.</h4>
+            </ion-text>
+            <div *ngIf="review?.star ==1">
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-label>{{review?.star}}</ion-label>
+                <br>
+            </div>
+            <div *ngIf="review?.star ==2">
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-label>{{review?.star}}</ion-label>
+                <br>
+            </div>
+            <div *ngIf="review?.star ==3">
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-label>{{review?.star}}</ion-label>
+                <br>
+            </div>
+            <div *ngIf="review?.star ==4">
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" class="star" name="star"></ion-icon>
+                <ion-label>{{review?.star}}</ion-label>
+                <br>
+            </div>
+            <div *ngIf="review?.star ==5">
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-icon style="width: 20px; height: 20px;" color="dark" name="star"></ion-icon>
+                <ion-label>{{review?.star}}</ion-label>
+                <br>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <h4 *ngIf="isEmpty">No Review Found.</h4>
+    </ion-col>
+  </ion-row>
+</ion-content>

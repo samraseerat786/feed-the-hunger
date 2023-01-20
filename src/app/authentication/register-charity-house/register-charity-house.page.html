@@ -71,7 +71,7 @@
                             <span class="text-danger"
                                   *ngIf="submitted && registerFormControl.no_of_dependents.errors?.required">Dependents required.</span>
                         </div>
-                        <ion-item>
+                        <!-- <ion-item>
                             <ion-input placeholder="Bank Name" formControlName="bank_name"></ion-input>
                         </ion-item>
                         <div>
@@ -92,7 +92,7 @@
                                   *ngIf="registerCharityHouseForm.get('account_no').hasError('pattern')">Enter only digits</span>
                             <span class="text-danger"
                                   *ngIf="submitted && registerFormControl.account_no.errors?.required">account number is required.</span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="ion-padding">
                         <ion-button (click)="save()" color="primary" type="submit" expand="block">Proceed</ion-button>

@@ -37,25 +37,6 @@ export class ProfilePage implements OnInit {
     async ngOnInit() {
         this.user = JSON.parse(localStorage.getItem('user'));
         const id = this.user.id;
-
-        await this.utils.presentLoading("Please wait...");
-        this.http.get(`${this.service.homeUrl}/reviews/findByDonner/${id}`,
-            {observe: 'response'}).subscribe(response => {
-            this.utils.stopLoading();
-            if (response.status === 200 || response.status === 201) {
-                this.reviewsList = response.body;
-                this.result = this.reviewsList.content;
-                if (this.result.length === 0) {
-                    this.isEmpty = true;
-                }
-                localStorage.removeItem('reviewsList');
-                localStorage.setItem('reviewsList', JSON.stringify(this.result));
-                console.log('reviewsList : ', this.reviewsList.content);
-            }
-        }, (error) => {
-            this.utils.stopLoading();
-            console.log('error', error);
-        });
         this.loadUser();
     }
 

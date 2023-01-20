@@ -65,6 +65,7 @@ export class UpdatePage implements OnInit {
             '" , \n"email" : "' + data.email +
             '" , \n"user_name" : "' + data.user_name +
             '" , \n"password" : "' + data.password +
+            '" , \n"applicationStatus" : "' + "approved" +
             '" , \n"role"  : "' + data.role + '"}';
         this.donner = '{"id" : "' + data.id +
             '", \n"address" : "' + data.address +
