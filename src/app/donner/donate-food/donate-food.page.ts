@@ -25,6 +25,8 @@ export class DonateFoodPage implements OnInit {
     foodImage;
     labels = [];
     isLabeling = false;
+    minDate: String = new Date().toISOString();
+    maxDate: any = new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString();
 
     constructor(private utils: UtilsService,
                 private route: ActivatedRoute,

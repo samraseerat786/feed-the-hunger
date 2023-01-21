@@ -35,7 +35,6 @@ export class SendReportPage implements OnInit {
 
     formInitializer() {
         this.reportForm = this.formBuilder.group({
-            email: [null, [Validators.required]],
             type: [null, [Validators.required]],
             reportMessage: [null, [Validators.required]]
         });
@@ -45,9 +44,12 @@ export class SendReportPage implements OnInit {
         const test = this.reportForm.value;
         const charityHouse = JSON.parse(localStorage.getItem('user'));
         const charityID = charityHouse.id;
-        this.finalReportObject = '{"email": "' + test.email + '",' +
+        let today = this.dateToString(new Date);
+        this.finalReportObject = '{"email": "' + charityHouse.user.email + '",' +
             ' "type": "' + test.type + '",' +
             ' "message": "' + test.reportMessage + '",' +
+            '"status": "' + "new" + '",' +
+            '"date": "' + today + '",' +
             ' "donner": { "id": ' + charityID + '},' +
             ' "charityHouse": { "id": ' + this.reportID + '}' + '}';
         const feedback = JSON.parse(this.finalReportObject);
@@ -66,5 +68,17 @@ export class SendReportPage implements OnInit {
     saveFeedback(dataObj): Observable<any> {
         const url = `${this.service.homeUrl}/reports/add`;
         return this.http.post(url, dataObj);
+    }
+
+    dateToString(today) {
+        let dateFormat = "";
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+        let hour = today.getHours();
+        let mint = today.getMinutes();
+        let second = today.getSeconds();
+        dateFormat = `${year}-${month}-${day} ${hour}:${mint}:${second}`;
+        return dateFormat;
     }
 }

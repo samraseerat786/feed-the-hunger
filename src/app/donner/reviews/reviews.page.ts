@@ -5,6 +5,8 @@ import {ListService} from '../../services/list.service';
 import {HttpClient} from '@angular/common/http';
 import {UtilsService} from "../../services/utils.service";
 import {AngularFireStorage} from "@angular/fire/storage";
+import {Observable} from "rxjs";
+import {AlertController} from "@ionic/angular";
 
 @Component({
   selector: 'app-reviews',
@@ -18,6 +20,7 @@ export class ReviewsPage implements OnInit {
     private storage: Storage,
     private service: ListService,
     public http: HttpClient,
+    public alertCtrl: AlertController,
     public db: AngularFireStorage) { }
 
     result: any = [];
@@ -41,6 +44,12 @@ export class ReviewsPage implements OnInit {
                 this.result = this.reviewsList.content;
                 if (this.result.length === 0) {
                     this.isEmpty = true;
+                } else {
+                    this.result.sort((a,b) => {
+                        var c = new Date(a.date);
+                        var d = new Date(b.date);
+                        return d.getTime() - c.getTime();
+                    });
                 }
                 localStorage.removeItem('reviewsList');
                 localStorage.setItem('reviewsList', JSON.stringify(this.result));
@@ -52,4 +61,46 @@ export class ReviewsPage implements OnInit {
         });
   }
 
+    async deleteReview(id: any) {
+        const alert = await this.alertCtrl.create({
+            header: 'Alert !',
+            message: "Are you sure you want to delete the review?",
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {
+                    }
+                }, {
+                    text: 'Yes',
+                    cssClass: 'primary',
+                    handler: () => {
+                        this.removeReview(id);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+    async removeReview(id){
+        this.utils.presentLoading("Please wait...");
+        this.deleteHttpReq(id).subscribe(data => {
+                this.utils.stopLoading();
+                this.utils.presentAlert("Review deleted successfully.");
+                this.result.splice(this.result.findIndex((i) => {
+                    return i.id === id;
+                }), 1);
+            },
+            error => {
+                this.utils.stopLoading();
+                console.log('error', error);
+            });
+    }
+
+    deleteHttpReq(id): Observable<any> {
+        const url = `${this.service.homeUrl}/reviews/deleteReview/${id}`;
+        const test = this.http.delete(url);
+        return test;
+    }
 }

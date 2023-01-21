@@ -16,6 +16,10 @@
                     </ion-card-header>
                     <ion-card-content>
                         <div style="display: flex">
+                            <p class="detail-p">Complaint From: </p>
+                            <p class="value-p">{{item?.email}}</p>
+                        </div>
+                        <div style="display: flex">
                             <p class="detail-p">Complaint to: </p>
                             <p class="value-p">{{item?.charityHouse?.email}}</p>
                         </div>
@@ -27,6 +31,23 @@
                             <p class="detail-p">Message: </p>
                             <p class="value-p">{{item?.message}}</p>
                         </div>
+                        <div style="display: flex">
+                            <p class="detail-p">Date At: </p>
+                            <p class="value-p">{{item.date | date: 'MMMM d, y, h:mm a'}}</p>
+                        </div>
+                        <div class="line"></div>
+                        <ion-row>
+                            <ion-col size="6">
+                                <ion-button (click)="deleteReport(item.id)" color="danger" expand="block">
+                                    Delete
+                                </ion-button>
+                            </ion-col>
+                            <ion-col size="6">
+                                <ion-button (click)="blockUser(item)" color="secondary" expand="block">
+                                    {{item.blocked}}
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
                     </ion-card-content>
                 </ion-card>
         </ion-col>

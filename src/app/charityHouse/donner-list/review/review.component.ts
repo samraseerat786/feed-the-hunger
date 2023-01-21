@@ -162,8 +162,10 @@ export class ReviewComponent implements OnInit {
         const test = this.reviewForm.value;
         const charityHouse = JSON.parse(localStorage.getItem('user'));
         const charityID = charityHouse.id;
+        let today = this.dateToString(new Date);
         this.finalReviewObject = '{"star": ' + this.star + ',' +
             '"title": "' + test.title + '",' +
+            '"date": "' + today + '",' +
             '"donner": { "id": ' + this.donnerID + '},' +
             '"charityHouse": { "id": ' + charityID + '}' + '}';
         const review = JSON.parse(this.finalReviewObject);
@@ -182,5 +184,17 @@ export class ReviewComponent implements OnInit {
     saveReview(dataObj): Observable<any> {
         const url = `${this.service.homeUrl}/reviews/newReview`;
         return this.http.post(url, dataObj);
+    }
+
+    dateToString(today) {
+        let dateFormat = "";
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+        let hour = today.getHours();
+        let mint = today.getMinutes();
+        let second = today.getSeconds();
+        dateFormat = `${year}-${month}-${day} ${hour}:${mint}:${second}`;
+        return dateFormat;
     }
 }

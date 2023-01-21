@@ -34,7 +34,6 @@ export class FeedbackPage implements OnInit {
 
     formInitializer() {
         this.feedbackForm = this.formBuilder.group({
-            email: [null, Validators.compose([Validators.required])],
             subject: [null, [Validators.required]],
             feedback_message: [null, [Validators.required]]
         });
@@ -44,9 +43,11 @@ export class FeedbackPage implements OnInit {
         const test = this.feedbackForm.value;
         const charityHouse = JSON.parse(localStorage.getItem('user'));
         const charityID = charityHouse.id;
-        this.finalFeedbackObject = '{"email": "' + test.email + '",' +
+        let today = this.dateToString(new Date);
+        this.finalFeedbackObject = '{"email": "' + charityHouse.user.email + '",' +
             ' "subject": "' + test.subject + '",' +
             ' "feedbackMessage": "' + test.feedback_message + '",' +
+            '"date": "' + today + '",' +
             ' "donner": { "id": ' + this.donnerID + '},' +
             ' "charityHouse": { "id": ' + charityID + '}' + '}';
         const feedback = JSON.parse(this.finalFeedbackObject);
@@ -65,5 +66,17 @@ export class FeedbackPage implements OnInit {
     saveFeedback(dataObj): Observable<any> {
         const url = `${this.service.homeUrl}/feedbacks/newFeedback`;
         return this.http.post(url, dataObj);
+    }
+
+    dateToString(today) {
+        let dateFormat = "";
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+        let hour = today.getHours();
+        let mint = today.getMinutes();
+        let second = today.getSeconds();
+        dateFormat = `${year}-${month}-${day} ${hour}:${mint}:${second}`;
+        return dateFormat;
     }
 }
