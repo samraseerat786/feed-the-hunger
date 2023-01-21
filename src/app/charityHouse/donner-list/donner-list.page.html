@@ -11,63 +11,67 @@
 
 <ion-content *ngIf="result.length > 0">
     <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-card class="welcome-card" *ngFor="let item of result">
-                <ion-card-header>
-                    <ion-card-title>{{item?.user.first_name}} {{item?.user.last_name}}</ion-card-title>
-                    <ion-card-subtitle>{{item?.user.email}}</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
-                    <ion-row>
-                        <ion-col size="10">
-                            <div *ngIf="item.rating == 0">
-                                <ion-icon *ngFor="let i of allInActiveStars" name="star" size="large"
-                                          style="color: lightgray"></ion-icon>
-                                <ion-label>no rating</ion-label>
+        <ion-col class="ion-align-self-center" size-md="12" size-lg="11" size-xl="10">
+            <ion-row>
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="6" size-xl="4" size-sm="12" *ngFor="let item of result">
+                    <ion-card class="welcome-card" >
+                        <ion-card-header>
+                            <ion-card-title>{{item?.user.first_name}} {{item?.user.last_name}}</ion-card-title>
+                            <ion-card-subtitle>{{item?.user.email}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <ion-row>
+                                <ion-col size="10">
+                                    <div *ngIf="item.rating == 0">
+                                        <ion-icon *ngFor="let i of allInActiveStars" name="star" size="large"
+                                                  style="color: lightgray"></ion-icon>
+                                        <ion-label>no rating</ion-label>
+                                    </div>
+                                    <div *ngIf="item.rating > 0">
+                                        <ion-icon *ngFor="let i of item.activeStars" name="star" size="large"
+                                                  color="secondary"></ion-icon>
+                                        <ion-icon *ngIf="item.isHelfStar" name="star-half" size="large"
+                                                  color="secondary"></ion-icon>
+                                        <ion-icon *ngFor="let i of item.inActiveStars" name="star-outline" size="large"
+                                                  color="secondary"></ion-icon>
+                                        <ion-label>{{item.rating}}</ion-label>
+                                    </div>
+                                    <br>
+                                </ion-col>
+                                <ion-col align-items-start size="2">
+                                    <ion-icon size="large" class="msg-btn" style="cursor: pointer"
+                                              (click)="openChat(item?.user.first_name, item?.user.last_name)"
+                                              ios="ios-chatboxes" md="md-chatboxes" color="secondary"></ion-icon>
+                                </ion-col>
+                            </ion-row>
+
+                            <div style="display: flex">
+                                <p class="detail-p">Contact Number: </p>
+                                <p class="value-p">{{item.contact}}</p>
                             </div>
-                            <div *ngIf="item.rating > 0">
-                                <ion-icon *ngFor="let i of item.activeStars" name="star" size="large"
-                                          color="secondary"></ion-icon>
-                                <ion-icon *ngIf="item.isHelfStar" name="star-half" size="large"
-                                          color="secondary"></ion-icon>
-                                <ion-icon *ngFor="let i of item.inActiveStars" name="star-outline" size="large"
-                                          color="secondary"></ion-icon>
-                                <ion-label>{{item.rating}}</ion-label>
-                            </div>
-                            <br>
-                        </ion-col>
-                        <ion-col align-items-start size="2">
-                            <ion-icon size="large" class="msg-btn" style="cursor: pointer"
-                                      (click)="openChat(item?.user.first_name, item?.user.last_name)"
-                                      ios="ios-chatboxes" md="md-chatboxes" color="secondary"></ion-icon>
-                        </ion-col>
-                    </ion-row>
+                            <div class="line"></div>
 
-                    <div style="display: flex">
-                        <p class="detail-p">Contact Number: </p>
-                        <p class="value-p">{{item.contact}}</p>
-                    </div>
-                    <div class="line"></div>
+                            <ion-row>
+                                <ion-col size="6">
+                                    <ion-button mode="ios" (click)="feedBack(item)" color="secondary" expand="block">Send
+                                        Feedback
+                                    </ion-button>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <ion-button mode="ios" (click)="review($event, item)" color="secondary" expand="block">Add
+                                        Review
+                                    </ion-button>
+                                </ion-col>
+        <!--                        <ion-col size="4">-->
+        <!--                            <ion-button mode="ios" (click)="sendReport(item)" color="danger" expand="block">Complaint-->
+        <!--                            </ion-button>-->
+        <!--                        </ion-col>-->
+                            </ion-row>
 
-                    <ion-row>
-                        <ion-col size="6">
-                            <ion-button mode="ios" (click)="feedBack(item)" color="secondary" expand="block">Send
-                                Feedback
-                            </ion-button>
-                        </ion-col>
-                        <ion-col size="6">
-                            <ion-button mode="ios" (click)="review($event, item)" color="secondary" expand="block">Add
-                                Review
-                            </ion-button>
-                        </ion-col>
-<!--                        <ion-col size="4">-->
-<!--                            <ion-button mode="ios" (click)="sendReport(item)" color="danger" expand="block">Complaint-->
-<!--                            </ion-button>-->
-<!--                        </ion-col>-->
-                    </ion-row>
-
-                </ion-card-content>
-            </ion-card>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
         </ion-col>
     </ion-row>
 </ion-content>

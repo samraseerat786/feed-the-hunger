@@ -9,47 +9,53 @@
 
 <ion-content *ngIf="!isEmpty">
     <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-card class="ion-no-padding" *ngFor="let item of result">
-                    <ion-card-header>
-                        <ion-card-title>{{item?.type}}</ion-card-title>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <div style="display: flex">
-                            <p class="detail-p">Complaint From: </p>
-                            <p class="value-p">{{item?.email}}</p>
-                        </div>
-                        <div style="display: flex">
-                            <p class="detail-p">Complaint to: </p>
-                            <p class="value-p">{{item?.charityHouse?.email}}</p>
-                        </div>
-                        <div style="display: flex">
-                            <p class="detail-p">NGO Name: </p>
-                            <p class="value-p">{{item?.charityHouse?.name}}</p>
-                        </div>
-                        <div style="display: flex">
-                            <p class="detail-p">Message: </p>
-                            <p class="value-p">{{item?.message}}</p>
-                        </div>
-                        <div style="display: flex">
-                            <p class="detail-p">Date At: </p>
-                            <p class="value-p">{{item.date | date: 'MMMM d, y, h:mm a'}}</p>
-                        </div>
-                        <div class="line"></div>
-                        <ion-row>
-                            <ion-col size="6">
-                                <ion-button (click)="deleteReport(item.id)" color="danger" expand="block">
-                                    Delete
-                                </ion-button>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-button (click)="blockUser(item)" color="secondary" expand="block">
-                                    {{item.blocked}}
-                                </ion-button>
-                            </ion-col>
-                        </ion-row>
-                    </ion-card-content>
-                </ion-card>
+        <ion-col class="ion-align-self-center" size-md="12" size-lg="11" size-xl="10">
+            <ion-row>
+        <!--        size-lg="8" size-xl="6" size-xs="12" size-sm="10"-->
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="6" size-xl="4" size-sm="12"
+                         *ngFor="let item of result">
+                    <ion-card class="ion-no-padding">
+                            <ion-card-header>
+                                <ion-card-title>{{item?.type}}</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <div style="display: flex">
+                                    <p class="detail-p">Complaint From: </p>
+                                    <p class="value-p">{{item?.email}}</p>
+                                </div>
+                                <div style="display: flex">
+                                    <p class="detail-p">Complaint to: </p>
+                                    <p class="value-p">{{item?.charityHouse?.email}}</p>
+                                </div>
+                                <div style="display: flex">
+                                    <p class="detail-p">NGO Name: </p>
+                                    <p class="value-p">{{item?.charityHouse?.name}}</p>
+                                </div>
+                                <div style="display: flex">
+                                    <p class="detail-p">Message: </p>
+                                    <p class="value-p">{{item?.message}}</p>
+                                </div>
+                                <div style="display: flex">
+                                    <p class="detail-p">Date At: </p>
+                                    <p class="value-p">{{item.date | date: 'MMMM d, y, h:mm a'}}</p>
+                                </div>
+                                <div class="line"></div>
+                                <ion-row>
+                                    <ion-col size="6">
+                                        <ion-button (click)="deleteReport(item.id)" color="danger" expand="block">
+                                            Delete
+                                        </ion-button>
+                                    </ion-col>
+                                    <ion-col size="6">
+                                        <ion-button (click)="blockUser(item)" color="secondary" expand="block">
+                                            {{item.blocked}}
+                                        </ion-button>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                </ion-col>
+            </ion-row>
         </ion-col>
     </ion-row>
 </ion-content>

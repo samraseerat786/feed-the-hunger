@@ -11,75 +11,79 @@
 
 <ion-content *ngIf="result.length > 0">
     <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-card class="welcome-card" *ngFor="let item of result">
-                <ion-card-header *ngIf="item.donationType == 'food'">
-                    <ion-card-title>{{item.foodName}}</ion-card-title>
-                    <ion-card-subtitle>Donated On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content *ngIf="item.donationType == 'food'">
-                    <img alt="food-image" [src]="item.foodImage" class="food-image">
-                    <div style="display: flex">
-                        <p class="detail-p">Food Item:</p>
-                        <p class="value-p"> {{item.foodType}}, {{item.quantityValue}} {{item.quantityUnit}}</p>
-                    </div>
-                    <div style="display: flex">
-                        <p class="detail-p">Expiry date: </p>
-                        <p class="value-p">{{item.expiryDate | date: 'MMMM d, y, h:mm a'}}</p>
-                    </div>
-                    <div class="line"></div>
-                    <div>
-                        <p class="detail-p">From:</p>
-                    </div>
-                    <div>
-                        <p class="detail-p"> {{item.fromFirstName}} {{item.fromLastName}}</p>
-                        <p class="value-p"> {{item.fromEmail}}</p>
-                    </div>
-                    <ion-row>
-                        <ion-col size-md="4" *ngIf="item.status != 'accepted'">
-                            <ion-button size="default" (click)="acceptFood(item.id)"
-                                        color="success" expand="block">Accept
-                            </ion-button>
-                        </ion-col>
-                        <ion-col size-md="4" *ngIf="item.status != 'accepted'">
-                            <ion-button size="default" (click)="rejectFood(item.id)"
-                                        color="danger" expand="block">Reject
-                            </ion-button>
-                        </ion-col>
-                        <ion-col size-md="4">
-                            <ion-button size="default" (click)="openChat(item.fromFirstName, item.fromLastName)"
-                                        color="primary" expand="block">Message
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-content>
+        <ion-col class="ion-align-self-center" size-md="12" size-lg="11" size-xl="10">
+            <ion-row>
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="6" size-xl="4" size-sm="12" *ngFor="let item of result">
+                    <ion-card class="welcome-card">
+                        <ion-card-header *ngIf="item.donationType == 'food'">
+                            <ion-card-title>{{item.foodName}}</ion-card-title>
+                            <ion-card-subtitle>Donated On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content *ngIf="item.donationType == 'food'">
+                            <img alt="food-image" [src]="item.foodImage" class="food-image">
+                            <div style="display: flex">
+                                <p class="detail-p">Food Item:</p>
+                                <p class="value-p"> {{item.foodType}}, {{item.quantityValue}} {{item.quantityUnit}}</p>
+                            </div>
+                            <div style="display: flex">
+                                <p class="detail-p">Expiry date: </p>
+                                <p class="value-p">{{item.expiryDate | date: 'MMMM d, y, h:mm a'}}</p>
+                            </div>
+                            <div class="line"></div>
+                            <div>
+                                <p class="detail-p">From:</p>
+                            </div>
+                            <div>
+                                <p class="detail-p"> {{item.fromFirstName}} {{item.fromLastName}}</p>
+                                <p class="value-p"> {{item.fromEmail}}</p>
+                            </div>
+                            <ion-row>
+                                <ion-col size-md="4" *ngIf="item.status != 'accepted'">
+                                    <ion-button size="default" (click)="acceptFood(item.id)"
+                                                color="success" expand="block">Accept
+                                    </ion-button>
+                                </ion-col>
+                                <ion-col size-md="4" *ngIf="item.status != 'accepted'">
+                                    <ion-button size="default" (click)="rejectFood(item.id)"
+                                                color="danger" expand="block">Reject
+                                    </ion-button>
+                                </ion-col>
+                                <ion-col size-md="4">
+                                    <ion-button size="default" (click)="openChat(item.fromFirstName, item.fromLastName)"
+                                                color="primary" expand="block">Message
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-card-content>
 
-                <ion-card-header *ngIf="item.donationType == 'fund'">
-                    <ion-card-title>{{item.amount}} {{item.currency}}</ion-card-title>
-                    <ion-card-subtitle>Recieved On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content *ngIf="item.donationType == 'fund'">
-                    <div>
-                        <p class="detail-p">From:</p>
-                    </div>
-                    <div>
-                        <p class="detail-p"> {{item.fromFirstName}} {{item.fromLastName}}</p>
-                        <p class="value-p"> {{item.fromEmail}}</p>
-                    </div>
-                    <ion-row>
-                        <ion-col size-md="6">
-                            <ion-button size="default" (click)="acceptOrRejectDonation(item.id, 'accepted', '')"
-                                        color="success" expand="block">Acknowledge
-                            </ion-button>
-                        </ion-col>
-                        <ion-col size-md="6">
-                            <ion-button size="default" (click)="openChat(item.fromFirstName, item.fromLastName)"
-                                        color="primary" expand="block">Message
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-content>
-            </ion-card>
+                        <ion-card-header *ngIf="item.donationType == 'fund'">
+                            <ion-card-title>{{item.amount}} {{item.currency}}</ion-card-title>
+                            <ion-card-subtitle>Recieved On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content *ngIf="item.donationType == 'fund'">
+                            <div>
+                                <p class="detail-p">From:</p>
+                            </div>
+                            <div>
+                                <p class="detail-p"> {{item.fromFirstName}} {{item.fromLastName}}</p>
+                                <p class="value-p"> {{item.fromEmail}}</p>
+                            </div>
+                            <ion-row>
+                                <ion-col size-md="6">
+                                    <ion-button size="default" (click)="acceptOrRejectDonation(item.id, 'accepted', '')"
+                                                color="success" expand="block">Acknowledge
+                                    </ion-button>
+                                </ion-col>
+                                <ion-col size-md="6">
+                                    <ion-button size="default" (click)="openChat(item.fromFirstName, item.fromLastName)"
+                                                color="primary" expand="block">Message
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
         </ion-col>
     </ion-row>
 </ion-content>

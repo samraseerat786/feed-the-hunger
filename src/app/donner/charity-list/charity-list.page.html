@@ -10,56 +10,62 @@
 </ion-header>
 
 <ion-content *ngIf="result.length > 0">
-    <ion-row class="ion-justify-content-center" *ngFor="let item of result">
-        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-card class="welcome-card" *ngIf="item.id != 1">
-                <ion-card-header>
-                    <ion-card-title>{{item?.name}}</ion-card-title>
-                    <ion-card-subtitle>{{item?.email}}</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
+<!--    class="ion-justify-content-center"-->
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="12" size-lg="11" size-xl="10">
+            <ion-row>
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="6" size-xl="4" size-sm="12"
+                         *ngFor="let item of result">
+                    <ion-card class="welcome-card" [ngStyle]="{'display': (item.id != 1) ? 'block' : 'none'}">
+                        <ion-card-header>
+                            <ion-card-title>{{item?.name}}</ion-card-title>
+                            <ion-card-subtitle>{{item?.email}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>
 
-                    <div style="display: flex">
-                        <p class="detail-p">Dependants: </p>
-                        <p class="value-p">{{item.no_of_dependents}}</p>
-                    </div>
-                    <div style="display: flex">
-                        <p class="detail-p">Type: </p>
-                        <p class="value-p">{{item.type}}</p>
-                    </div>
-                    <div style="display: flex">
-                        <p class="detail-p">Address: </p>
-                        <p class="value-p">{{item?.address.streetAddress}} {{item?.address.city}}</p>
-                    </div>
-                    <div style="display: flex">
-                        <p class="detail-p">Contact Number: </p>
-                        <p class="value-p">{{item.contact}}</p>
-                    </div>
-                    <div style="display: flex">
-                        <p class="detail-p">Bank detail: </p>
-                        <p class="value-p">{{item.bank_name}} | {{item?.account_no}} </p>
-                    </div>
-                    <div class="line"></div>
+                            <div style="display: flex">
+                                <p class="detail-p">Dependants: </p>
+                                <p class="value-p">{{item.no_of_dependents}}</p>
+                            </div>
+                            <div style="display: flex">
+                                <p class="detail-p">Type: </p>
+                                <p class="value-p">{{item.type}}</p>
+                            </div>
+                            <div style="display: flex">
+                                <p class="detail-p">Address: </p>
+                                <p class="value-p">{{item?.address.streetAddress}} {{item?.address.city}}</p>
+                            </div>
+                            <div style="display: flex">
+                                <p class="detail-p">Contact Number: </p>
+                                <p class="value-p">{{item.contact}}</p>
+                            </div>
+                            <div style="display: flex">
+                                <p class="detail-p">Bank detail: </p>
+                                <p class="value-p">{{item.bank_name}} | {{item?.account_no}} </p>
+                            </div>
+                            <div class="line"></div>
 
-                    <ion-row>
-                        <ion-col size="6">
-                            <ion-button mode="ios" (click)="reportNGO(item)" color="secondary" expand="block">
-                                Complaint
-                            </ion-button>
-                        </ion-col>
-<!--                        <ion-col size="6">-->
-<!--                            <ion-button mode="ios" (click)="donateFood(item)" color="secondary" expand="block">Donate-->
-<!--                                Food-->
-<!--                            </ion-button>-->
-<!--                        </ion-col>-->
-<!--                        <ion-col size="6">-->
-<!--                            <ion-button mode="ios" (click)="donateFund(item)" color="secondary" expand="block">Donate-->
-<!--                                Fund-->
-<!--                            </ion-button>-->
-<!--                        </ion-col>-->
-                    </ion-row>
-                </ion-card-content>
-            </ion-card>
+                            <ion-row>
+                                <ion-col size="6">
+                                    <ion-button mode="ios" (click)="reportNGO(item)" color="secondary" expand="block">
+                                        Complaint
+                                    </ion-button>
+                                </ion-col>
+                                <!--                        <ion-col size="6">-->
+                                <!--                            <ion-button mode="ios" (click)="donateFood(item)" color="secondary" expand="block">Donate-->
+                                <!--                                Food-->
+                                <!--                            </ion-button>-->
+                                <!--                        </ion-col>-->
+                                <!--                        <ion-col size="6">-->
+                                <!--                            <ion-button mode="ios" (click)="donateFund(item)" color="secondary" expand="block">Donate-->
+                                <!--                                Fund-->
+                                <!--                            </ion-button>-->
+                                <!--                        </ion-col>-->
+                            </ion-row>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
         </ion-col>
     </ion-row>
 </ion-content>

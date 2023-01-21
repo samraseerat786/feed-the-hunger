@@ -1,15 +1,16 @@
 <ion-content [fullscreen]="true" *ngIf="result.length > 0">
     <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center" *ngFor="let item of result"
-                 size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-item   *ngIf="item.id != 1">
-                <ion-icon slot="start" name="home" color="secondary"></ion-icon>
-                <p style="cursor: pointer" (click)="showSingleItem(item?.id)">{{item?.name}} {{item?.contact}}</p>
-                <ion-img (click)="updateItem(item?.id)" style="width: 30px; height: 30px; cursor: pointer"
-                         src="/assets/pencil-sharp.svg"
-                         alt="update" slot="end"></ion-img>
-                <ion-toggle checked="{{item?.blocked}}" slot="end" (ionChange)="blockUser($event, item?.id)"></ion-toggle>
-            </ion-item>
+        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
+            <div *ngFor="let item of result">
+                <ion-item *ngIf="item.id != 1">
+                    <ion-icon slot="start" name="home" color="secondary"></ion-icon>
+                    <p style="cursor: pointer" (click)="showSingleItem(item?.id)">{{item?.name}} {{item?.contact}}</p>
+                    <ion-img (click)="updateItem(item?.id)" style="width: 30px; height: 30px; cursor: pointer"
+                             src="/assets/pencil-sharp.svg"
+                             alt="update" slot="end"></ion-img>
+                    <ion-toggle checked="{{item?.blocked}}" slot="end" (ionChange)="blockUser($event, item?.id)"></ion-toggle>
+                </ion-item>
+            </div>
         </ion-col>
     </ion-row>
 </ion-content>

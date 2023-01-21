@@ -32,6 +32,7 @@ export class CharityListPage implements OnInit {
             if (response.status === 200 || response.status === 201) {
                 this.charityList = response.body;
                 this.result = this.charityList.content;
+                this.result.shift();
                 localStorage.removeItem('charityHouses');
                 localStorage.setItem('charityHouses', JSON.stringify(this.result));
             }

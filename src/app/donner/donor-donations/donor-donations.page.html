@@ -11,98 +11,103 @@
 
 <ion-content *ngIf="result.length > 0">
     <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="9" size-lg="8" size-xl="6" size-xs="12" size-sm="10">
-            <ion-card class="welcome-card" *ngFor="let item of result">
-                <ion-card-header *ngIf="item.donationType == 'food'">
-                    <ion-card-title>{{item.foodName}}</ion-card-title>
-                    <ion-card-subtitle>Donated On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content *ngIf="item.donationType == 'food'">
-                    <img alt="food-image" [src]="item.foodImage" class="food-image">
-                    <div style="display: flex">
-                        <p class="detail-p">Food Item:</p>
-                        <p class="value-p"> {{item.foodType}}, {{item.quantityValue}} {{item.quantityUnit}}</p>
-                    </div>
-                    <div style="display: flex">
-                        <p class="detail-p">Expiry date: </p>
-                        <p class="value-p">{{item.expiryDate | date: 'MMMM d, y, h:mm a'}}</p>
-                    </div>
-<!--                    *ngIf="item.status == 'accepted'"-->
-                    <div class="line" *ngIf="item.toName != 'all NGOs for donation'"></div>
-                    <ion-row *ngIf="item.toName != 'all NGOs for donation'">
-                        <ion-col size-md="10">
-                            <div>
-                                <p class="detail-p">To:</p>
+        <ion-col class="ion-align-self-center" size-md="12" size-lg="11" size-xl="10">
+            <ion-row>
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="6" size-xl="4" size-sm="12"
+                         *ngFor="let item of result">
+                    <ion-card class="welcome-card">
+                        <ion-card-header *ngIf="item.donationType == 'food'">
+                            <ion-card-title>{{item.foodName}}</ion-card-title>
+                            <ion-card-subtitle>Donated On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content *ngIf="item.donationType == 'food'">
+                            <img alt="food-image" [src]="item.foodImage" class="food-image">
+                            <div style="display: flex">
+                                <p class="detail-p">Food Item:</p>
+                                <p class="value-p"> {{item.foodType}}, {{item.quantityValue}} {{item.quantityUnit}}</p>
                             </div>
-                            <div>
-                                <p class="detail-p"> {{item.toName}}</p>
-                                <p class="value-p"> {{item.toEmail}}</p>
+                            <div style="display: flex">
+                                <p class="detail-p">Expiry date: </p>
+                                <p class="value-p">{{item.expiryDate | date: 'MMMM d, y, h:mm a'}}</p>
                             </div>
-                        </ion-col>
-                        <ion-col size-md="2">
-                            <img (click)="openChat(item.fromFirstName, item.fromLastName, item.toFirstName, item.toLastName)"
-                                 class="chatIcon" src="/assets/chatbox-ellipses-outline.svg" alt="status"/>
-                        </ion-col>
-                    </ion-row>
-                    <div class="line"></div>
-                    <ion-row>
-                        <ion-col size-md="10">
-                            <p class="detail-p">Status</p>
-                            <p>{{item.status == 'rejected' ? "Not accepted yet" : item.status}} | {{item.acceptanceTime}}</p>
-                        </ion-col>
-                        <ion-col size-md="2">
-                            <img *ngIf="item?.status == 'new'" class="statusIcon" src="/assets/checkmark-outline.svg"
-                                 alt="status"/>
-                            <img *ngIf="item?.status == 'accepted'" class="statusIcon"
-                                 src="/assets/checkmark-done-outline.svg" alt="status"/>
-                            <img *ngIf="item?.status == 'rejected'" class="statusIcon" src="/assets/close-icon.svg"
-                                 alt="status"/>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-content>
+        <!--                    *ngIf="item.status == 'accepted'"-->
+                            <div class="line" *ngIf="item.toName != 'all NGOs for donation'"></div>
+                            <ion-row *ngIf="item.toName != 'all NGOs for donation'">
+                                <ion-col size-md="10">
+                                    <div>
+                                        <p class="detail-p">To:</p>
+                                    </div>
+                                    <div>
+                                        <p class="detail-p"> {{item.toName}}</p>
+                                        <p class="value-p"> {{item.toEmail}}</p>
+                                    </div>
+                                </ion-col>
+                                <ion-col size-md="2">
+                                    <img (click)="openChat(item.fromFirstName, item.fromLastName, item.toFirstName, item.toLastName)"
+                                         class="chatIcon" src="/assets/chatbox-ellipses-outline.svg" alt="status"/>
+                                </ion-col>
+                            </ion-row>
+                            <div class="line"></div>
+                            <ion-row>
+                                <ion-col size-md="10">
+                                    <p class="detail-p">Status</p>
+                                    <p>{{item.status == 'rejected' ? "Not accepted yet" : item.status}} | {{item.acceptanceTime}}</p>
+                                </ion-col>
+                                <ion-col size-md="2">
+                                    <img *ngIf="item?.status == 'new'" class="statusIcon" src="/assets/checkmark-outline.svg"
+                                         alt="status"/>
+                                    <img *ngIf="item?.status == 'accepted'" class="statusIcon"
+                                         src="/assets/checkmark-done-outline.svg" alt="status"/>
+                                    <img *ngIf="item?.status == 'rejected'" class="statusIcon" src="/assets/close-icon.svg"
+                                         alt="status"/>
+                                </ion-col>
+                            </ion-row>
+                        </ion-card-content>
 
-                <ion-card-header *ngIf="item.donationType == 'fund'">
-                    <ion-card-title>{{item.amount}} {{item.currency}}</ion-card-title>
-                    <ion-card-subtitle>Donated On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content *ngIf="item.donationType == 'fund'">
+                        <ion-card-header *ngIf="item.donationType == 'fund'">
+                            <ion-card-title>{{item.amount}} {{item.currency}}</ion-card-title>
+                            <ion-card-subtitle>Donated On {{item.date | date: 'MMMM d, y, h:mm a'}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content *ngIf="item.donationType == 'fund'">
 
-                    <div style="display: flex">
-                        <p class="detail-p">From card:</p>
-                        <p class="value-p"> {{item.donorCard}}</p>
-                    </div>
-                    <div class="line"></div>
-                    <ion-row>
-                        <ion-col size-md="10">
-                            <div>
-                                <p class="detail-p">To:</p>
+                            <div style="display: flex">
+                                <p class="detail-p">From card:</p>
+                                <p class="value-p"> {{item.donorCard}}</p>
                             </div>
-                            <div>
-                                <p class="detail-p"> {{item.toName}}</p>
-                                <p class="value-p"> {{item.toEmail}}</p>
-                            </div>
-                        </ion-col>
-                        <ion-col size-md="2">
-                            <img (click)="openChat(item.fromFirstName, item.fromLastName, item.toFirstName, item.toLastName)"
-                                 class="chatIcon" src="/assets/chatbox-ellipses-outline.svg" alt="status"/>
-                        </ion-col>
-                    </ion-row>
-                    <div class="line"></div>
-                    <ion-row>
-                        <ion-col size-md="10">
-                            <p class="detail-p">Status</p>
-                            <p>{{item.status}} | {{item.acceptanceTime}}</p>
-                        </ion-col>
-                        <ion-col size-md="2">
-                            <img *ngIf="item.status == 'new'" class="statusIcon" src="/assets/checkmark-outline.svg"
-                                 alt="status"/>
-                            <img *ngIf="item.status == 'accepted'" class="statusIcon"
-                                 src="/assets/checkmark-done-outline.svg" alt="status"/>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-content>
+                            <div class="line"></div>
+                            <ion-row>
+                                <ion-col size-md="10">
+                                    <div>
+                                        <p class="detail-p">To:</p>
+                                    </div>
+                                    <div>
+                                        <p class="detail-p"> {{item.toName}}</p>
+                                        <p class="value-p"> {{item.toEmail}}</p>
+                                    </div>
+                                </ion-col>
+                                <ion-col size-md="2">
+                                    <img (click)="openChat(item.fromFirstName, item.fromLastName, item.toFirstName, item.toLastName)"
+                                         class="chatIcon" src="/assets/chatbox-ellipses-outline.svg" alt="status"/>
+                                </ion-col>
+                            </ion-row>
+                            <div class="line"></div>
+                            <ion-row>
+                                <ion-col size-md="10">
+                                    <p class="detail-p">Status</p>
+                                    <p>{{item.status}} | {{item.acceptanceTime}}</p>
+                                </ion-col>
+                                <ion-col size-md="2">
+                                    <img *ngIf="item.status == 'new'" class="statusIcon" src="/assets/checkmark-outline.svg"
+                                         alt="status"/>
+                                    <img *ngIf="item.status == 'accepted'" class="statusIcon"
+                                         src="/assets/checkmark-done-outline.svg" alt="status"/>
+                                </ion-col>
+                            </ion-row>
+                        </ion-card-content>
 
-            </ion-card>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
         </ion-col>
     </ion-row>
 </ion-content>
