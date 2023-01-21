@@ -245,6 +245,7 @@ const routes: Routes = [
     {path: 'open-admin-chat', loadChildren: './shared/open-admin-chat/open-admin-chat.module#OpenAdminChatPageModule'},
     {path: 'donor-donations', loadChildren: './donner/donor-donations/donor-donations.module#DonorDonationsPageModule'},
     {path: 'new-donations', loadChildren: './charityHouse/new-donations/new-donations.module#NewDonationsPageModule'},
+    { path: 'report-graph', loadChildren: './admin/report-graph/report-graph.module#ReportGraphPageModule' },
 //   { path: 'reviews', loadChildren: './donner/reviews/reviews.module#ReviewsPageModule' }
 
 

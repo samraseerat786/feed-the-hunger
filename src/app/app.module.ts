@@ -16,6 +16,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {FCM} from '@ionic-native/fcm/ngx';
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ChartsModule, ThemeService} from "ng2-charts";
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCtHKb-EFeAK4vH317pp5zsYlZvc05rKIk',
@@ -41,11 +42,13 @@ const firebaseConfig = {
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule,
         AngularFireStorageModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ChartsModule
     ],
     providers: [
         StatusBar, FCM,
         SplashScreen,
+        ThemeService,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
