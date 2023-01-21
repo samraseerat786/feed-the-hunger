@@ -45,6 +45,11 @@ export class NewDonationsPage implements OnInit {
                     !(d.charityHouseId == this.user.id && d.status == 'rejected') &&
                     !(d.charityHouseId != this.user.id && d.status == 'accepted')
                 );
+                this.result.sort((a,b) => {
+                    var c = new Date(a.date);
+                    var d = new Date(b.date);
+                    return d.getTime() - c.getTime();
+                });
                 console.log("this.result: ", this.result);
                 localStorage.removeItem('newDonation');
                 localStorage.setItem('newDonation', JSON.stringify(this.result));

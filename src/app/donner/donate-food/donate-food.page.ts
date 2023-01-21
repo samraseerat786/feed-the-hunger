@@ -102,6 +102,7 @@ export class DonateFoodPage implements OnInit {
         const test = this.donateFoodForm.value;
         // const dateFromForm = test.expiry_date.getFullYear() + '-' + (test.expiry_date.getMonth() + 1 ) + '-' + test.expiry_date.getDate();
         const dateFormat = test.expiry_date.split('T')[0];
+        let today = this.dateToString(new Date);
         // This id will comes from the service, because when user will login, his ID will save to service
         // and retrieved at time of send data to server.
         const donner = JSON.parse(localStorage.getItem('user'));
@@ -112,7 +113,7 @@ export class DonateFoodPage implements OnInit {
             '"name": "' + test.name + '",' +
             '"expiry_date": "' + dateFormat + '",' +
             '"type": "' + test.type + '" },' +
-            '"donation": {' + '"date": "' + this.date + '",' +
+            '"donation": {' + '"date": "' + today + '",' +
             '"donner": {' + '"id": ' + donnerID + ' },' +
             '"charityHouse": {' + '"id": ' + 1 + ' }}}';
         const foodDonation = JSON.parse(this.finalDonationObject);
@@ -121,8 +122,8 @@ export class DonateFoodPage implements OnInit {
         foodDonation.donation.status = "new";
         this.saveFoodDonation(foodDonation).subscribe(data => {
                 this.utils.stopLoading();
-                this.utils.presentAlert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
-                // this.router.navigate(['charityList']);
+                this.utils.presentAlert('Food donated. Please! wait while charity house connect with you. Thanks for donating food.');
+                this.router.navigate(['home']);
             },
             error => {
                 this.utils.stopLoading();
@@ -139,5 +140,17 @@ export class DonateFoodPage implements OnInit {
         formData.append("file", file);
         const url = `${this.service.homeUrl}/upload`;
         return this.http.post(url, formData);
+    }
+
+    dateToString(today) {
+        let dateFormat = "";
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+        let hour = today.getHours();
+        let mint = today.getMinutes();
+        let second = today.getSeconds();
+        dateFormat = `${year}-${month}-${day} ${hour}:${mint}:${second}`;
+        return dateFormat;
     }
 }
