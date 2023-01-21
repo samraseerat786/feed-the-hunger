@@ -23,7 +23,7 @@ export class SendReportPage implements OnInit {
     reportForm: FormGroup;
     finalReportObject;
     reportID
-    types = ['Spam', 'Harassment', 'nudity', 'violence', 'other'];
+    types = ['Spam', 'Harassment', 'Violence', 'Other'];
 
     ngOnInit() {
         this.route.paramMap.subscribe(paramMap => {
