@@ -164,10 +164,9 @@ export class ReportsPage implements OnInit {
                 this.utils.presentAlert(message);
                 this.result.forEach(r => {
                     if(r.charityHouse.user.email == user.email) r.charityHouse.user.applicationStatus = user.applicationStatus;
-                    r.blocked = r.charityHouse.user.applicationStatus == "blocked" ? "Unblock" : "Block";
                 });
                 this.result.forEach(r => {
-                    r.blocked = r.charityHouse.user.applicationStatus == "blocked" ? "Unblock" : "Block";
+                    r.blocked = r.charityHouse.user.applicationStatus == "blocked" ? "unblock" : "block";
                 });
                 console.log(this.result)
             },
