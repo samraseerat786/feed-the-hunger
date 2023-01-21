@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Reports</ion-title>
+        <ion-title>Complaints</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
                     </ion-card-header>
                     <ion-card-content>
                         <div style="display: flex">
-                            <p class="detail-p">Report to: </p>
+                            <p class="detail-p">Complaint to: </p>
                             <p class="value-p">{{item?.charityHouse?.email}}</p>
                         </div>
                         <div style="display: flex">
@@ -36,7 +36,7 @@
 <ion-content *ngIf="isEmpty">
     <div class="fullheight xc">
         <div>
-            <h3 class="item-color">No Report</h3>
+            <h3 class="item-color">No Complaint</h3>
         </div>
     </div>
 </ion-content>

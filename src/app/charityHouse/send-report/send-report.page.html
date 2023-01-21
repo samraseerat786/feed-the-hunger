@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>Send Report</ion-title>
+        <ion-title>Consumer Complaint</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -32,11 +32,11 @@
                     <div class="ion-padding">
                         <ion-textarea rows="7" style="height: 150px" class="message-input"
                                       formControlName="reportMessage"
-                                      placeholder="Enter Report message here..."></ion-textarea>
+                                      placeholder="Type complaints message here..."></ion-textarea>
                     </div>
                     <div class="ion-padding">
                         <ion-button shape="round" (click)="sendReport()" color="primary" type="submit" expand="block">
-                            Send Report
+                            Submit
                         </ion-button>
                     </div>
                 </ion-col>
