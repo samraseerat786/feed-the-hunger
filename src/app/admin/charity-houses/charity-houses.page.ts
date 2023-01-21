@@ -86,7 +86,7 @@ export class CharityHousesPage implements OnInit {
                         let ngo = this.result.filter(u => u.id == id)[0];
                         let user = ngo.user;
                         user.applicationStatus = isBlocked ? "blocked" : "approved";
-                        this.updateUser(user);
+                        this.updateUser(user, isBlocked ? "User blocked successfully." : "User unblocked successfully.");
                     }
                 }
             ]
@@ -94,11 +94,11 @@ export class CharityHousesPage implements OnInit {
         alert.present();
     }
 
-    async updateUser(user){
+    async updateUser(user, message){
         this.utils.presentLoading("Please wait...");
         this.saveHttpReq(user).subscribe(data => {
                 this.utils.stopLoading();
-                this.utils.presentAlert("User blocked successfully.");
+                this.utils.presentAlert(message);
             },
             error => {
                 this.utils.stopLoading();
