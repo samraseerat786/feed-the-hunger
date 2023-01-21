@@ -88,7 +88,7 @@ export class NewDonationsPage implements OnInit {
                     handler: () => {
                     }
                 }, {
-                    text: 'Okay',
+                    text: 'OK',
                     cssClass: 'primary',
                     handler: async (data) => {
                         console.log(data.date);

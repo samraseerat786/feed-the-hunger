@@ -25,7 +25,7 @@
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Select Type</ion-label>
-                            <ion-select formControlName="type" placeholder="--Select--" okText="Okay"
+                            <ion-select formControlName="type" placeholder="--Select--" okText="OK"
                                         cancelText="Dismiss">
                                 <ion-select-option value="fast Food">Fast Food</ion-select-option>
                                 <ion-select-option value="rise">Rise</ion-select-option>
@@ -39,7 +39,7 @@
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Unit</ion-label>
-                            <ion-select formControlName="unit" placeholder="--Select--" okText="Okay"
+                            <ion-select formControlName="unit" placeholder="--Select--" okText="OK"
                                         cancelText="Dismiss">
                                 <ion-select-option *ngFor="let item of units"
                                                    value="{{item}}">{{item}}</ion-select-option>
@@ -52,7 +52,7 @@
                         </ion-item>
                         <ion-item *ngIf="isLabeling">
                             <ion-label position="floating">Food Label</ion-label>
-                            <ion-select formControlName="type" placeholder="--Select--" okText="Okay"
+                            <ion-select formControlName="type" placeholder="--Select--" okText="OK"
                                         cancelText="Dismiss" id="food-label">
                                 <ion-select-option *ngFor="let label of labels" value="{{label.label}}">{{label.label}}</ion-select-option>
                             </ion-select>

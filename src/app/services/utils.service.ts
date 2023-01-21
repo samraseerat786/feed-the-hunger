@@ -27,7 +27,7 @@ export class UtilsService {
                     handler: () => {
                     }
                 }, {
-                    text: 'Okay',
+                    text: 'OK',
                     cssClass: 'primary',
                     handler: () => {
                     }
