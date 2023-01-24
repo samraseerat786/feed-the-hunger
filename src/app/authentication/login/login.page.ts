@@ -88,7 +88,6 @@ export class LoginPage implements OnInit {
                                 {title: 'Manage Users', url: '/tabs', icon: 'list',},
                                 {title: 'Messages', url: '/chat-list', icon: 'ios-chatboxes'},
                                 {title: 'Complaints', url: `/reports`, icon: 'list'},
-                                {title: 'Reports', url: `/report-graph`, icon: 'bar-chart'},
                                 {title: 'Profile', url: `/admin-profile/${d.user.id}`, icon: 'person'}];
                             this.service.setRole(d.role);
                             localStorage.setItem('user', JSON.stringify(d.user));

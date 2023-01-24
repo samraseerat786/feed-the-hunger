@@ -244,12 +244,7 @@ const routes: Routes = [
     {path: 'chat-list', loadChildren: './admin/chat-list/chat-list.module#ChatListPageModule'},
     {path: 'open-admin-chat', loadChildren: './shared/open-admin-chat/open-admin-chat.module#OpenAdminChatPageModule'},
     {path: 'donor-donations', loadChildren: './donner/donor-donations/donor-donations.module#DonorDonationsPageModule'},
-    {path: 'new-donations', loadChildren: './charityHouse/new-donations/new-donations.module#NewDonationsPageModule'},
-    { path: 'report-graph', loadChildren: './admin/report-graph/report-graph.module#ReportGraphPageModule' },
-//   { path: 'reviews', loadChildren: './donner/reviews/reviews.module#ReviewsPageModule' }
-
-
-
+    {path: 'new-donations', loadChildren: './charityHouse/new-donations/new-donations.module#NewDonationsPageModule'}
 ];
 
 @NgModule({
